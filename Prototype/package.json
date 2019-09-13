@@ -1,11 +1,14 @@
 {
-  "name": "prototype",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "Prototype",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.ps"
   },
-  "author": "Goofy",
-  "license": "ISC"
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "debug": "^2.6.9",
+    "express": "^4.15.5",
+    "express-session": "^1.16.2"
+  }
 }

@@ -7,4 +7,8 @@ var ctrlMain = require("../controllers/main");
  */
 router.get('/', ctrlMain.index);
 
+router.get('/search', function(req, res) {
+    res.render('search');
+});
+
 module.exports = router;

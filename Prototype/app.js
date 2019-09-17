@@ -7,7 +7,7 @@ var app = express();
 
 //View engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));    // ？？ ？

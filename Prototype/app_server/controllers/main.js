@@ -15,3 +15,17 @@ module.exports.index = function(req, res)
              + '</html>\n';
     res.send(html);
 };
+
+// should use jade
+function sendPage(filename, res) {
+    var html = '';
+    lineReader.eachLine(filename, function(line, last) {
+        html += line + '\n';
+        if(last) {
+            res.send(html);
+            return false;
+        }else {
+            return true;
+        }
+    });
+}

@@ -5,10 +5,12 @@ var ctrlMain = require("../controllers/main");
 /*
  * GET home page.
  */
-router.get('/', ctrlMain.index);
+// router.get('/', ctrlMain.index);
 
-router.get('/search', function(req, res) {
-    res.render('search');
+router.get('/index', function(req, res) {
+    res.render('index');
 });
+
+router.post('/search', ctrlMain.getCollegeInfo);
 
 module.exports = router;

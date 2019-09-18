@@ -6,6 +6,7 @@ var index = require('./app_server/routes/index');
 var app = express();
 
 //View engine setup
+
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
 

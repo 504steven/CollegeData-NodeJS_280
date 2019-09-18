@@ -1,12 +1,14 @@
-
 module.exports.getCollegeInfo = function(req, res) {
     var schoolname = getCollegeName(req);
-    if(schoolname == "SJSU" || schoolname == "sjsu" || schoolname == "San Jose State University") {
+    if (schoolname == "SJSU" || schoolname == "sjsu" || schoolname == "San Jose State University") {
         res.render('universityInfo');
-    }else {
+    } else {
         res.render('index', {msg:"The university/college was not found !"});
     }
+}
 
+module.exports.home = function(req, res) {
+    res.render('index');
 }
 
 function getCollegeName(req) {

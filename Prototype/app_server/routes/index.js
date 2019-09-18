@@ -7,9 +7,7 @@ var ctrlMain = require("../controllers/main");
  */
 // router.get('/', ctrlMain.index);
 
-router.get('/index', function(req, res) {
-    res.render('index');
-});
+router.get('/', ctrlMain.home);
 
 router.post('/search', ctrlMain.getCollegeInfo);
 

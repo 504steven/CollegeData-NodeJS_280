@@ -1,51 +1,33 @@
+var lineReader = require('line-reader');
+
+module.exports.home = function(req, res) {
+    sendPage('public/html/index.html', res);
+}
+
 module.exports.getCollegeInfo = function(req, res) {
-    var schoolname = getCollegeName(req);
-    if (schoolname == "SJSU" || schoolname == "sjsu" || schoolname == "San Jose State University") {
+    var schoolName = getCollegeName(req);
+    if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
         res.render('universityInfo');
     } else {
-        res.render('index', {msg:"The university/college was not found !"});
+        sendPage('public/html/error.html', res)
     }
 }
 
-module.exports.home = function(req, res,) {
-    res.render('index');
-    //sendPage('index.ejs')
-}
-
 function getCollegeName(req) {
-    return req.param('schoolname');
+    return req.param('schoolName');
 }
 
+function sendPage(fileName, result) {
+    var html = '';
 
-
-// /*
-//  * GET home page.
-//  */
-// module.exports.index = function(req, res)
-// {
-//     var html = '<!DOCTYPE html>\n'
-//              + '<html lang="en-US">\n'
-//              + '<head>\n'
-//              + '    <meta charset="UTF-8">\n'
-//              + '    <title>Hello, world</title>\n'
-//              + '</head>\n'
-//              + '<body>\n'
-//              + '    <h1>Hello, world!</h1>\n'
-//              + '</body>\n'
-//              + '</html>\n';
-//     res.send(html);
-// };
-//
-// // should use jade
-// function sendPage(filename, res) {
-//     var html = '';
-//     lineReader.eachLine(filename, function(line, last) {
-//         html += line + '\n';
-//         if(last) {
-//             res.send(html);
-//             return false;
-//         }else {
-//             return true;
-//         }
-//     });
-// }
+    lineReader.eachLine(fileName,
+        function(line, last) {
+            html += line + '\n';
+            if (last) {
+                result.send(html);
+                return false;
+            } else {
+                return true;
+            }
+        });
+}

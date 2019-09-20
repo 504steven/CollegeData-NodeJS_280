@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Search</title>
+        <script type="text/javascript" src ="/js/validate.js"></script>
         <link rel="stylesheet" href="/css/style.css" />
     </head>
 
@@ -26,9 +27,9 @@
                     </td>
                     <td width="100" />
                     <td width="500">
-                        <form action="/search" method="post" id="form" >
+                        <form action="/search" method="post" id="form" onsubmit="return validate()" >
                             <label for="schoolName">Please entry the university name:</label>
-                            <input type="text" name="schoolName" id="schoolName" pattern = "^.+$" required />
+                            <input type="text" name="schoolName" id="schoolName" />
                             <input type="submit" value = "submit" />
                         </form>
                     </td>

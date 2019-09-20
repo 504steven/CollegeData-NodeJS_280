@@ -1,9 +1,10 @@
 var lineReader = require('line-reader');
-var sjsu = {params: {Name: 'San Jose State University', Location: 'San Jose, CA', Acceptance_rate: '53.4%', Graduation_rate: '51.6%',
+var sjsu = {name: 'San Jose State University', params: {Name: 'San Jose State University', Location: 'San Jose, CA',
+        Acceptance_rate: '53.4%', Graduation_rate: '51.6%',
         Average_annual_cost: '27,039 USD', Average_salary_after_attending_undergrad: '56,100 USD'}};
-var stanford = {params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%',
+var stanford = {name: 'Stanford University', params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%',
         Average_annual_cost: '14,000 USD'}};
-var berkeley = {params: {Name: 'University of California, Berkeley', Location: 'Berkeley, CA', Acceptance_rate: '17%', Graduation_rate: '91%',
+var berkeley = {name: 'University of California, Berkeley', params: {Name: 'University of California, Berkeley', Location: 'Berkeley, CA', Acceptance_rate: '17%', Graduation_rate: '91%',
         Average_annual_cost: '14,000 USD'}};
 
 

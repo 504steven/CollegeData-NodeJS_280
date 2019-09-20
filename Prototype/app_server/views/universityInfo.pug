@@ -5,19 +5,32 @@ html(lang='en')
         title Results
         link(rel='stylesheet', href='/css/style.css')
     body(background='/img/background.jpeg')
-        // titleDiv
+        // title division
         #titleDiv
             h1 The Statistics of University and College
-        // navigatorDiv
+        // navigator division
         #navigatorDiv
-            a.navigator(href='/') Home
-        // bodyDiv
-        #bodyDiv
-            - var droids = params;
-            each val, index in droids
-                ul
-                    p= index + ": " + val
-
-        // footer
-        footer#footer
-            p#copyright © 2019 Goofy
+            ul
+                li
+                    a(href='/') Home
+                li
+                    a News
+                li
+                    a Contact
+                li(style='float:right')
+                    a.navigatorBar About
+        // content division
+        #contentDiv
+            table.info
+                caption #{name}
+                col(width='50%')
+                col(width='50%')
+                - var droids = params;
+                each val, index in droids
+                    tr
+                        td= index
+                        td= val
+        // footer division
+        #footerDiv
+            footer
+                p © 2019 Goofy

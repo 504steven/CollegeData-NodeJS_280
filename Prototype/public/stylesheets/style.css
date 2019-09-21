@@ -21,9 +21,10 @@
 
 #navigatorDiv ul.menu {
   display: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+}
+
+#navigatorDiv ul.menu li {
+  float: none;
 }
 
 #navigatorDiv li {

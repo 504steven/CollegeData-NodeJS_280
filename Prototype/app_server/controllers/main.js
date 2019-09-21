@@ -25,6 +25,10 @@ module.exports.getCollegeInfo = function(req, res) {
     }
 }
 
+module.exports.get_overview = function(req, res) {
+    sendPage('public/html/overview.html', res);
+}
+
 function getCollegeName(req) {
     return req.param('schoolName');
 }

@@ -10,7 +10,6 @@ var berkeley = {name: 'University of California, Berkeley', params: {Name: 'Univ
 
 
 module.exports.home = function(req, res) {
-
     sendPage(  projectfolername + 'public/html/index.html', res);
 }
 
@@ -29,7 +28,7 @@ module.exports.getCollegeInfo = function(req, res) {
 }
 
 module.exports.get_overview = function(req, res) {
-    sendPage('public/html/overview.html', res);
+    sendPage(projectfolername + 'public/html/overview.html', res);
 }
 
 function getCollegeName(req) {
@@ -44,12 +43,9 @@ function sendPage(filename, res) {
         output: process.stdout,
         console: false
     });
-
-
     readInterface.on('line', function(line) {
         html += line + '\n';
     });
-    // console.log(html);
     res.send(html);
     html = '';
 }

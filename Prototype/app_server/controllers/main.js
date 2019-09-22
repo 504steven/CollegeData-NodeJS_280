@@ -1,4 +1,9 @@
-var lineReader = require('line-reader');
+//var lineReader = require('line-reader');
+var readline = require('readline');
+var fs = require('fs');
+var isWin = process.platform === "win32";
+var projectfolername = isWin? 'Prototype/' : '';
+
 var sjsu = {params: {Name: 'San Jose State University', Location: 'San Jose, CA', Acceptance_rate: '53.4%', Graduation_rate: '51.6%',
         Average_annual_cost: '27,039 USD', Average_salary_after_attending_undergrad: '56,100 USD'}};
 var stanford = {params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%',
@@ -8,7 +13,9 @@ var berkeley = {params: {Name: 'University of California, Berkeley', Location: '
 
 
 module.exports.home = function(req, res) {
-    sendPage('public/html/index.html', res);
+
+    // console.log(projectfolername + 'public/html/index.html');
+    sendPage(  projectfolername + 'public/html/index.html', res);
 }
 
 module.exports.getCollegeInfo = function(req, res) {
@@ -20,7 +27,8 @@ module.exports.getCollegeInfo = function(req, res) {
     } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley") {
         res.render('universityInfo', berkeley);
     } else {
-        sendPage('public/html/error.html', res)
+        sendPage(projectfolername + 'public/html/error.html', res);
+        //sendPage('public/html/error.html', res)
     }
 }
 
@@ -28,7 +36,26 @@ function getCollegeName(req) {
     return req.param('schoolName');
 }
 
-function sendPage(fileName, result) {
+var html = '';
+function sendPage(filename, res) {
+    // console.log('reading file:');
+    var readInterface = readline.createInterface({
+        input: fs.createReadStream(filename),
+        output: process.stdout,
+        console: false
+    });
+
+
+    readInterface.on('line', function(line) {
+        html += line + '\n';
+    });
+    // console.log(html);
+    res.send(html);
+    html = '';
+}
+
+
+function sendPageOld(fileName, result) {
     var html = '';
 
     lineReader.eachLine(fileName,

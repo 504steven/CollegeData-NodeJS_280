@@ -6,4 +6,6 @@ router.get('/', ctrlMain.home);
 
 router.post('/search', ctrlMain.getCollegeInfo);
 
+router.get('/overview', ctrlMain.get_overview);
+
 module.exports = router;

@@ -1,50 +1,65 @@
-/* id */
+/* title division */
 #titleDiv {
   width: 100%;
   height: 50px;
 }
 
-#navigatorDiv {
-  width: 100%;
-  height: 50px;
-  background-color: black;
+#titleDiv h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  text-align: center;
+  font-size: 35px;
 }
 
-#bodyDiv {
-  width: 100%;
-}
-
-#footer {
-  clear: both;
-  border: 1px groove #aaaaaa;
-  background: black;
-  color: White;
+/* navigator division */
+#navigatorDiv ul {
+  list-style-type: none;
+  margin: 8px 0;
   padding: 0;
-  text-align: center;
-  vertical-align: middle;
-  line-height: normal;
-  margin: 0;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
+  overflow: hidden;
+  background-color: #333;
 }
 
-#copyright {
-  font-size: 15px;
+#navigatorDiv li {
+  float: left;
+}
+
+#navigatorDiv li a {
+  display: block;
   color: white;
   text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
 }
 
-/* class */
-.navigator {
-  font-size: 30px;
-  color: white;
+#navigatorDiv li a:hover:not(.active) {
+  background-color: #111;
 }
 
-/* form */
-input[type=text], select {
+#navigatorDiv .navigatorBar {
+  background-color: #4CAF50;
+}
+
+#navigatorDiv div.menu {
+  display: none ;
+  font-size: 14px;
+  position: absolute;
+  background-color: #333;
+}
+
+/* content division */
+#contentDiv {
+  margin: 10px;
+}
+
+#contentDiv form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+#contentDiv input[type=text], select {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -52,29 +67,81 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[type=submit] {
+#contentDiv input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+#contentDiv input[type=submit]:hover {
   background-color: #45a049;
 }
 
-#form {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+#contentDiv .info {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-/* element */
-h1 {
+#contentDiv .info td, #contentDiv .info th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: white;
+}
+
+#contentDiv .info tr {
+  background-color: #000080;
+}
+
+#contentDiv .info tr:hover {
+  background-color: #FF00FF;
+}
+
+#contentDiv .info th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#contentDiv .info caption {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: purple;
+}
+
+#contentDiv p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: red;
+}
+
+/* footer division */
+#footerDiv footer {
+  background-color: #333;
+  border: 1px groove #aaaaaa;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#footerDiv p {
+  font-size: 15px;
+  color: white;
   text-align: center;
 }

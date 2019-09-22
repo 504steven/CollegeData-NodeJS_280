@@ -2,10 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Search</title>
-        <script type="text/javascript" src ="/js/validate.js"></script>
-        <script type="text/javascript" src="/js/menu.js"></script>
+        <title>Overview</title>
         <link rel="stylesheet" href="/css/style.css" />
+        <script type="text/javascript" src="/js/menu.js"></script>
     </head>
 
     <body background="/img/background.jpeg">
@@ -17,14 +16,14 @@
         <!-- navigator division -->
         <div id="navigatorDiv">
             <ul>
-                <li ><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>
-                    <a href="overview_menu.html" class="menuLink" >Overview</a>
+                    <a href="overview_menu.html" class="menuLink">Overview</a>
                     <div class ="menu" id = "overview_menu">
                         <a href="#">Undergrad</a>
                         <a href="#">Graduate</a>
                     </div>
-               </li>
+                </li>
                 <li><a>News</a></li>
                 <li><a>Contact</a></li>
                 <li style="float:right"><a class="navigatorBar">About</a></li>
@@ -35,22 +34,23 @@
         <div id="contentDiv">
             <table>
                 <tr align="center">
-                    <td>
-                        <img src="/img/campus.jpg" width="100%">
-                    </td>
-                    <td width="10%"></td>
-                    <td>
-                        <form action="/search" method="post" onsubmit="return validate()">
-                            <label for="schoolName">Please entry the university name</label>
-                            <input type="text" name="schoolName" id="schoolName" />
-                            <input type="submit" value = "submit" />
+                    <td width = 250>
+                        <form action="/overview_result" method="post">
+                            <label> Filter </label>
+                            <Select name="filter" >
+                                <option value="Acceptance_rate">Acceptance Rate</option>
+                                <option value="Graduation_rate">Graduation Rate</option>
+                                <option value="Average_cost">Average Annual Cost</option>
+                                <option value="Average_salary_" selected>Average Salary After Graduation</option>
+                            </Select>
+                            <input type="submit" value = "See Results" />
                         </form>
                     </td>
                 </tr>
             </table>
         </div>
 
-        <!-- footer division -->
+          <!-- footer division -->
         <div id="footerDiv">
             <footer>
                 <p>© 2019 Goofy</p>

@@ -14,6 +14,7 @@ module.exports.home = function(req, res) {
 }
 
 module.exports.getCollegeInfo = function(req, res) {
+    console.log("finding college");
     var schoolName = getCollegeName(req);
     if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
         res.render('universityInfo', sjsu);

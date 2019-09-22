@@ -19,14 +19,6 @@
   background-color: #333;
 }
 
-#navigatorDiv ul.menu {
-  display: none;
-}
-
-#navigatorDiv ul.menu li {
-  float: none;
-}
-
 #navigatorDiv li {
   float: left;
 }
@@ -45,6 +37,13 @@
 
 #navigatorDiv .navigatorBar {
   background-color: #4CAF50;
+}
+
+#navigatorDiv div.menu {
+  display: none ;
+  font-size: 14px;
+  position: absolute;
+  background-color: #333;
 }
 
 /* content division */

@@ -28,13 +28,11 @@ function toggleMenu()
 
     thisMenuStyle.display = "block";
 
-    menuParent.onmouseout = function()
-    {
+    menuParent.onmouseout = function() {
         thisMenuStyle.display = "none";
     };
 
-    menuParent.onmouseover = function()
-    {
+    menuParent.onmouseover = function() {
         thisMenuStyle.display = "block";
     };
 }

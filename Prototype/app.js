@@ -22,4 +22,4 @@ app.use('/img', express.static(path.join(__dirname, 'public/img')));
 app.use('/', index);
 
 module.exports = app;
-// app.listen(3000);
+app.listen(3000);

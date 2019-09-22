@@ -4,19 +4,13 @@ var fs = require('fs');
 var isWin = process.platform === "win32";
 var projectfolername = isWin? 'Prototype/' : '';
 
-var sjsu = {name: 'San Jose State University', params: {Name: 'San Jose State University', Location: 'San Jose, CA',
-        Acceptance_rate: '53.4%', Graduation_rate: '51.6%',
-
-        Average_annual_cost: '27,039 USD', Average_salary_after_attending_undergrad: '56,100 USD'}};
-var stanford = {name: 'Stanford University', params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%',
-        Average_annual_cost: '14,000 USD'}};
-var berkeley = {name: 'University of California, Berkeley', params: {Name: 'University of California, Berkeley', Location: 'Berkeley, CA', Acceptance_rate: '17%', Graduation_rate: '91%',
-        Average_annual_cost: '14,000 USD'}};
+var sjsu = {name: 'San Jose State University', params: {Name: 'San Jose State University', Location: 'San Jose, CA', Acceptance_rate: '53.4%', Graduation_rate: '51.6%', Average_annual_cost: '27,039 USD', Average_salary_after_attending_undergrad: '56,100 USD'}};
+var stanford = {name: 'Stanford University', params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%', Average_annual_cost: '14,000 USD'}};
+var berkeley = {name: 'University of California, Berkeley', params: {Name: 'University of California, Berkeley', Location: 'Berkeley, CA', Acceptance_rate: '17%', Graduation_rate: '91%', Average_annual_cost: '14,000 USD'}};
 
 
 module.exports.home = function(req, res) {
 
-    // console.log(projectfolername + 'public/html/index.html');
     sendPage(  projectfolername + 'public/html/index.html', res);
 }
 
@@ -30,7 +24,7 @@ module.exports.getCollegeInfo = function(req, res) {
         res.render('universityInfo', berkeley);
     } else {
         sendPage(projectfolername + 'public/html/error.html', res);
-        //sendPage('public/html/error.html', res)
+        //sendPage('public/html/error.html', res);
     }
 }
 

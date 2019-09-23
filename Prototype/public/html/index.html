@@ -27,7 +27,7 @@
                </li>
                 <li><a>News</a></li>
                 <li><a>Contact</a></li>
-                <li style="float:right"><a class="navigatorBar">About</a></li>
+                <li style="float:right"><a class="navigatorBar" href = '/logout'>Logut</a></li>
             </ul>
         </div>
 
@@ -40,7 +40,7 @@
                     </td>
                     <td width="10%"></td>
                     <td>
-                        <form action="/search" method="post" onsubmit="return validate()">
+                        <form action="/search" method="get" onsubmit="return validate()">
                             <label for="schoolName">Please entry the university name</label>
                             <input type="text" name="schoolName" id="schoolName" />
                             <input type="submit" value = "submit" />

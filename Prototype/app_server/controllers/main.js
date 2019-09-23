@@ -8,14 +8,78 @@ var sjsu = {name: 'San Jose State University', params: {Name: 'San Jose State Un
 var stanford = {name: 'Stanford University', params: {Name: 'Stanford University', Location: 'Stanford, CA', Acceptance_rate: '5%', Graduation_rate: '95%', Average_annual_cost: '14,000 USD'}};
 var berkeley = {name: 'University of California, Berkeley', params: {Name: 'University of California, Berkeley', Location: 'Berkeley, CA', Acceptance_rate: '17%', Graduation_rate: '91%', Average_annual_cost: '14,000 USD'}};
 
+var registeredUsers = [];
 
 module.exports.home = function(req, res) {
+    sendPage(  projectfolername + 'public/html/loginAndRegister.html', res);
+}
+
+// module.exports.get_register = function(req, res) { }
+
+module.exports.post_register = function(req, res) {
+    console.log('register called');
+    // console.log(req.body.username);
+    if(!req.body.username || !req.body.password) {
+        res.send("Missing Username or Password for Registeration !");
+    }else {
+        var matches = registeredUsers.filter(function(user) {
+            return user.username == req.body.username;
+        });
+        if(matches.length > 0) {
+            res.send("username has been registered. use another username or try login");
+        }else {
+            var newUser = {username: req.body.username,
+                            password: req.body.password};
+            registeredUsers.push(newUser);
+            // console.log(newUser);
+            req.session.user = newUser;
+            console.log('new user registered : ' + newUser.username);
+            res.redirect('/protected');
+        }
+    }
+}
+
+
+module.exports.post_login = function(req, res) {
+    console.log( 'login called');
+    var matches = registeredUsers.filter(function(user){
+        return user.username == req.body.username && user.password == req.body.password;
+    });
+    if(matches.length == 0) {
+        res.send('wrong username or password');
+    }else {
+        // console.log(matches[0]);
+        req.session.user = matches[0];
+        res.redirect('/protected');
+    }
+}
+
+// module.exports.get_login = function(req, res) {  }
+
+module.exports.get_logout = function(req, res) {
+    if(req.session.user) {
+        req.session.destroy( function() {
+            console.log('session deleted');
+        });
+    }
+    res.redirect('/');
+}
+
+module.exports.loggedIn = function(req, res, next) {
+    if(req.session.user) {
+        next();
+    }else {
+        res.send("must log in first！");
+    }
+}
+
+module.exports.get_protected = function(req, res) {
     sendPage(  projectfolername + 'public/html/index.html', res);
 }
 
 module.exports.getCollegeInfo = function(req, res) {
     console.log("finding college");
-    var schoolName = getCollegeName(req);
+    var schoolName = req.param('schoolName');
     if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
         res.render('universityInfo', sjsu);
     } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
@@ -33,10 +97,6 @@ module.exports.get_overview = function(req, res) {
     sendPage(projectfolername + 'public/html/overview.html', res);
 }
 
-function getCollegeName(req) {
-    return req.param('schoolName');
-}
-
 
 
 function sendPage(filename, res) {
@@ -46,12 +106,14 @@ function sendPage(filename, res) {
         output: process.stdout,
         console: false
     });
+
+    //readInterface is async
     readInterface.on('line', function(line) {
         html += line + '\n';
     }).on('close', function(){
         res.send(html);
     });
-    console.log("sent html page");
+    // console.log("sent html page");
     // html = '';
 }
 

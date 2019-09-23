@@ -25,7 +25,6 @@ function toggleMenu()
 
     var menuParent = document.getElementById(thisMenuName).parentNode;
     var thisMenuStyle = document.getElementById(thisMenuName).style;
-
     thisMenuStyle.display = "block";
 
     menuParent.onmouseout = function() {

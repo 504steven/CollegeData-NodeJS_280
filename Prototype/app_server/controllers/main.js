@@ -25,6 +25,7 @@ module.exports.getCollegeInfo = function(req, res) {
     } else {
         sendPage(projectfolername + 'public/html/error.html', res);
         //sendPage('public/html/error.html', res);
+        console.log("send error page");
     }
 }
 
@@ -36,9 +37,10 @@ function getCollegeName(req) {
     return req.param('schoolName');
 }
 
-var html = '';
+
+
 function sendPage(filename, res) {
-    // console.log('reading file:');
+    var html = '';
     var readInterface = readline.createInterface({
         input: fs.createReadStream(filename),
         output: process.stdout,
@@ -46,17 +48,18 @@ function sendPage(filename, res) {
     });
     readInterface.on('line', function(line) {
         html += line + '\n';
+    }).on('close', function(){
+        res.send(html);
     });
-    res.send(html);
-    html = '';
+    console.log("sent html page");
+    // html = '';
 }
 
 
 function sendPageOld(fileName, result) {
     var html = '';
 
-    lineReader.eachLine(fileName,
-        function(line, last) {
+    lineReader.eachLine(fileName, function(line, last) {
             html += line + '\n';
             if (last) {
                 result.send(html);

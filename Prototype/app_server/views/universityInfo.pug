@@ -14,7 +14,7 @@ html(lang='en')
 
             ul
                 li
-                    a(href='/') Home
+                    a(href='/protected') Home
                 li
                     a(href='overview.html' class="menuLink") Overview
                     div(class='menu' id = 'overview')
@@ -25,7 +25,8 @@ html(lang='en')
                 li
                     a Contact
                 li(style='float:right')
-                    a.navigatorBar About
+                    a.navigatorBar(href='/logout') Logout
+
         // content division
         #contentDiv
             table.info

@@ -42,7 +42,7 @@
                     <td>
                         <form action="/search" method="get" onsubmit="return validate()">
                             <label for="schoolName">Please entry the university name</label>
-                            <input type="text" name="schoolName" id="schoolName" />
+                            <input type="text" name="schoolName" id="schoolName" pattern = '((\s)*[a-zA-Z]+(\s)*)+' />
                             <input type="submit" value = "submit" />
                         </form>
                     </td>

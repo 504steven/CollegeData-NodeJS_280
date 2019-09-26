@@ -1,8 +1,8 @@
 //var lineReader = require('line-reader');
 var readline = require('readline');
 var fs = require('fs');
-var isWin = process.platform === "win32";
-var projectfolername = isWin ? 'Prototype/' : '';
+var isWin = process.platform === 'win32';
+var projectFolerName = isWin ? 'Prototype/' : '';
 
 var sjsu = {name: 'San Jose State University',
     params: {
@@ -38,7 +38,7 @@ var berkeley = {name: 'University of California, Berkeley',
 var registeredUsers = [];
 
 module.exports.home = function(req, res) {
-    sendPage(projectfolername + 'public/html/loginAndRegister.html', res);
+    sendPage(projectFolerName + 'public/html/loginAndRegister.html', res);
 };
 
 module.exports.post_register = function(req, res) {
@@ -46,7 +46,7 @@ module.exports.post_register = function(req, res) {
     if (!req.body.username || !req.body.password) {
         res.send("Missing Username or Password for Registeration!");
     } else {
-        var matches = registeredUsers.filter(function (user) {
+        var matches = registeredUsers.filter(function(user) {
             return user.username == req.body.username;
         });
         if (matches.length > 0) {
@@ -57,14 +57,12 @@ module.exports.post_register = function(req, res) {
                 password: req.body.password
             };
             registeredUsers.push(newUser);
-            // console.log(newUser);
             req.session.user = newUser;
             console.log('new user registered : ' + newUser.username);
             res.redirect('/protected');
         }
     }
 };
-
 
 module.exports.post_login = function(req, res) {
     console.log('login called');
@@ -74,7 +72,6 @@ module.exports.post_login = function(req, res) {
     if (matches.length == 0) {
         res.send('wrong username or password');
     } else {
-        // console.log(matches[0]);
         req.session.user = matches[0];
         res.redirect('/protected');
     }
@@ -98,7 +95,7 @@ module.exports.loggedIn = function(req, res, next) {
 };
 
 module.exports.get_protected = function(req, res) {
-    sendPage(projectfolername + 'public/html/index.html', res);
+    sendPage(projectFolerName + 'public/html/index.html', res);
 };
 
 module.exports.getCollegeInfo = function(req, res) {
@@ -111,14 +108,13 @@ module.exports.getCollegeInfo = function(req, res) {
     } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley") {
         res.render('universityInfo', berkeley);
     } else {
-        sendPage(projectfolername + 'public/html/error.html', res);
-        //sendPage('public/html/error.html', res);
+        sendPage(projectFolerName + 'public/html/error.html', res);
         console.log("send error page");
     }
 };
 
 module.exports.get_overview = function(req, res) {
-    sendPage(projectfolername + 'public/html/overview.html', res);
+    sendPage(projectFolerName + 'public/html/overview.html', res);
 };
 
 function sendPage(filename, res) {
@@ -128,7 +124,6 @@ function sendPage(filename, res) {
         output: process.stdout,
         console: false
     });
-
     //readInterface is async
     readInterface.on('line', function(line) {
         html += line + '\n';
@@ -139,7 +134,6 @@ function sendPage(filename, res) {
 
 function sendPageOld(fileName, result) {
     var html = '';
-
     lineReader.eachLine(fileName, function(line, last) {
         html += line + '\n';
         if (last) {

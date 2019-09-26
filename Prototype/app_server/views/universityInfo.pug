@@ -4,20 +4,19 @@ html(lang='en')
         meta(charset='UTF-8')
         title Results
         link(rel='stylesheet', href='/css/style.css')
-        script(src = '/js/menu.js')
+        script(src = '/js/onload.js')
     body(background='/img/background.jpeg')
         // title division
         #titleDiv
             h1 The Statistics of University and College
         // navigator division
         #navigatorDiv
-
             ul
                 li
                     a(href='/protected') Home
                 li
-                    a(href='overview.html' class="menuLink") Overview
-                    div(class='menu' id = 'overview')
+                    a(href='/overview_menu.html' class='menuLink') Overview
+                    div(class='menu' id = 'overview_menu')
                         a Undergrad
                         a Graduate
                 li
@@ -26,7 +25,6 @@ html(lang='en')
                     a Contact
                 li(style='float:right')
                     a.navigatorBar(href='/logout') Logout
-
         // content division
         #contentDiv
             table.info

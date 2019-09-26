@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body background="/img/background.jpeg">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+        <link rel="stylesheet" href="/css/style.css"/>
+    </head>
+    <body background="/img/background.jpeg">
+        <!-- title division -->
+        <div id="titleDiv">
+            <h1>The Statistics of University and College</h1>
+        </div>
 
-    <!-- title division -->
-    <div id="titleDiv">
-        <h1>The Statistics of University and College</h1>
-    </div>
+        <!-- navigator division -->
+        <div id="navigatorDiv">
+            <ul>
+                <li>
+                    <a>Please Login First</a>
+                </li>
+            </ul>
+        </div>
 
-    <!-- navigator division -->
-    <div id="navigatorDiv">
-        <ul><li><a> Please Login First</a></li></ul>
-    </div>
+        <!-- content division -->
+        <div id="contentDiv">
+            <table class="login">
+                <tr>
+                    <td height="130"></td>
+                </tr>
+                <tr>
+                    <td width="23%"></td>
+                    <td>
+                        <form action='login' method="post">
+                            <label for='login_username'>Username:</label>
+                            <input type="text" id='login_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>
+                            <label for='login_password'>Password:&nbsp</label>
+                            <input type="password" id='login_password' name='password' pattern='^.{3,12}$' required/><br/>
+                            <input type="submit" value='LOGIN'/>
+                        </form>
+                    </td>
+                    <td width="25%"></td>
+                    <td>
+                        <form action='register' method="post">
+                            <label for='register_username'>Username:</label>
+                            <input type="text" id='register_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>
+                            <label for='register_password'>Password:&nbsp</label>
+                            <input type="password" id='register_password' name='password' pattern='^.{3,12}$' required/><br/>
+                            <input type="submit" value='REGISTER'/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-    <!-- content division -->
-    <div id="contentDiv">
-        <table class = "login">
-            <tr><td height="130"></td></tr>
-            <tr>
-                <td width="23%"></td>
-                <td>
-                    <form action = 'login' method="post" onsubmit=''>
-                         <label for username>Username: </label>
-                         <input type= "text" id = 'login_username'  name = 'username' pattern= '^[a-zA-Z0-9]+$' required/> <br/>
-                         <label for password>Password:&nbsp</label>
-                         <input type= "password" id = 'login_password' name ='password' pattern= '^.{3,12}$' required/><br/>
-                         <input type= "submit" value = 'LOGIN'/>
-                    </form>
-                </td>
-                <td width="25%"></td>
-                <td>
-                     <form action = 'register' method="post" onsubmit=''>
-                         <label for username>Username:</label>
-                         <input type= "text" id = 'register_username'  name = 'username' pattern= '^[a-zA-Z0-9]+$' required/> <br/>
-                         <label for password>Password:&nbsp</label>
-                         <input type= "password" id = 'register_password' name ='password' pattern= '^.{3,12}$' required/><br/>
-                         <input type= "submit" value = 'REGISTER'/>
-                     </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- footer division -->
-    <div id="footerDiv">
-        <footer>
-            <p>© 2019 Goofy</p>
-        </footer>
-    </div>
-</body>
+        <!-- footer division -->
+        <div id="footerDiv">
+            <footer>
+                <p>© 2019 Goofy</p>
+            </footer>
+        </div>
+    </body>
 </html>

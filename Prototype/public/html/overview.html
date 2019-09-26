@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Overview</title>
-        <link rel="stylesheet" href="/css/style.css" />
-        <script type="text/javascript" src="/js/menu.js"></script>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <script type="text/javascript" src="/js/onload.js"></script>
     </head>
 
     <body background="/img/background.jpeg">
@@ -18,15 +18,15 @@
             <ul>
                 <li><a href="/protected">Home</a></li>
                 <li>
-                    <a href="overview_menu.html" class="menuLink">Overview</a>
-                    <div class ="menu" id = "overview_menu">
+                    <a href="/overview_menu.html" class="menuLink">Overview</a>
+                    <div class="menu" id="overview_menu">
                         <a href="#">Undergrad</a>
                         <a href="#">Graduate</a>
                     </div>
                 </li>
                 <li><a>News</a></li>
                 <li><a>Contact</a></li>
-                <li style="float:right"><a class="navigatorBar" href = '/logout'>Logout</a></li>
+                <li style="float:right"><a class="navigatorBar" href='/logout'>Logout</a></li>
             </ul>
         </div>
 
@@ -34,23 +34,23 @@
         <div id="contentDiv">
             <table>
                 <tr align="center">
-                    <td width = 250>
+                    <td width=250>
                         <form action="/overview_result" method="post">
                             <label> Filter </label>
-                            <Select name="filter" >
+                            <Select name="filter">
                                 <option value="Acceptance_rate">Acceptance Rate</option>
                                 <option value="Graduation_rate">Graduation Rate</option>
                                 <option value="Average_cost">Average Annual Cost</option>
                                 <option value="Average_salary_" selected>Average Salary After Graduation</option>
                             </Select>
-                            <input type="submit" value = "See Results" />
+                            <input type="submit" value="See Results"/>
                         </form>
                     </td>
                 </tr>
             </table>
         </div>
 
-          <!-- footer division -->
+        <!-- footer division -->
         <div id="footerDiv">
             <footer>
                 <p>© 2019 Goofy</p>

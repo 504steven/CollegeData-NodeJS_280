@@ -19,6 +19,15 @@
   background-color: #333;
 }
 
+#navigatorDiv h1 {
+  margin: 8px 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  font-size: 20px;
+}
+
 #navigatorDiv li {
   float: left;
 }

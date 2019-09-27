@@ -44,9 +44,29 @@
 
 #navigatorDiv div.menu {
   display: none ;
-  font-size: 20px;
   position: absolute;
   background-color: #333;
+  width: 12%;
+}
+
+#navigatorDiv div.menu a {
+  border: 1px solid rgb(65,64,64);
+  font-size: 17px;
+}
+
+#navigatorDiv div.menu a:hover:not(.active) {
+  font-size: 17px;
+  color: #333;
+  background-color: white;
+  border: 1px solid white;
+}
+
+#navigatorDiv a.menuLink b{
+  border: 4px solid;
+  border-color:  darkgray transparent transparent transparent;
+  float: right;
+  margin-left: 5px;
+  margin-top: 11px;
 }
 
 /* content division */

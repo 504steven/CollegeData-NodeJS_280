@@ -51,14 +51,24 @@
 
 /* content division */
 #contentDiv {
+  height:auto;
   margin: 10px;
-  height: 600px;
+  display: block;
+  text-align: center;
+}
+
+#contentDiv td.searchPage {
+  width: 50%;
+  text-align: center;
 }
 
 #contentDiv form {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }
 
 #contentDiv input[type=text], select {
@@ -71,11 +81,11 @@
   box-sizing: border-box;
 }
 
-#contentDiv table.login input[type=text] {
+#contentDiv table.loginPage input[type=text] {
   width: 60%;
 }
 
-#contentDiv table.login input[type=password] {
+#contentDiv table.loginPage input[type=password] {
   width: 60%;
   padding: 10px 10px;
   margin: 8px 0;
@@ -100,27 +110,27 @@
   background-color: #45a049;
 }
 
-#contentDiv .info {
+#contentDiv .infoPage {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-#contentDiv .info td, #contentDiv .info th {
+#contentDiv .infoPage td, #contentDiv .infoPage th {
   border: 1px solid #ddd;
   padding: 8px;
   color: white;
 }
 
-#contentDiv .info tr {
+#contentDiv .infoPage tr {
   background-color: #000080;
 }
 
-#contentDiv .info tr:hover {
+#contentDiv .infoPage tr:hover {
   background-color: #FF00FF;
 }
 
-#contentDiv .info th {
+#contentDiv .infoPage th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -128,11 +138,15 @@
   color: white;
 }
 
-#contentDiv .info caption {
+#contentDiv .infoPage caption {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 30px;
   text-align: center;
   color: purple;
+}
+
+#contentDiv .infoPage col {
+  width: 50%;
 }
 
 #contentDiv p {
@@ -140,6 +154,11 @@
   font-size: 30px;
   text-align: center;
   color: red;
+}
+
+#contentDiv #rollingImage {
+  width: 700px;
+  height: 500px;
 }
 
 /* footer division */

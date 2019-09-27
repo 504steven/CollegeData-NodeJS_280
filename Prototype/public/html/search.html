@@ -21,8 +21,8 @@
                 <li>
                     <a href="/overview_menu.html" class="menuLink">Overview</a>
                     <div class="menu" id="overview_menu">
-                        <a href="#">Undergrad</a>
-                        <a href="#">Graduate</a>
+                        <a href="/overview">Undergrad</a>
+                        <a href="/overview">Graduate</a>
                     </div>
                 </li>
                 <li><a>News</a></li>
@@ -31,22 +31,19 @@
             </ul>
         </div>
 
-        <!-- content division -->
         <div id="contentDiv">
             <table>
                 <tr>
-                    <td width="45%">
-                        <img id="changeImg" src="/img/1.jpg" width="700px" height="500px"/>
+                    <td class="searchPage">
+                        <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
-                    <td width="10%"></td>
-                    <td width="30%">
+                    <td class="searchPage">
                         <form action="/search" method="get" onsubmit="return validate()">
                             <label for="schoolName">Please entry the university name</label>
                             <input type="text" name="schoolName" id="schoolName"/>
                             <input type="submit" value="submit"/>
                         </form>
                     </td>
-                    <td width="15%"></td>
                 </tr>
             </table>
         </div>

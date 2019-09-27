@@ -1,8 +1,8 @@
-//var lineReader = require('line-reader');
 var readline = require('readline');
 var fs = require('fs');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype/' : '';
+var registeredUsers = [];
 
 var sjsu = {name: 'San Jose State University',
     params: {
@@ -34,8 +34,6 @@ var berkeley = {name: 'University of California, Berkeley',
         Average_annual_cost: '14,000 USD'
     }
 };
-
-var registeredUsers = [];
 
 module.exports.home = function(req, res) {
     sendPage(projectFolerName + 'public/html/loginAndRegister.html', res);
@@ -86,7 +84,7 @@ module.exports.get_logout = function(req, res) {
     res.redirect('/');
 };
 
-module.exports.loggedIn = function(req, res, next) {
+module.exports.check_logged_In = function(req, res, next) {
     if (req.session.user) {
         next();
     } else {
@@ -95,10 +93,10 @@ module.exports.loggedIn = function(req, res, next) {
 };
 
 module.exports.get_protected = function(req, res) {
-    sendPage(projectFolerName + 'public/html/index.html', res);
+    sendPage(projectFolerName + 'public/html/search.html', res);
 };
 
-module.exports.getCollegeInfo = function(req, res) {
+module.exports.get_collegeInfo = function(req, res) {
     console.log("finding college");
     var schoolName = req.param('schoolName');
     if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {

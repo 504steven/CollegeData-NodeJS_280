@@ -22,14 +22,14 @@
 
         <!-- content division -->
         <div id="contentDiv">
-            <table class="login">
+            <table class="loginPage">
                 <tr>
                     <td height="130"></td>
                 </tr>
                 <tr>
                     <td width="23%"></td>
                     <td>
-                        <form action='login' method="post">
+                        <form action="/login" method="post">
                             <label for='login_username'>Username:</label>
                             <input type="text" id='login_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>
                             <label for='login_password'>Password:&nbsp</label>
@@ -39,7 +39,7 @@
                     </td>
                     <td width="25%"></td>
                     <td>
-                        <form action='register' method="post">
+                        <form action="/register" method="post">
                             <label for='register_username'>Username:</label>
                             <input type="text" id='register_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>
                             <label for='register_password'>Password:&nbsp</label>

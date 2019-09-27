@@ -20,8 +20,8 @@
                 <li>
                     <a href="/overview_menu.html" class="menuLink">Overview</a>
                     <div class="menu" id="overview_menu">
-                        <a href="#">Undergrad</a>
-                        <a href="#">Graduate</a>
+                        <a href="/overview">Undergrad</a>
+                        <a href="/overview">Graduate</a>
                     </div>
                 </li>
                 <li><a>News</a></li>
@@ -34,14 +34,14 @@
         <div id="contentDiv">
             <table>
                 <tr align="center">
-                    <td width=250>
+                    <td class="overviewPage">
                         <form action="/overview_result" method="post">
-                            <label> Filter </label>
+                            <label>Filter</label>
                             <Select name="filter">
                                 <option value="Acceptance_rate">Acceptance Rate</option>
                                 <option value="Graduation_rate">Graduation Rate</option>
                                 <option value="Average_cost">Average Annual Cost</option>
-                                <option value="Average_salary_" selected>Average Salary After Graduation</option>
+                                <option value="Average_salary">Average Salary After Graduation</option>
                             </Select>
                             <input type="submit" value="See Results"/>
                         </form>

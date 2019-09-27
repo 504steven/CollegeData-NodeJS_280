@@ -4,7 +4,7 @@ function validate() {
     if (schoolName == "") {
         error = "Missing University Name\n";
         alert(error);
-        return false
+        return false;
     }
     var schoolNameRE = /^[a-zA-Z\s]+$/; // has to be letter or space
     if (!schoolName.match(schoolNameRE)) {

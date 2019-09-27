@@ -17,8 +17,8 @@ html(lang='en')
                 li
                     a(href='/overview_menu.html' class='menuLink') Overview
                     div(class='menu' id = 'overview_menu')
-                        a Undergrad
-                        a Graduate
+                        a(href='/overview') Undergrad
+                        a(href='/overview') Graduate
                 li
                     a News
                 li
@@ -27,12 +27,12 @@ html(lang='en')
                     a.navigatorBar(href='/logout') Logout
         // content division
         #contentDiv
-            table.info
+            table.infoPage
                 caption #{name}
-                col(width='50%')
-                col(width='50%')
-                - var droids = params;
-                each val, index in droids
+                col.info
+                col.info
+                - var input = params;
+                each val, index in input
                     tr
                         td= index
                         td= val
@@ -40,4 +40,3 @@ html(lang='en')
         #footerDiv
             footer
                 p © 2019 Goofy
-

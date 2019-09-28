@@ -11,7 +11,12 @@
     <body background="/img/background.jpeg">
         <!-- title division -->
         <div id="titleDiv">
-            <h1>The Statistics of University and College</h1>
+            <h1>
+                The Statistics of University and College
+                <canvas id="canvas" width="200" height="45" style="float: right">
+                    <p>Your browser does not support the canvas tag</p>
+                </canvas>
+            </h1>
         </div>
 
         <!-- navigator division -->
@@ -49,9 +54,6 @@
                         <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
                     <td class="searchPage">
-                        <canvas id="canvas" width="200" height="45">
-                            <p>Your browser does not support the canvas tag</p>
-                        </canvas>
                         <form action="/search" method="get" onsubmit="return validate()">
                             <label for="schoolName">Please entry the university name</label>
                             <input type="text" name="schoolName" id="schoolName"/>

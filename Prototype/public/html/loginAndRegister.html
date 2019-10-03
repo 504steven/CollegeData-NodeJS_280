@@ -3,13 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Register</title>
-        <link rel="stylesheet" href="/css/style.css"/>
-        <link rel="stylesheet" href="/css/jquery-ui.css"/>
-        <script type="text/javascript" src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/onload.js"></script>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <script type="text/javascript" src="/js/canvas.js"></script>
     </head>
-
     <body background="/img/background.jpeg">
         <!-- title division -->
         <div id="titleDiv">
@@ -19,11 +16,11 @@
         <!-- navigator division -->
         <div id="navigatorDiv">
             <h1>Please Login/Register First &nbsp
-                <canvas id="canvasSmilingFace" width="25" height="25"><p>Canvas not supported</p></canvas>
+                <canvas id="canvas" width="25" height="25"><p>Canvas not supported</p></canvas>
             </h1>
         </div>
 
-        <!-- content division-->
+        <!-- content division -->
         <div id="contentDiv">
             <table class="loginPage">
                 <tr>
@@ -53,30 +50,6 @@
                 </tr>
             </table>
         </div>
-<!--        <div id="contentDiv">-->
-<!--            <div id="accordion">-->
-<!--                <h3>login</h3>-->
-<!--                <div>-->
-<!--                    <form action="/login" method="post">-->
-<!--                        <label for='login_username'>Username:</label>-->
-<!--                        <input type="text" id='login_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>-->
-<!--                        <label for='login_password'>Password:&nbsp</label>-->
-<!--                        <input type="password" id='login_password' name='password' pattern='^.{3,12}$' required/><br/>-->
-<!--                        <input type="submit" value='LOGIN'/>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--                <h3>register</h3>-->
-<!--                <div>-->
-<!--                    <form action="/register" method="post">-->
-<!--                        <label for='register_username'>Username:</label>-->
-<!--                        <input type="text" id='register_username' name='username' pattern='^[a-zA-Z0-9]+$' required/><br/>-->
-<!--                        <label for='register_password'>Password:&nbsp</label>-->
-<!--                        <input type="password" id='register_password' name='password' pattern='^.{3,12}$' required/><br/>-->
-<!--                        <input type="submit" value='REGISTER'/>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
 
         <!-- footer division -->
         <div id="footerDiv">

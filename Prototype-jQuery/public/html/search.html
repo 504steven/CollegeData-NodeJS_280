@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Search</title>
+        <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="/css/jquery-ui.css"/>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/js/onload.js"></script>
+    </head>
+
+    <body background="/img/background.jpeg">
+        <!-- title division -->
+        <div id="titleDiv">
+            <h1>
+                The Statistics of University and College
+                <canvas id="canvasWelcome" width="200" height="45" style="float: right">
+                    <p>Your browser does not support the canvas tag</p>
+                </canvas>
+            </h1>
+        </div>
+
+        <!-- navigator division -->
+        <div id="navigatorDiv">
+            <ul>
+                <li><a href="/protected">Home</a></li>
+                <li>
+                    <a href="/overview_menu.html" class="menuLink">Overview<b></b></a>
+                    <div class="menu" id="overview_menu">
+                        <a href="/overview">Undergrad</a>
+                        <a href="/overview">Graduate</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="major.html" class="menuLink">Popular Majors<b></b></a>
+                    <div class ="menu" id = "major">
+                        <a href="#">Computer</a>
+                        <a href="#">Communications</a>
+                        <a href="#">Political Science</a>
+                        <a href="#">Business</a>
+                        <a href="#">Biology</a>
+                        <a href="#">More...</a>
+                    </div>
+                </li>
+                <li><a>News</a></li>
+                <li><a>Contact</a></li>
+                <li style="float:right"><a class="navigatorBar" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <div id="contentDiv">
+            <table>
+                <tr>
+                    <td class="searchPage">
+                        <img id="rollingImage" src="/img/1.jpg"/>
+                    </td>
+                    <td class="searchPage">
+                        <form action="/search" method="get" onsubmit="return inputValidate()" id="resize">
+                            <label for="schoolName">Please entry the university name</label>
+                            <input type="text" name="schoolName" id="schoolName"/>
+                            <input type="submit" value="submit"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- footer division -->
+        <div id="footerDiv">
+            <footer>
+                <p>© 2019 Goofy</p>
+            </footer>
+        </div>
+    </body>
+</html>

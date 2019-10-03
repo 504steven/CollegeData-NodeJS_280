@@ -7,6 +7,9 @@ function initAll() {
     // set theme
     $(":header").addClass("ui-widget-header");
 
+    // ajax html template
+    $("#footerDiv").load("/html/footer.html");
+
     // dropdown menu init
     dropDownMenu();
 

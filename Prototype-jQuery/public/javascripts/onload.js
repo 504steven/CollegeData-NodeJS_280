@@ -1,4 +1,4 @@
-window.onload = initAll;
+$(initAll);
 
 var imageNum = 1;
 var drawPosition = 0;
@@ -19,6 +19,9 @@ function initAll() {
 
     // build resizable object
     $("#resize").resizable();
+
+    // build Ajax Tabs
+    $("#loginTab").tabs();
 }
 
 function dropDownMenu() {

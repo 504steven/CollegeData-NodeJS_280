@@ -15,6 +15,9 @@ function init() {
     window.setInterval("changeImg()", 1200);
     // canvas init and animation
     setInterval(draw, 50);
+    // resize
+    $("#resize").resizable();
+    $(":header").addClass("ui-widget-header")
 }
 
 function changeImg() {

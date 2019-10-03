@@ -6,6 +6,9 @@
         <script type="text/javascript" src="/js/validate.js"></script>
         <script type="text/javascript" src="/js/onload.js"></script>
         <link rel="stylesheet" href="/css/style.css"/>
+        <link rel = "stylesheet" type = "text/css" href = "jquery-ui-custom/jquery-ui.css" />
+        <script type = "text/javascript" src = "jquery-ui-custom/external/jquery/jquery.js"></script>
+        <script type = "text/javascript" src = "jquery-ui-custom/jquery-ui.js"></script>
     </head>
 
     <body background="/img/background.jpeg">
@@ -54,7 +57,7 @@
                         <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
                     <td class="searchPage">
-                        <form action="/search" method="get" onsubmit="return validate()">
+                        <form action="/search" method="get" onsubmit="return validate()" id="resize">
                             <label for="schoolName">Please entry the university name</label>
                             <input type="text" name="schoolName" id="schoolName"/>
                             <input type="submit" value="submit"/>

@@ -20,10 +20,11 @@ function initAll() {
     drawSmilingFace();
     window.setInterval(drawWelcome, 50);
 
-    // build resizable object
-    $("#resize").resizable();
+    // build resizable and draggable searching form
+    $("#searchForm").resizable();
+    $("#searchForm").draggable();
 
-    // build Ajax Tabs
+    // build ajax login/register form
     $("#loginTab").tabs();
 }
 

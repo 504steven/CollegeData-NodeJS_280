@@ -26,6 +26,7 @@ function changeImg() {
     img.src = "/img/" + imageNum + ".jpg";
 }
 
+
 function clickHandler(event) {
     event.preventDefault();
 }

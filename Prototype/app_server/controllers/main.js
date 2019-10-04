@@ -115,6 +115,10 @@ module.exports.get_overview = function(req, res) {
     sendPage(projectFolerName + 'public/html/overview.html', res);
 };
 
+module.exports.get_contact = function(req, res) {
+    sendPage(projectFolerName + 'public/html/contact.html', res);
+};
+
 function sendPage(filename, res) {
     var html = '';
     var readInterface = readline.createInterface({

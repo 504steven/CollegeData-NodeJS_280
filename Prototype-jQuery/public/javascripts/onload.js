@@ -25,6 +25,10 @@ function initAll() {
 
     // build Ajax Tabs
     $("#loginTab").tabs();
+
+    // build dialog widget
+    $("#dialog").dialog();
+    $("#dialog").dialog("close");
 }
 
 function dropDownMenu() {
@@ -143,4 +147,14 @@ function inputValidate() {
         return false;
     }
     return true;
+}
+
+function openDialog()
+{
+    $("#dialog").dialog("open");
+}
+
+function closeDialog()
+{
+    $("#dialog").dialog("close");
 }

@@ -210,3 +210,11 @@
   color: white;
   text-align: center;
 }
+
+#dialogTab {
+  float: right;
+}
+
+#dialogTab .ui-icon:hover{
+  border-color: red;
+}

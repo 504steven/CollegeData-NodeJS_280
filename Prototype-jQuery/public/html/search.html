@@ -57,7 +57,19 @@
                     </td>
                     <td class="searchPage">
                         <form action="/search" method="get" onsubmit="return inputValidate()" id="resize">
+                            <span class = "ui-icon ui-icon-star"></span>
                             <label for="schoolName">Please entry the university name</label>
+                            <span class = "ui-icon ui-icon-star"></span>
+                            <div id="dialogTab">
+                                <div id="dialog" title="How To Use">
+                                    <p>
+                                        Enter the name of school you want to search (i.e. San Jose State University or SJSU).<br><br>
+                                        For now, we only have limited school data.
+                                    </p>
+                                    <input type="button" onclick="closeDialog()" value="Ok" class="ui-state-default ui-corner-all"/>
+                                </div>
+                                <input type="button" onclick="openDialog()" class="ui-icon ui-icon-notice ui-corner-all"/>
+                            </div>
                             <input type="text" name="schoolName" id="schoolName"/>
                             <input type="submit" value="submit"/>
                         </form>

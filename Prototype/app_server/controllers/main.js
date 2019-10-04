@@ -93,7 +93,7 @@ module.exports.check_logged_In = function(req, res, next) {
 };
 
 module.exports.get_protected = function(req, res) {
-    sendPage(projectFolerName + 'public/html/search.html', res);
+    sendPage(projectFolerName + 'public/html/home.html', res);
 };
 
 module.exports.get_collegeInfo = function(req, res) {

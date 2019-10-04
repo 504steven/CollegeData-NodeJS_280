@@ -42,7 +42,7 @@ module.exports.home = function(req, res) {
 module.exports.post_register = function(req, res) {
     console.log('register called');
     if (!req.body.username || !req.body.password) {
-        res.send("Missing Username or Password for Registeration!");
+        res.send("Missing Username or Password for Registration!");
     } else {
         var matches = registeredUsers.filter(function(user) {
             return user.username == req.body.username;
@@ -57,7 +57,7 @@ module.exports.post_register = function(req, res) {
             registeredUsers.push(newUser);
             req.session.user = newUser;
             console.log('new user registered : ' + newUser.username);
-            res.redirect('/protected');
+            res.redirect('/home');
         }
     }
 };
@@ -71,14 +71,14 @@ module.exports.post_login = function(req, res) {
         res.send('wrong username or password');
     } else {
         req.session.user = matches[0];
-        res.redirect('/protected');
+        res.redirect('/home');
     }
 };
 
 module.exports.get_logout = function(req, res) {
     if (req.session.user) {
         req.session.destroy(function() {
-            console.log('session deleted');
+            console.log('session refreshed');
         });
     }
     res.redirect('/');
@@ -92,8 +92,8 @@ module.exports.check_logged_In = function(req, res, next) {
     }
 };
 
-module.exports.get_protected = function(req, res) {
-    sendPage(projectFolerName + 'public/html/search.html', res);
+module.exports.get_homePage = function(req, res) {
+    sendPage(projectFolerName + 'public/html/home.html', res);
 };
 
 module.exports.get_collegeInfo = function(req, res) {
@@ -107,7 +107,6 @@ module.exports.get_collegeInfo = function(req, res) {
         res.render('universityInfo', berkeley);
     } else {
         sendPage(projectFolerName + 'public/html/error.html', res);
-        console.log("send error page");
     }
 };
 

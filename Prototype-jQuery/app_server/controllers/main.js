@@ -1,7 +1,7 @@
 var readline = require('readline');
 var fs = require('fs');
 var isWin = process.platform === 'win32';
-var projectFolerName = isWin ? 'Prototype/' : '';
+var projectFolerName = isWin ? 'Prototype-jQuery/' : '';
 var registeredUsers = [];
 
 var sjsu = {name: 'San Jose State University',

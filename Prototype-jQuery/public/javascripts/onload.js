@@ -24,6 +24,15 @@ function initAll() {
     $("#searchForm").resizable();
     $("#searchForm").draggable();
 
+    // build draggable and droppable object
+    $("#draggableObject").draggable();
+    $("#droppbleObject").droppable();
+    $("#droppbleObject").bind("drop", highlightTarget);
+    $("#droppbleObject").bind("dropout", resetTarget);
+
+    // build selectable and sortable login/register form
+    $("#sortableTab").sortable();
+
     // build ajax login/register form
     $("#loginTab").tabs();
 
@@ -154,12 +163,18 @@ function inputValidate() {
     return true;
 }
 
-function openDialog()
-{
+function openDialog() {
     $("#dialog").dialog("open");
 }
 
-function closeDialog()
-{
+function closeDialog() {
     $("#dialog").dialog("close");
+}
+
+function highlightTarget(event, ui) {
+    $("#droppbleObject").addClass("ui-state-highlight").html("Dropped").append(ui.draggable.text());
+}
+
+function resetTarget(event, ui) {
+    $("#droppbleObject").removeClass("ui-state-highlight").html("Drop on me");
 }

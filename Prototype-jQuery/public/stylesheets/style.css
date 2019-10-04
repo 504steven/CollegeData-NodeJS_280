@@ -43,12 +43,10 @@
 
 #navigatorDiv li a:hover:not(.active) {
   background-color: #111;
-  font-size: 20px;
 }
 
 #navigatorDiv .navigatorBar {
   background-color: #4CAF50;
-  font-size: 20px;
 }
 
 #navigatorDiv div.menu {

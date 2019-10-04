@@ -30,6 +30,9 @@ function initAll() {
     $("#droppbleObject").bind("drop", highlightTarget);
     $("#droppbleObject").bind("dropout", resetTarget);
 
+    // build selectable and sortable login/register form
+    $("#sortableTab").sortable();
+
     // build ajax login/register form
     $("#loginTab").tabs();
 

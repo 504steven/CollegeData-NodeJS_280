@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Search</title>
+        <title>HOME</title>
         <link rel="stylesheet" href="/css/style.css"/>
         <link rel="stylesheet" href="/css/jquery-ui.css"/>
         <script type="text/javascript" src="/js/jquery.js"></script>
@@ -50,18 +50,29 @@
         </div>
 
         <div id="contentDiv">
-            <table>
+            <table class="searchPage">
                 <tr>
-                    <td class="searchPage">
+                    <td rowspan="2">
                         <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
-                    <td class="searchPage">
+                    <td>
+                        <p>Your Favorite Colleges(order adjustable)</p>
+                        <ol id="sortable">
+                            <li>San Jose State University</li>
+                            <li>Sanford University</li>
+                            <li>University of California, Berkeley</li>
+                        </ol>
+                        <input type="submit" value = "save" onlick="" class="ui-corner-all"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <form action="/searchResult" method="get" onsubmit="return inputValidate()" id="searchForm">
                             <span class = "ui-icon ui-icon-star"></span>
                             <label for="schoolName">Please entry the university name</label>
                             <span class = "ui-icon ui-icon-star"></span>
                             <div id="dialogTab">
-                                <div id="dialog" title="How To Use">
+                                <div id="dialog" title="Instruction">
                                     <p>
                                         Enter the name of school you want to search (i.e. San Jose State University or SJSU).<br><br>
                                         For now, we only have limited school data.

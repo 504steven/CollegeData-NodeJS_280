@@ -43,12 +43,10 @@
 
 #navigatorDiv li a:hover:not(.active) {
   background-color: #111;
-  font-size: 20px;
 }
 
 #navigatorDiv .navigatorBar {
   background-color: #4CAF50;
-  font-size: 20px;
 }
 
 #navigatorDiv div.menu {
@@ -65,9 +63,8 @@
 
 #navigatorDiv div.menu a:hover:not(.active) {
   font-size: 17px;
-  color: #333;
-  background-color: white;
-  border: 1px solid white;
+  background-color: #111;
+  border: 0.5px solid white;
 }
 
 #navigatorDiv a.menuLink b{
@@ -133,6 +130,17 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+/*#contentDiv input[type=button] {*/
+/*  width: 100%;*/
+/*  background-color: #4CAF50;*/
+/*  color: white;*/
+/*  padding: 14px 20px;*/
+/*  margin: 8px 0;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  cursor: pointer;*/
+/*}*/
 
 #contentDiv input[type=submit]:hover {
   background-color: #45a049;

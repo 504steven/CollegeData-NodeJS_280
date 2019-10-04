@@ -90,6 +90,12 @@
   text-align: center;
 }
 
+#save_button {
+  width: 30px;
+  height: 10px;
+  /*padding-left: 20px;*/
+}
+
 #contentDiv form {
   border-radius: 5px;
   background-color: #f2f2f2;

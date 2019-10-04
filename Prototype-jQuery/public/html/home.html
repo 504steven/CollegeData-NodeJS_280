@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Search</title>
+        <title>HOME</title>
         <link rel="stylesheet" href="/css/style.css"/>
         <link rel="stylesheet" href="/css/jquery-ui.css"/>
         <script type="text/javascript" src="/js/jquery.js"></script>
@@ -52,9 +52,20 @@
         <div id="contentDiv">
             <table>
                 <tr>
-                    <td class="searchPage">
+                    <td class="searchPage" rowspan="2">
                         <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
+                    <td>
+                        <p>Your Favorite Colleges(order adjustable)</p>
+                        <ol id="sortable">
+                            <li>San Jose State University</li>
+                            <li>Sanford University</li>
+                            <li>University of California, Berkeley</li>
+                        </ol>
+                        <input type="button" value = "save" class="ui-corner-all"/>
+                    </td>
+                </tr>
+                <tr>
                     <td class="searchPage">
                         <form action="/searchResult" method="get" onsubmit="return inputValidate()" id="searchForm">
                             <span class = "ui-icon ui-icon-star"></span>

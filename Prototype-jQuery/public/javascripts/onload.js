@@ -30,6 +30,10 @@ function initAll() {
     // build dialog widget
     $("#dialog").dialog();
     $("#dialog").dialog("close");
+
+    // $("#selectable").selectable();
+    $("#sortable").sortable();
+
 }
 
 function dropDownMenu() {

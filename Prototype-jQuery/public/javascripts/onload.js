@@ -2,6 +2,7 @@ $(initAll);
 
 var imageNum = 1;
 var drawPosition = 0;
+var l2r = true;
 
 function initAll() {
     // set theme
@@ -41,8 +42,9 @@ function initAll() {
     $("#dialog").dialog("close");
 
     // $("#selectable").selectable();
-    $("#sortable").sortable();
 
+    // build sortable user fav college list
+    $("#sortable").sortable();
 }
 
 function dropDownMenu() {
@@ -99,10 +101,17 @@ function drawWelcome() {
     gradient.addColorStop("0.5", "blue");
     gradient.addColorStop("1.0", "red");
     c.fillStyle = gradient;
-    drawPosition++;
-    if (drawPosition > canvas.width) {
-        drawPosition = 0;
+    if (drawPosition > canvas.width/2) {
+        l2r = false;
+    }else if(drawPosition == 0) {
+        l2r = true;
     }
+    if(l2r) {
+        drawPosition++;
+    }else {
+        drawPosition--;
+    }
+
     c.fillText('Welcome User!', drawPosition, 25);
 }
 

@@ -3,6 +3,10 @@ var fs = require('fs');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-jQuery/' : '';
 var registeredUsers = [];
+var favCollegeList = new Map();
+favCollegeList.set("San Jose State University", 1);
+favCollegeList.set("Stanford University", 2);
+favCollegeList.set("University of California, Berkeley", 3);
 
 var sjsu = {name: 'San Jose State University',
     params: {

@@ -25,7 +25,8 @@ function initAll() {
     $("#searchForm").draggable();
 
     // build draggable and droppable object
-    $("#draggableObject").draggable();
+    $("#draggableObject1").draggable();
+    $("#draggableObject2").draggable();
     $("#droppbleObject").droppable();
     $("#droppbleObject").bind("drop", highlightTarget);
     $("#droppbleObject").bind("dropout", resetTarget);
@@ -139,7 +140,6 @@ function drawSmilingFace() {
     var eyeX2 = centerX + eyeXOffset;
     con.arc(eyeX2, eyeY, eyeRadius, 0, Math.PI, true);
     con.stroke();
-
     // draw the mouth
     con.beginPath();
     con.arc(centerX, centerY * 1.15, 5.5, 0.1 * Math.PI, 0.9 * Math.PI, false);
@@ -172,9 +172,9 @@ function closeDialog() {
 }
 
 function highlightTarget(event, ui) {
-    $("#droppbleObject").addClass("ui-state-highlight").html("Dropped").append(ui.draggable.text());
+    $("#droppbleObject").addClass("ui-state-highlight").html("Selected").append(ui.draggable.text());
 }
 
 function resetTarget(event, ui) {
-    $("#droppbleObject").removeClass("ui-state-highlight").html("Drop on me");
+    $("#droppbleObject").removeClass("ui-state-highlight").html("Select Gender");
 }

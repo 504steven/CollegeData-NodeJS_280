@@ -228,10 +228,6 @@
 }
 
 #draggableObject {
-  width: 50px;
-  height: 50px;
-  border: 1px solid blue;
-  background-color: yellowgreen;
   z-index: 100;
 }
 
@@ -240,4 +236,5 @@
   height: 100px;
   border: 1px solid black;
   z-index: 0;
+  background-color: aqua;
 }

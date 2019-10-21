@@ -3,6 +3,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var index = require('./app_server/routes/index');
+var mongo = require("mongodb");
+var monk = require("monk");
+var db = monk("localhost:27017/goofyDB");
 var app = express();
 
 //View engine setup
@@ -11,6 +14,7 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: "String for encrypting cookies."}));
 
@@ -20,6 +24,11 @@ app.use('/js', express.static(path.join(__dirname, 'public/javascripts')));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 app.use('/', index);
+
+app.use( function (req, res, next) {
+    req.db = db;
+    next();
+} );
 
 module.exports = app;
 app.listen(3000);

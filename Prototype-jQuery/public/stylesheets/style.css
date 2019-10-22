@@ -1,0 +1,240 @@
+/* title division */
+#titleDiv {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+
+#titleDiv h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 35px;
+}
+
+/* navigator division */
+#navigatorDiv ul {
+  list-style-type: none;
+  margin: 8px 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navigatorDiv h1 {
+  margin: 8px 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  font-size: 20px;
+}
+
+#navigatorDiv li {
+  float: left;
+}
+
+#navigatorDiv li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#navigatorDiv li a:hover:not(.active) {
+  background-color: #111;
+}
+
+#navigatorDiv .navigatorBar {
+  background-color: #4CAF50;
+}
+
+#navigatorDiv div.menu {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  width: 12%;
+}
+
+#navigatorDiv div.menu a {
+  border: 1px solid rgb(65,64,64);
+  font-size: 17px;
+}
+
+#navigatorDiv div.menu a:hover:not(.active) {
+  font-size: 17px;
+  background-color: #111;
+  border: 0.5px solid white;
+}
+
+#navigatorDiv a.menuLink b{
+  border: 4px solid;
+  border-color:  darkgray transparent transparent transparent;
+  float: right;
+  margin-left: 5px;
+  margin-top: 11px;
+}
+
+/* content division */
+#contentDiv {
+  height: auto;
+  margin: 10px;
+  display: block;
+}
+
+#contentDiv td.searchPage {
+  width: 50%;
+  text-align: center;
+}
+
+#contentDiv form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+#contentDiv input[type=text], select {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#sortable li {
+  border: .8px solid black;
+}
+
+#contentDiv table.loginPage input[type=text] {
+  width: 60%;
+}
+
+#contentDiv table.loginPage input[type=password] {
+  width: 60%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#contentDiv input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+#contentDiv input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+#contentDiv .infoPage {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#contentDiv .infoPage td, #contentDiv .infoPage th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: white;
+}
+
+#contentDiv .infoPage tr {
+  background-color: #000080;
+}
+
+#contentDiv .infoPage tr:hover {
+  background-color: #FF00FF;
+}
+
+#contentDiv .infoPage th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#contentDiv .infoPage caption {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: purple;
+}
+
+#contentDiv .infoPage col {
+  width: 50%;
+}
+
+#contentDiv p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: red;
+}
+
+#contentDiv #rollingImage {
+  width: 700px;
+  height: 500px;
+}
+
+/* footer division */
+#footerDiv footer {
+  background-color: #333;
+  border: 1px groove #aaaaaa;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: normal;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+#footerDiv p {
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+
+#dialogTab {
+  float: right;
+}
+
+#dialogTab .ui-icon:hover{
+  border-color: red;
+}
+
+/* draggable and droppable division */
+#dragDropDiv {
+  position: relative;
+  top: 50px;
+}
+
+#draggableObject {
+  z-index: 100;
+}
+
+#droppbleObject {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  z-index: 0;
+  background-color: aqua;
+}

@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Results
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/jquery-ui.css')
+        script(src = '/js/jquery.js')
+        script(src = '/js/jquery-ui.js')
+        script(src = '/js/onload.js')
+    body(background='/img/background.jpeg')
+        // title division
+        #titleDiv
+            h1 The Statistics of University and College
+        // navigator division
+        #navigatorDiv
+            ul
+                li
+                    a(href='/home') Home
+                li
+                    a(href='/overview_menu.html' class='menuLink') Overview
+                        b
+                    div(class='menu' id = 'overview_menu')
+                        a(href='/overview') Undergrad
+                        a(href='/overview') Graduate
+                li
+                    a(href='/major.html' class='menuLink') Popular Majors
+                        b
+                    div(class='menu' id = 'major')
+                        a Computer
+                        a Communications
+                        a Political Science
+                        a Business
+                        a Biology
+                        a More...
+                li
+                    a News
+                li
+                    a Contact
+                li(style='float:right')
+                    a.navigatorBar(href='/logout') Logout
+        // content division
+        #contentDiv
+            table.infoPage
+                caption #{name}
+                col.info
+                col.info
+                - var input = params;
+                each val, index in input
+                    tr
+                        td= index
+                        td= val
+        // footer division
+        #footerDiv

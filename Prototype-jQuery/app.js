@@ -3,9 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var index = require('./app_server/routes/index');
-var mongo = require("mongodb");
-var monk = require("monk");
-var db = monk("localhost:27017/goofyDB");
+var modelMain = require("./app_server/models/modelMain");
 var app = express();
 
 //View engine setup
@@ -25,10 +23,11 @@ app.use('/img', express.static(path.join(__dirname, 'public/img')));
 
 app.use('/', index);
 
-app.use( function (req, res, next) {
-    req.db = db;
-    next();
-} );
+// app.use( function (req, res, next) {
+//     req.db = db;
+//     next();
+// } );
 
 module.exports = app;
+modelMain.readDataFromFile();
 app.listen(3000);

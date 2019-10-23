@@ -42,6 +42,8 @@ function initAll() {
     $("#dialog").dialog();
     $("#dialog").dialog("close");
 
+    // $("#selectable").selectable();
+
     // build sortable user fav college list
     $("#sortable").sortable();
 }

@@ -6,6 +6,7 @@ var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 // var mongo = require("mongodb");
 var monk = require("monk");
 var db = monk("localhost:27017/goofyDB");
+var university_data_collection= "university_data";
 // module.exports
 
 function UniversityData() {
@@ -25,7 +26,77 @@ function UniversityData() {
     var quality_of_life_scale; //1-5
 }
 
+module.exports.addUniversityData = addUniversityData;
+    function addUniversityData(req, res) {
+    var u_data = getUniversityData(req);
+    db.get(university_data_collection).insert(u_data, function (err) {
+        if(err) {
+            console.log("insert data for " + u_data.name+ ", ERROR: " + err);
+        }else {
+
+        }
+    });
+}
+
+module.exports.updateUniversityData = updateUniversityData;
+    function updateUniversityData(req, res) {
+    var u_data = getUniversityData(req);
+    db.get(university_data_collection).update( {"name": u_data.name},  {$set: u_data}, function (err) {
+        if(err) {
+            console.log("update data for " + u_data.name+ ", ERROR: " + err);
+        }else {
+            // res.render(universityInfo, doc);
+        }
+    });
+}
+
+module.exports.findUniversityData = findUniversityData;
+    function findUniversityData(req, res) {
+    var u_name = req.body.universityName;
+    db.get(university_data_collection).find( { "name": u_name}, function (err, docs) {
+        if(err) {
+            console.log("finding data for " + u_name+ ", ERROR: " + err);
+        }else{
+            // res.render(universityInfo, doc);
+            console.log(" find data: " + docs[0].name);
+        }
+
+    });
+}
+
+module.exports.deleteUniversityData = deleteUniversityData;
+    function deleteUniversityData(req, res) {
+    var u_name = req.body.universityName;
+    db.get(university_data_collection).remove( {"name": u_name}, function (err) {
+        if(err) {
+            console.log("remove data for " + u_name+ ", ERROR: " + err);
+        }else {
+            // res.render(universityInfo, doc);
+        }
+    });
+}
+function getUniversityData(req) {
+    var u_data = new UniversityData();
+    // u_data._id = req.body._id;
+    u_data.name = req.body.universityName;
+    u_data.state = req.body.universityState;
+    u_data.percent_admittance = req.body.universityAdmit;
+    u_data.percent_enrolled = req.body.universityEnroll;
+    u_data.no_applicants = req.body.universityApp;
+    u_data.sat_verbal = req.body.universitySatVerbal;
+    u_data.sat_math = req.body.universitySatMath;
+
+    u_data.expenses = req.body.universityExpense;
+    u_data.percent_financial_aid = req.body.universityFinancialAid;
+    u_data.male_female_ratio = req.body.universityRatio;
+    u_data.academics_scale = req.body.universityAcademics;
+    u_data.social_scale = req.body.universitySocial;
+    u_data.quality_of_life_scale = req.body.universityQuality;
+    return u_data;
+}
+
 module.exports.readDataFromFile = function () {
+    console.log("load university dataset to db");
     var filename = projectFolerName + "university.data";
     var readInterface = readline.createInterface({
         input: fs.createReadStream(filename),
@@ -35,6 +106,8 @@ module.exports.readDataFromFile = function () {
 
     //readInterface is async
     var u_data;
+    var count = 0;
+    db.get(university_data_collection).createIndex({ name:1 }, { unique: true });
     readInterface.on('line', function(line) {
         line = line.trim();
         var s = line.indexOf("(def_");
@@ -42,8 +115,8 @@ module.exports.readDataFromFile = function () {
         var strArr = line.split(" ");
 
         if(e >= 0) {
-            // console.log(u_data.toString());
-            db.get("university_data").insert( u_data, function (err, docs) {
+            console.log(++count);
+            db.get(university_data_collection).insert( u_data, function (err, docs) {
                 if(err) { console.log("read data from file ERROR: " + err)}
             });
         }else if(s >= 0) {
@@ -92,4 +165,30 @@ module.exports.readDataFromFile = function () {
             }
         }
     });
+}
+
+module.exports.test = function () {
+    var req = {};
+    req.body = {};
+    // req.body._id;
+    req.body.universityName = "dumy";
+    // req.body.universityState = "ssss";
+    // req.body.universityAdmit = "admit";
+    // req.body.universityEnroll = "enrollrate";
+    // req.body.universityApp = "applicants";
+    // req.body.universitySatVerbal = "verb";
+    // req.body.universitySatMath = "math";
+    //
+    // req.body.universityExpense = "expense";
+    // req.body.universityFinancialAid = "aid";
+    // req.body.universityRatio = "ratio";
+    // req.body.universityAcademics = "academics";
+    // req.body.universitySocial = "socail";
+    // req.body.universityQuality = "quality";
+
+    console.log("run test:")
+    // addUniversityData(req, null);
+    // updateUniversityData(req, null);
+    // findUniversityData(req, null);
+    deleteUniversityData(req, null);
 }

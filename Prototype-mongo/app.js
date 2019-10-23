@@ -23,5 +23,6 @@ app.use('/img', express.static(path.join(__dirname, 'public/img')));
 app.use('/', index);
 
 module.exports = app;
-modelMain.readDataFromFile();
+// modelMain.readDataFromFile();
+modelMain.test();
 app.listen(3000);

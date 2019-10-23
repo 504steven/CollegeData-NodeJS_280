@@ -1,7 +1,7 @@
 var readline = require('readline');
 var fs = require('fs');
 var isWin = process.platform === 'win32';
-var projectFolerName = isWin ? 'Prototype-jQuery/' : '';
+var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var registeredUsers = [];
 var favCollegeList = new Map();
 favCollegeList.set("San Jose State University", 1);

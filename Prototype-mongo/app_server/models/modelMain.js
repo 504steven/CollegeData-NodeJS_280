@@ -1,7 +1,7 @@
 var readline = require('readline');
 var fs = require('fs');
 var isWin = process.platform === 'win32';
-var projectFolerName = isWin ? 'Prototype-jQuery/' : '';
+var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 
 // var mongo = require("mongodb");
 var monk = require("monk");

@@ -3,10 +3,10 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var index = require('./app_server/routes/index');
-var modelMain = require("./app_server/models/modelMain");
+var modelMain = require('./app_server/models/modelMain');
 var app = express();
 
-//View engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'pug');
 
@@ -23,6 +23,8 @@ app.use('/img', express.static(path.join(__dirname, 'public/img')));
 app.use('/', index);
 
 module.exports = app;
-modelMain.readDataFromFile();
+
+// modelMain.readDataFromFile();
 // modelMain.test();
+
 app.listen(3000);

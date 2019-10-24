@@ -8,7 +8,6 @@ router.post('/login', ctrlMain.post_login);
 router.get('/logout', ctrlMain.get_logout);
 router.get('/home', ctrlMain.check_logged_In, ctrlMain.get_homePage);
 router.get('/overview', ctrlMain.check_logged_In, ctrlMain.get_overview);
-
 router.get('/searchResult', ctrlMain.check_logged_In, ctrlMain.get_collegeInfo);
 // router.post('/addUniversityData', ctrlMain.check_logged_In, ctrlMain);
 // router.post('/delUniversityData', ctrlMain.check_logged_In, ctrlMain);

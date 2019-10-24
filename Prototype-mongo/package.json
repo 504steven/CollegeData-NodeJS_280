@@ -1,5 +1,5 @@
 {
-  "name": "prototype_jQuery",
+  "name": "prototype_mongo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,6 +13,8 @@
     "debug": "^2.6.9",
     "line-reader": "^0.4.0",
     "pug": "2.0.0-beta11",
-    "http-errors": "~1.6.3"
+    "http-errors": "~1.6.3",
+    "mongodb": "^2.2.25",
+    "monk": "^4.0.0"
   }
 }

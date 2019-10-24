@@ -659,7 +659,7 @@
    (social scale:1_5 3)
    (quality_of_life scale:1_5 3)
    (academic_emphasis marine_biology))
-(def_instance UC_Berkely
+(def_instance UC berkeley
    (state california)
    (location urban)
    (control state)
@@ -1732,27 +1732,6 @@
   (quality_of_life scale:1_5 2)
   (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION))
 
-(def_instance EMORY
-  (state GEORGIA)
-  (LOCATION URBAN)
-  (CONTROL PRIVATE)
-  (no_of_students THOUS:5_10)
-  (male:female ratio:55:45)
-  (sat verbal 550)
-  (sat math 600)
-  (expenses THOUS$:10+)
-  (percent_financial_aid 35)
-  (no_applicants thous:4_7)
-  (percent_admittance 35)
-  (percent_enrolled 30)
-  (academics scale:1_5 4)
-  (social scale:1_5 4)
-  (quality_of_life scale:1_5 4)
-  (ACADEMIC_EMPHASIS SOCIAL_SCIENCE)
-  (ACADEMIC_EMPHASIS BIOLOGY)
-  (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION)
-  (ACADEMIC_EMPHASIS COMPUTER_SCIENCE))
-
 (def_instance UNIVERSITY_OF_BRIDGEPORT
   (state CONNECTICUT)
   (LOCATION SMALL_CITY)
@@ -2809,25 +2788,6 @@
   (ACADEMIC_EMPHASIS PHARMACY)
   (ACADEMIC_EMPHASIS SOCIAL_WORK)
   (ACADEMIC_EMPHASIS VETERINARY_MEDICINE))
-
-(def_instance RUTGERS
-  (state NEWJERSEY)
-  (LOCATION SMALL_CITY)
-  (CONTROL STATE)
-  (no_of_students THOUS:20+)
-  (male:female ratio:55:45)
-  (STUDENT:FACULTY RATIO:16:1)
-  (sat verbal 475)
-  (sat math 525)
-  (expenses THOUS$:4_7)
-  (percent_financial_aid 50)
-  (no_applicants thous:17+)
-  (percent_admittance 55)
-  (percent_enrolled 30)
-  (academics scale:1_5 4)
-  (social scale:1_5 3)
-  (quality_of_life scale:1_5 3)
-  (ACADEMIC_EMPHASIS ENGINEERING))
 
 (def_instance UNIVERSITY_OF_WASHINGTON
   (state WASHINGTON)

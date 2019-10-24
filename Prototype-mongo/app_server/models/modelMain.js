@@ -27,7 +27,7 @@ function UniversityData() {
 }
 
 module.exports.addUniversityData = addUniversityData;
-    function addUniversityData(req, res) {
+function addUniversityData(req, res) {
     var u_data = getUniversityData(req);
     db.get(university_data_collection).insert(u_data, function (err) {
         if(err) {
@@ -39,7 +39,7 @@ module.exports.addUniversityData = addUniversityData;
 }
 
 module.exports.updateUniversityData = updateUniversityData;
-    function updateUniversityData(req, res) {
+function updateUniversityData(req, res) {
     var u_data = getUniversityData(req);
     db.get(university_data_collection).update( {"name": u_data.name},  {$set: u_data}, function (err) {
         if(err) {
@@ -51,13 +51,14 @@ module.exports.updateUniversityData = updateUniversityData;
 }
 
 module.exports.findUniversityData = findUniversityData;
-    function findUniversityData(req, res) {
+function findUniversityData(req, res) {
     var u_name = req.body.universityName;
+    console.log(u_name);
     db.get(university_data_collection).find( { "name": u_name}, function (err, docs) {
         if(err) {
             console.log("finding data for " + u_name+ ", ERROR: " + err);
         }else{
-            // res.render(universityInfo, doc);
+            res.render('universityInfo', docs[0]);
             console.log(" find data: " + docs[0].name);
         }
 
@@ -65,7 +66,7 @@ module.exports.findUniversityData = findUniversityData;
 }
 
 module.exports.deleteUniversityData = deleteUniversityData;
-    function deleteUniversityData(req, res) {
+function deleteUniversityData(req, res) {
     var u_name = req.body.universityName;
     db.get(university_data_collection).remove( {"name": u_name}, function (err) {
         if(err) {
@@ -125,7 +126,7 @@ module.exports.readDataFromFile = function () {
         }else {
             switch(strArr[0]) {
                 case "(state":
-                    u_data.state = strArr[1].slice(0, strArr[1].length-1);
+                    u_data.state = strArr[1].slice(0, strArr[1].length-1).toLowerCase();
                     break;
                 case "(male:female":
                     // console.log(strArr.toString());
@@ -138,13 +139,13 @@ module.exports.readDataFromFile = function () {
                     if(strArr[1] === "math") {  u_data.sat_math = strArr[2].slice(0, strArr[2].length-1);   }
                     break;
                 case "(expenses":
-                    u_data.expenses = strArr[1].slice(0, strArr[1].length-1);
+                    u_data.expenses = strArr[1].slice(0, strArr[1].length-1).toLowerCase();
                     break;
                 case "(percent_financial_aid":
                     u_data.percent_financial_aid = strArr[1].slice(0, strArr[1].length-1);
                     break;
                 case "(no_applicants":
-                    u_data.no_applicants = strArr[1].slice(0, strArr[1].length-1);
+                    u_data.no_applicants = strArr[1].slice(0, strArr[1].length-1).toLowerCase();
                     break;
                 case "(percent_admittance":
                     u_data.percent_admittance = strArr[1].slice(0, strArr[1].length-1);

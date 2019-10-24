@@ -4,6 +4,8 @@ var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var registeredUsers = [];
 var favCollegeList = new Map();
+var modelMain = require("../models/modelMain");
+
 favCollegeList.set("San Jose State University", 1);
 favCollegeList.set("Stanford University", 2);
 favCollegeList.set("University of California, Berkeley", 3);
@@ -104,11 +106,14 @@ module.exports.get_collegeInfo = function(req, res) {
     console.log("finding college");
     var schoolName = req.param('schoolName');
     if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
-        res.render('universityInfo', sjsu);
+        req.body.universityName = "sanjosestate";
+        modelMain.findUniversityData(req, res);
     } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
-        res.render('universityInfo', stanford);
+        req.body.universityName = "stanford";
+        modelMain.findUniversityData(req, res);
     } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley") {
-        res.render('universityInfo', berkeley);
+        req.body.universityName = "berkeley";
+        modelMain.findUniversityData(req, res);
     } else {
         sendPage(projectFolerName + 'public/html/error.html', res);
     }

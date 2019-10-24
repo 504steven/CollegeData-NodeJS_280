@@ -659,7 +659,7 @@
    (social scale:1_5 3)
    (quality_of_life scale:1_5 3)
    (academic_emphasis marine_biology))
-(def_instance UC_Berkely
+(def_instance berkeley
    (state california)
    (location urban)
    (control state)

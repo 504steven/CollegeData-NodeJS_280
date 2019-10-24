@@ -58,8 +58,13 @@ function findUniversityData(req, res) {
         if(err) {
             console.log("finding data for " + u_name+ ", ERROR: " + err);
         }else{
-            res.render('universityInfo', docs[0]);
             console.log(" find data: " + docs[0].name);
+
+            var data = {name: docs[0].name,
+                params: docs[0]
+            };
+            res.render('universityInfo', data);
+
         }
 
     });

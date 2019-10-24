@@ -111,7 +111,7 @@ module.exports.get_collegeInfo = function(req, res) {
     } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
         req.body.universityName = "stanford";
         modelMain.findUniversityData(req, res);
-    } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley") {
+    } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley" || schoolName == "berkeley") {
         req.body.universityName = "berkeley";
         modelMain.findUniversityData(req, res);
     } else {

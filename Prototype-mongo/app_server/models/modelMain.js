@@ -102,7 +102,7 @@ function getUniversityData(req) {
 
 module.exports.readDataFromFile = function() {
     console.log("load university dataset to db");
-    var filename = projectFolerName + "university.data";
+    var filename = projectFolerName + "public/dataset/university.data";
     var readInterface = readline.createInterface({
         input: fs.createReadStream(filename),
         output: process.stdout,

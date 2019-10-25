@@ -70,6 +70,31 @@ module.exports.updateUniversityData = function(req, res) {
     });
 };
 
+module.exports.displayUniversityData = function(req, res) {
+    var schoolName = req.param('schoolName');
+    console.log(schoolName);
+    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
+        if (err) {
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
+            res.send("display fail");
+        } else {
+            if (docs.length > 0) {
+                console.log(" found data: " + docs[0].name);
+                var data = {
+                    name: docs[0].name,
+                    params: docs[0]
+                };
+                res.render('displayUniversityInfo', data);
+                console.log("here");
+            } else {
+                console.log(schoolName + " is not found");
+                res.send("No data found!");
+            }
+
+        }
+    });
+};
+
 module.exports.findUniversityData = function(req, res) {
     var schoolName = req.param('schoolName');
     console.log(schoolName);
@@ -78,15 +103,15 @@ module.exports.findUniversityData = function(req, res) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             main.sendPage(projectFolerName + 'public/html/error.html', res);
         } else {
-            if(docs.length > 0) {
+            if (docs.length > 0) {
                 console.log(" found data: " + docs[0].name);
                 var data = {
                     name: docs[0].name,
                     params: docs[0]
                 };
-                res.render('universityInfo', data);
-            }else {
-                console.log( u_name + " is not found");
+                res.render('searchUniversityInfo', data);
+            } else {
+                console.log(schoolName + " is not found");
                 sendPage(projectFolerName + 'public/html/error.html', res);
             }
 

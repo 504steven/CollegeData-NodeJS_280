@@ -3,12 +3,7 @@ var fs = require('fs');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var registeredUsers = [];
-var favCollegeList = new Map(); // not used
 var modelMain = require("../models/modelMain");
-
-favCollegeList.set("San Jose State University", 1);
-favCollegeList.set("Stanford University", 2);
-favCollegeList.set("University of California, Berkeley", 3);
 
 module.exports.get_register = function(req, res) {
     sendPage(projectFolerName + 'public/html/loginAndRegister.html', res);
@@ -78,39 +73,7 @@ module.exports.check_logged_In = function(req, res, next) {
 module.exports.get_collegeInfo = function(req, res) {
     console.log("finding college");
     modelMain.findUniversityData(req, res);
-    // var schoolName = req.param('schoolName');
-    // if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
-    //     req.body.universityName = "sanjosestate";
-    //     modelMain.findUniversityData(req, res);
-    // } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
-    //     req.body.universityName = "stanford";
-    //     modelMain.findUniversityData(req, res);
-    // } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley" || schoolName == "berkeley") {
-    //     req.body.universityName = "berkeley";
-    //     modelMain.findUniversityData(req, res);
-    // } else {
-    //     sendPage(projectFolerName + 'public/html/error.html', res);
-    // }
 };
-
-
-module.exports.post_adminOperation = function(req, res) {
-     var operate  = req.body.adminOperation;
-     console.log("receive operation:"  + operate);
-     switch(operate) {
-         case "add":
-             modelMain.addUniversityData(req, res);
-             break;
-         case "update":
-             modelMain.updateUniversityData(req, res);
-             break;
-         case "delete":
-             modelMain.deleteUniversityData(req, res);
-             break;
-         default:
-     }
-}
-
 
 module.exports.get_overview = function(req, res) {
     sendPage(projectFolerName + 'public/html/overview.html', res);
@@ -129,7 +92,7 @@ module.exports.post_update = function(req, res) {
 };
 
 module.exports.post_display = function(req, res) {
-    modelMain.findUniversityData(req, res);
+    modelMain.displayUniversityData(req, res);
 };
 
 module.exports.sendPage = sendPage;

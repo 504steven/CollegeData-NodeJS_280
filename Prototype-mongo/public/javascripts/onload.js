@@ -160,7 +160,8 @@ function inputValidate() {
         alert(error);
         return false;
     }
-    var schoolNameRE = /^[a-zA-Z\s]+$/; // has to be letter or space
+    // has to be letter or space
+    var schoolNameRE = /^[a-zA-Z\s_&]+$/;
     if (!schoolName.match(schoolNameRE)) {
         error = "Invalid University Name\n";
         alert(error);

@@ -26,6 +26,5 @@ module.exports = app;
 
 /* loading university.data to the remote mongoDB */
 // modelMain.readDataFromFile();
-// modelMain.test();
 
 app.listen(3000);

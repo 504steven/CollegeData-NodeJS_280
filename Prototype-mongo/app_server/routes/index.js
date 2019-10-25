@@ -10,8 +10,9 @@ router.get('/logout', ctrlMain.get_logout);
 router.get('/home', ctrlMain.check_logged_In, ctrlMain.get_homePage);
 router.get('/overview', ctrlMain.check_logged_In, ctrlMain.get_overview);
 router.get('/searchResult', ctrlMain.check_logged_In, ctrlMain.get_collegeInfo);
-// router.post('/addUniversityData', ctrlMain.check_logged_In, ctrlMain);
-// router.post('/delUniversityData', ctrlMain.check_logged_In, ctrlMain);
-// router.post('/updateUniversityData', ctrlMain.check_logged_In, ctrlMain);
+router.post('/add', ctrlMain.post_add);
+router.post('/delete', ctrlMain.post_delete);
+router.post('/update', ctrlMain.post_update);
+router.post('/display', ctrlMain.post_display);
 
 module.exports = router;

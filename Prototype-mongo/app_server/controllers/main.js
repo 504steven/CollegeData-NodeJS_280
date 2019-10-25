@@ -3,7 +3,7 @@ var fs = require('fs');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var registeredUsers = [];
-var favCollegeList = new Map();
+var favCollegeList = new Map(); // not used
 var modelMain = require("../models/modelMain");
 
 favCollegeList.set("San Jose State University", 1);
@@ -106,28 +106,45 @@ module.exports.check_logged_In = function(req, res, next) {
     }
 };
 
-
-
 module.exports.get_collegeInfo = function(req, res) {
     console.log("finding college");
-    var schoolName = req.param('schoolName');
-    if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
-        req.body.universityName = "sanjosestate";
-        modelMain.findUniversityData(req, res);
-    } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
-        req.body.universityName = "stanford";
-        modelMain.findUniversityData(req, res);
-    } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley" || schoolName == "berkeley") {
-        req.body.universityName = "berkeley";
-        modelMain.findUniversityData(req, res);
-    } else {
-        sendPage(projectFolerName + 'public/html/error.html', res);
-    }
+    modelMain.findUniversityData(req, res);
+    // var schoolName = req.param('schoolName');
+    // if (schoolName == "SJSU" || schoolName == "sjsu" || schoolName == "San Jose State University") {
+    //     req.body.universityName = "sanjosestate";
+    //     modelMain.findUniversityData(req, res);
+    // } else if (schoolName == "Stanford" || schoolName == "stanford" || schoolName == "Stanford University") {
+    //     req.body.universityName = "stanford";
+    //     modelMain.findUniversityData(req, res);
+    // } else if (schoolName == "UCB" || schoolName == "ucb" || schoolName == "University of California, Berkeley" || schoolName == "berkeley") {
+    //     req.body.universityName = "berkeley";
+    //     modelMain.findUniversityData(req, res);
+    // } else {
+    //     sendPage(projectFolerName + 'public/html/error.html', res);
+    // }
 };
 
 module.exports.get_overview = function(req, res) {
     sendPage(projectFolerName + 'public/html/overview.html', res);
 };
+
+module.exports.post_add = function(req, res) {
+    modelMain.addUniversityData(req, res);
+};
+
+module.exports.post_delete = function(req, res) {
+    modelMain.deleteUniversityData(req, res);
+};
+
+module.exports.post_update = function(req, res) {
+    modelMain.updateUniversityData(req, res);
+};
+
+module.exports.post_display = function(req, res) {
+    modelMain.findUniversityData(req, res);
+};
+
+module.exports.sendPage = sendPage;
 
 function sendPage(filename, res) {
     var html = '';
@@ -141,18 +158,5 @@ function sendPage(filename, res) {
         html += line + '\n';
     }).on('close', function() {
         res.send(html);
-    });
-}
-
-function sendPageOld(fileName, result) {
-    var html = '';
-    lineReader.eachLine(fileName, function(line, last) {
-        html += line + '\n';
-        if (last) {
-            result.send(html);
-            return false;
-        } else {
-            return true;
-        }
     });
 }

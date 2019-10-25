@@ -2,61 +2,81 @@ var readline = require('readline');
 var fs = require('fs');
 var mongo = require("mongodb");
 var monk = require("monk");
+var main = require('../controllers/main');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var db = monk("18.224.102.19:27017/goofyDB");
 var university_data_collection = "university_data";
 
-function UniversityData() {
-    var name;   //def-instance
-    var state;
-    var percent_admittance;
-    var percent_enrolled;
-    var no_applicants;
-    var sat_verbal;
-    var sat_math;
-    var expenses;    // per semester
-    var percent_financial_aid;
-    var male_female_ratio;
-    var academics_scale;   // 1-5
-    var social_scale; //1-5
-    var quality_of_life_scale; //1-5
-}
-
-module.exports.addUniversityData = addUniversityData;
-
-function addUniversityData(req, res) {
-    var u_data = getUniversityData(req);
-    db.get(university_data_collection).insert(u_data, function (err) {
+module.exports.addUniversityData = function(req, res) {
+    var u_data = new UniversityData();
+    u_data.name = req.param('name');
+    u_data.state = req.param('state');
+    u_data.percent_admittance = req.param('percent_admittance');
+    u_data.percent_enrolled = req.param('percent_enrolled');
+    u_data.no_applicants = req.param('no_applicants');
+    u_data.sat_verbal = req.param('sat_verbal');
+    u_data.sat_math = req.param('sat_math');
+    u_data.expenses = req.param('expenses');
+    u_data.percent_financial_aid = req.param('percent_financial_aid');
+    u_data.male_female_ratio = req.param('male_female_ratio');
+    u_data.academics_scale = req.param('academics_scale');
+    u_data.social_scale = req.param('social_scale');
+    u_data.quality_of_life_scale = req.param('quality_of_life_scale');
+    db.get(university_data_collection).insert(u_data, function(err) {
         if (err) {
             console.log("insert data for " + u_data.name + ", ERROR: " + err);
+            res.send("add fail");
         } else {
-
+            res.send("add success");
         }
     });
-}
+};
 
-module.exports.updateUniversityData = updateUniversityData;
+module.exports.deleteUniversityData = function(req, res) {
+    var schoolName = req.param('schoolName');
+    db.get(university_data_collection).remove({"name": schoolName}, function (err) {
+        if (err) {
+            console.log("remove data for " + schoolName + ", ERROR: " + err);
+            res.send("delete fail");
+        } else {
+            res.send("delete success");
+        }
+    });
+};
 
-function updateUniversityData(req, res) {
-    var u_data = getUniversityData(req);
+module.exports.updateUniversityData = function(req, res) {
+    var u_data = new UniversityData();
+    u_data.name = req.param('name');
+    u_data.state = req.param('state');
+    u_data.percent_admittance = req.param('percent_admittance');
+    u_data.percent_enrolled = req.param('percent_enrolled');
+    u_data.no_applicants = req.param('no_applicants');
+    u_data.sat_verbal = req.param('sat_verbal');
+    u_data.sat_math = req.param('sat_math');
+    u_data.expenses = req.param('expenses');
+    u_data.percent_financial_aid = req.param('percent_financial_aid');
+    u_data.male_female_ratio = req.param('male_female_ratio');
+    u_data.academics_scale = req.param('academics_scale');
+    u_data.social_scale = req.param('social_scale');
+    u_data.quality_of_life_scale = req.param('quality_of_life_scale');
     db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function (err) {
         if (err) {
             console.log("update data for " + u_data.name + ", ERROR: " + err);
+            res.send("update fail");
         } else {
-            // res.render(universityInfo, doc);
+            res.send("update success");
         }
     });
-}
+};
 
-module.exports.findUniversityData = findUniversityData;
-
-function findUniversityData(req, res) {
-    var u_name = req.body.universityName;
-    console.log(u_name);
-    db.get(university_data_collection).find({"name": u_name}, function(err, docs) {
+module.exports.findUniversityData = function(req, res) {
+    var schoolName = req.param('schoolName');
+    console.log(schoolName);
+    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
         if (err) {
-            console.log("finding data for " + u_name + ", ERROR: " + err);
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
+            main.sendPage(projectFolerName + 'public/html/error.html', res);
         } else {
             console.log(" find data: " + docs[0].name);
             var data = {
@@ -66,39 +86,7 @@ function findUniversityData(req, res) {
             res.render('universityInfo', data);
         }
     });
-}
-
-module.exports.deleteUniversityData = deleteUniversityData;
-
-function deleteUniversityData(req, res) {
-    var u_name = req.body.universityName;
-    db.get(university_data_collection).remove({"name": u_name}, function (err) {
-        if (err) {
-            console.log("remove data for " + u_name + ", ERROR: " + err);
-        } else {
-            // res.render(universityInfo, doc);
-        }
-    });
-}
-
-function getUniversityData(req) {
-    var u_data = new UniversityData();
-    // u_data._id = req.body._id;
-    u_data.name = req.body.universityName;
-    u_data.state = req.body.universityState;
-    u_data.percent_admittance = req.body.universityAdmit;
-    u_data.percent_enrolled = req.body.universityEnroll;
-    u_data.no_applicants = req.body.universityApp;
-    u_data.sat_verbal = req.body.universitySatVerbal;
-    u_data.sat_math = req.body.universitySatMath;
-    u_data.expenses = req.body.universityExpense;
-    u_data.percent_financial_aid = req.body.universityFinancialAid;
-    u_data.male_female_ratio = req.body.universityRatio;
-    u_data.academics_scale = req.body.universityAcademics;
-    u_data.social_scale = req.body.universitySocial;
-    u_data.quality_of_life_scale = req.body.universityQuality;
-    return u_data;
-}
+};
 
 module.exports.readDataFromFile = function() {
     console.log("load university dataset to db");
@@ -108,7 +96,6 @@ module.exports.readDataFromFile = function() {
         output: process.stdout,
         console: false
     });
-
     //readInterface is async
     var u_data;
     var count = 0;
@@ -178,27 +165,18 @@ module.exports.readDataFromFile = function() {
     });
 };
 
-module.exports.test = function() {
-    var req = {};
-    req.body = {};
-    // req.body._id;
-    req.body.universityName = "dumy";
-    // req.body.universityState = "ssss";
-    // req.body.universityAdmit = "admit";
-    // req.body.universityEnroll = "enrollrate";
-    // req.body.universityApp = "applicants";
-    // req.body.universitySatVerbal = "verb";
-    // req.body.universitySatMath = "math";
-    //
-    // req.body.universityExpense = "expense";
-    // req.body.universityFinancialAid = "aid";
-    // req.body.universityRatio = "ratio";
-    // req.body.universityAcademics = "academics";
-    // req.body.universitySocial = "socail";
-    // req.body.universityQuality = "quality";
-    console.log("run test:")
-    // addUniversityData(req, null);
-    // updateUniversityData(req, null);
-    // findUniversityData(req, null);
-    deleteUniversityData(req, null);
-};
+function UniversityData() {
+    var name;   //def-instance
+    var state;
+    var percent_admittance;
+    var percent_enrolled;
+    var no_applicants;
+    var sat_verbal;
+    var sat_math;
+    var expenses;    // per semester
+    var percent_financial_aid;
+    var male_female_ratio;
+    var academics_scale;   // 1-5
+    var social_scale; //1-5
+    var quality_of_life_scale; //1-5
+}

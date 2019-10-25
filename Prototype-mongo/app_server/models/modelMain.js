@@ -78,12 +78,18 @@ module.exports.findUniversityData = function(req, res) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             main.sendPage(projectFolerName + 'public/html/error.html', res);
         } else {
-            console.log(" find data: " + docs[0].name);
-            var data = {
-                name: docs[0].name,
-                params: docs[0]
-            };
-            res.render('universityInfo', data);
+            if(docs.length > 0) {
+                console.log(" found data: " + docs[0].name);
+                var data = {
+                    name: docs[0].name,
+                    params: docs[0]
+                };
+                res.render('universityInfo', data);
+            }else {
+                console.log( u_name + " is not found");
+                sendPage(projectFolerName + 'public/html/error.html', res);
+            }
+
         }
     });
 };

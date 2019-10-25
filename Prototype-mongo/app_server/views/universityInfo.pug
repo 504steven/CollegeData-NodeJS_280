@@ -41,15 +41,41 @@ html(lang='en')
                     a.navigatorBar(href='/logout') Logout
         // content division
         #contentDiv
-            table.infoPage
-                caption #{name}
-                col.info
-                col.info
-                - var input = params;
-                each val, index in input
-                    tr
-                        td= index
-                        td= val
-
+            h2 College Name : #{name}
+            form(action='/adminOperation', method='post')
+                label choose a operation:
+                select(name="adminOperation")
+                    option(value=" ")
+                    option(value="add") add
+                    option(value="update") update
+                    option(value="delete") delete
+                input(type="submit", value = "submit")
+                fieldset(data-role='controlgroup')
+                    label name
+                    input( name="name", type='text', value=params["name"], style="")
+                    label state
+                    input( name="state", type='text', value=params["state"], style="inline")
+                    label male_female_ratio
+                    input(name= "male_female_ratio",type='text',value=params["male_female_ratio"])
+                    label sat_verbal
+                    input( name="sat_verbal", type='text',value=params["sat_verbal"])
+                    label sat_math
+                    input( name="sat_math", type='text',value=params["sat_math"])
+                    label expenses
+                    input(name="expenses", type='text',value=params["expenses"])
+                    label percent_financial_aid
+                    input(name="percent_financial_aid", type='text',value=params["percent_financial_aid"])
+                    label no_applicants
+                    input(name="no_applicants",type='text',value=params["no_applicants"])
+                    label percent_admittance
+                    input(name="percent_admittance",type='text',value=params["percent_admittance"])
+                    label percent_enrolled
+                    input(name="percent_enrolled",type='text',value=params["percent_enrolled"])
+                    label academics_scale
+                    input(name="academics_scale",type='text',value=params["academics_scale"])
+                    label social_scale
+                    input(name="social_scale",type='text',value=params["social_scale"])
+                    label quality_of_life_scale
+                    input(name="quality_of_life_scale",type='text',value=params["quality_of_life_scale"])
         // footer division
         #footerDiv

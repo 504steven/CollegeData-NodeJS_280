@@ -31,7 +31,8 @@ function addUniversityData(req, res) {
         if (err) {
             console.log("insert data for " + u_data.name + ", ERROR: " + err);
         } else {
-
+            console.log("added data : " + u_data.name);
+            sendPage(projectFolerName + 'public/html/home.html', res);
         }
     });
 }
@@ -44,7 +45,8 @@ function updateUniversityData(req, res) {
         if (err) {
             console.log("update data for " + u_data.name + ", ERROR: " + err);
         } else {
-            // res.render(universityInfo, doc);
+            console.log("updated data : " + u_data.name);
+            sendPage(projectFolerName + 'public/html/home.html', res);
         }
     });
 }
@@ -58,12 +60,18 @@ function findUniversityData(req, res) {
         if (err) {
             console.log("finding data for " + u_name + ", ERROR: " + err);
         } else {
-            console.log(" find data: " + docs[0].name);
-            var data = {
-                name: docs[0].name,
-                params: docs[0]
-            };
-            res.render('universityInfo', data);
+            if(docs.length > 0) {
+                console.log(" found data: " + docs[0].name);
+                var data = {
+                    name: docs[0].name,
+                    params: docs[0]
+                };
+                res.render('universityInfo', data);
+            }else {
+                console.log( u_name + " is not found");
+                sendPage(projectFolerName + 'public/html/error.html', res);
+            }
+
         }
     });
 }
@@ -71,12 +79,13 @@ function findUniversityData(req, res) {
 module.exports.deleteUniversityData = deleteUniversityData;
 
 function deleteUniversityData(req, res) {
-    var u_name = req.body.universityName;
+    var u_name = req.body.name;
     db.get(university_data_collection).remove({"name": u_name}, function (err) {
         if (err) {
             console.log("remove data for " + u_name + ", ERROR: " + err);
         } else {
-            // res.render(universityInfo, doc);
+            console.log("deleted data : " + u_name);
+            sendPage(projectFolerName + 'public/html/home.html', res);
         }
     });
 }
@@ -84,19 +93,19 @@ function deleteUniversityData(req, res) {
 function getUniversityData(req) {
     var u_data = new UniversityData();
     // u_data._id = req.body._id;
-    u_data.name = req.body.universityName;
-    u_data.state = req.body.universityState;
-    u_data.percent_admittance = req.body.universityAdmit;
-    u_data.percent_enrolled = req.body.universityEnroll;
-    u_data.no_applicants = req.body.universityApp;
-    u_data.sat_verbal = req.body.universitySatVerbal;
-    u_data.sat_math = req.body.universitySatMath;
-    u_data.expenses = req.body.universityExpense;
-    u_data.percent_financial_aid = req.body.universityFinancialAid;
-    u_data.male_female_ratio = req.body.universityRatio;
-    u_data.academics_scale = req.body.universityAcademics;
-    u_data.social_scale = req.body.universitySocial;
-    u_data.quality_of_life_scale = req.body.universityQuality;
+    u_data.name = req.body.name;
+    u_data.state = req.body.state;
+    u_data.percent_admittance = req.body.percent_admittance;
+    u_data.percent_enrolled = req.body.percent_enrolled;
+    u_data.no_applicants = req.body.no_applicants;
+    u_data.sat_verbal = req.body.sat_verbal;
+    u_data.sat_math = req.body.sat_math;
+    u_data.expenses = req.body.expenses;
+    u_data.percent_financial_aid = req.body.percent_financial_aid;
+    u_data.male_female_ratio = req.body.male_female_ratio;
+    u_data.academics_scale = req.body.academics_scale;
+    u_data.social_scale = req.body.social_scale;
+    u_data.quality_of_life_scale = req.body.quality_of_life_scale;
     return u_data;
 }
 
@@ -177,6 +186,21 @@ module.exports.readDataFromFile = function() {
         }
     });
 };
+
+function sendPage(filename, res) {
+    var html = '';
+    var readInterface = readline.createInterface({
+        input: fs.createReadStream(filename),
+        output: process.stdout,
+        console: false
+    });
+    //readInterface is async
+    readInterface.on('line', function(line) {
+        html += line + '\n';
+    }).on('close', function() {
+        res.send(html);
+    });
+}
 
 module.exports.test = function() {
     var req = {};

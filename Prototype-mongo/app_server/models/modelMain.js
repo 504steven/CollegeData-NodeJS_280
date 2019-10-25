@@ -35,7 +35,7 @@ module.exports.addUniversityData = function(req, res) {
 
 module.exports.deleteUniversityData = function(req, res) {
     var schoolName = req.param('schoolName');
-    db.get(university_data_collection).remove({"name": schoolName}, function (err) {
+    db.get(university_data_collection).remove({"name": schoolName}, function(err) {
         if (err) {
             console.log("remove data for " + schoolName + ", ERROR: " + err);
             res.send("delete fail");
@@ -112,7 +112,7 @@ module.exports.findUniversityData = function(req, res) {
                 res.render('searchUniversityInfo', data);
             } else {
                 console.log(schoolName + " is not found");
-                sendPage(projectFolerName + 'public/html/error.html', res);
+                main.sendPage(projectFolerName + 'public/html/error.html', res);
             }
 
         }
@@ -121,6 +121,7 @@ module.exports.findUniversityData = function(req, res) {
 
 module.exports.readDataFromFile = function() {
     console.log("load university dataset to db");
+    db.get(university_data_collection).drop();
     var filename = projectFolerName + "public/dataset/university.data";
     var readInterface = readline.createInterface({
         input: fs.createReadStream(filename),
@@ -195,21 +196,6 @@ module.exports.readDataFromFile = function() {
         }
     });
 };
-
-function sendPage(filename, res) {
-    var html = '';
-    var readInterface = readline.createInterface({
-        input: fs.createReadStream(filename),
-        output: process.stdout,
-        console: false
-    });
-    //readInterface is async
-    readInterface.on('line', function(line) {
-        html += line + '\n';
-    }).on('close', function() {
-        res.send(html);
-    });
-}
 
 function UniversityData() {
     var name;   //def-instance

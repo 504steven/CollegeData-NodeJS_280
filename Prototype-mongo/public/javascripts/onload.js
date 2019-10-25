@@ -6,7 +6,7 @@ var l2r = true;
 
 function initAll() {
     // set theme
-    $(":header").addClass("ui-widget-header");
+    // $(":header").addClass("ui-widget-header");
 
     // ajax html template
     $("#footerDiv").load("/html/footer.html");
@@ -18,7 +18,7 @@ function initAll() {
     window.setInterval("changeImg()", 1200);
 
     // canvas init and canvas animation init
-    drawSmilingFace();
+    // drawSmilingFace();
     window.setInterval(drawWelcome, 50);
 
     // build resizable and draggable searching form
@@ -26,26 +26,23 @@ function initAll() {
     $("#searchForm").draggable();
 
     // build draggable and droppable object
-    $("#draggableObject1").draggable();
-    $("#draggableObject2").draggable();
-    $("#droppbleObject").droppable();
-    $("#droppbleObject").bind("drop", highlightTarget);
-    $("#droppbleObject").bind("dropout", resetTarget);
+    // $("#draggableObject1").draggable();
+    // $("#draggableObject2").draggable();
+    // $("#droppbleObject").droppable();
+    // $("#droppbleObject").bind("drop", highlightTarget);
+    // $("#droppbleObject").bind("dropout", resetTarget);
 
-    // build selectable and sortable login/register form
-    $("#sortableTab").sortable();
+    // build sortable tab
+    $("#sortableLoginTab").sortable();
+    $("#sortableUniversityList").sortable();
 
-    // build ajax login/register form
+    // build ajax tab
     $("#loginTab").tabs();
+    $("#adminTab").tabs();
 
     // build dialog widget
     $("#dialog").dialog();
     $("#dialog").dialog("close");
-
-    // $("#selectable").selectable();
-
-    // build sortable user fav college list
-    $("#sortable").sortable();
 }
 
 function dropDownMenu() {

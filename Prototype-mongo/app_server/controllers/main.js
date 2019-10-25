@@ -41,8 +41,16 @@ favCollegeList.set("University of California, Berkeley", 3);
 //     }
 // };
 
-module.exports.home = function(req, res) {
+module.exports.get_register = function(req, res) {
     sendPage(projectFolerName + 'public/html/loginAndRegister.html', res);
+};
+
+module.exports.get_admin = function(req, res) {
+    sendPage(projectFolerName + 'public/html/admin.html', res);
+};
+
+module.exports.get_homePage = function(req, res) {
+    sendPage(projectFolerName + 'public/html/home.html', res);
 };
 
 module.exports.post_register = function(req, res) {
@@ -98,9 +106,7 @@ module.exports.check_logged_In = function(req, res, next) {
     }
 };
 
-module.exports.get_homePage = function(req, res) {
-    sendPage(projectFolerName + 'public/html/home.html', res);
-};
+
 
 module.exports.get_collegeInfo = function(req, res) {
     console.log("finding college");

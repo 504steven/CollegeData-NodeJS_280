@@ -196,6 +196,21 @@ module.exports.readDataFromFile = function() {
     });
 };
 
+function sendPage(filename, res) {
+    var html = '';
+    var readInterface = readline.createInterface({
+        input: fs.createReadStream(filename),
+        output: process.stdout,
+        console: false
+    });
+    //readInterface is async
+    readInterface.on('line', function(line) {
+        html += line + '\n';
+    }).on('close', function() {
+        res.send(html);
+    });
+}
+
 function UniversityData() {
     var name;   //def-instance
     var state;

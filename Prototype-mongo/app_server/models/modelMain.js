@@ -154,6 +154,11 @@ module.exports.displayUniversityData = function(req, res) {
     });
 };
 
+module.exports.populateUniversityData = function(req, res) {
+    readDataFromFile(req.param("fileName"));
+    res.send("population complete");
+};
+
 module.exports.showAllUniv = function(req, res) {
     db.get(university_data_collection).find({}, {}, function(err, docs) {
         if (err) {

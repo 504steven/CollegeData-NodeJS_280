@@ -46,26 +46,87 @@ module.exports.deleteUniversityData = function(req, res) {
 };
 
 module.exports.updateUniversityData = function(req, res) {
-    var u_data = new UniversityData();
-    u_data.name = req.param('name').toLowerCase();
-    u_data.state = req.param('state').toLowerCase();
-    u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
-    u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
-    u_data.no_applicants = req.param('no_applicants').toLowerCase();
-    u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
-    u_data.sat_math = req.param('sat_math').toLowerCase();
-    u_data.expenses = req.param('expenses').toLowerCase();
-    u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
-    u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
-    u_data.academics_scale = req.param('academics_scale').toLowerCase();
-    u_data.social_scale = req.param('social_scale').toLowerCase();
-    u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
-    db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function(err) {
+    var schoolName = req.param('name').toLowerCase();
+    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
         if (err) {
-            console.log("update data for " + u_data.name + ", ERROR: " + err);
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("update fail");
         } else {
-            res.send("update success");
+            if (docs.length > 0) {
+                var u_data = new UniversityData();
+                u_data.name = req.param('name').toLowerCase();
+                if (req.param('state') !== 'No change') {
+                    u_data.state = req.param('state').toLowerCase();
+                } else {
+                    u_data.state = docs[0].state;
+                }
+                if (req.param('percent_admittance') !== 'No change') {
+                    u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
+                } else {
+                    u_data.percent_admittance = docs[0].percent_admittance;
+                }
+                if (req.param('percent_enrolled') !== 'No change') {
+                    u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
+                } else {
+                    u_data.percent_enrolled = docs[0].percent_enrolled;
+                }
+                if (req.param('no_applicants') !== 'No change') {
+                    u_data.no_applicants = req.param('no_applicants').toLowerCase();
+                } else {
+                    u_data.no_applicants = docs[0].no_applicants;
+                }
+                if (req.param('sat_verbal') !== 'No change') {
+                    u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
+                } else {
+                    u_data.sat_verbal = docs[0].sat_verbal;
+                }
+                if (req.param('sat_math') !== 'No change') {
+                    u_data.sat_math = req.param('sat_math').toLowerCase();
+                } else {
+                    u_data.sat_math = docs[0].sat_math;
+                }
+                if (req.param('expenses') !== 'No change') {
+                    u_data.expenses = req.param('expenses').toLowerCase();
+                } else {
+                    u_data.expenses = docs[0].expenses;
+                }
+                if (req.param('percent_financial_aid') !== 'No change') {
+                    u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
+                } else {
+                    u_data.percent_financial_aid = docs[0].percent_financial_aid;
+                }
+                if (req.param('male_female_ratio') !== 'No change') {
+                    u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
+                } else {
+                    u_data.male_female_ratio = docs[0].male_female_ratio;
+                }
+                if (req.param('academics_scale') !== 'No change') {
+                    u_data.academics_scale = req.param('academics_scale').toLowerCase();
+                } else {
+                    u_data.academics_scale = docs[0].academics_scale;
+                }
+                if (req.param('social_scale') !== 'No change') {
+                    u_data.social_scale = req.param('social_scale').toLowerCase();
+                } else {
+                    u_data.social_scale = docs[0].social_scale;
+                }
+                if (req.param('quality_of_life_scale') !== 'No change') {
+                    u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
+                } else {
+                    u_data.quality_of_life_scale = docs[0].quality_of_life_scale;
+                }
+                db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function(err) {
+                    if (err) {
+                        console.log("update data for " + u_data.name + ", ERROR: " + err);
+                        res.send("update fail");
+                    } else {
+                        res.send("update success");
+                    }
+                });
+            } else {
+                console.log(schoolName + " is not found");
+                res.send("No data found!");
+            }
         }
     });
 };
@@ -73,7 +134,7 @@ module.exports.updateUniversityData = function(req, res) {
 module.exports.displayUniversityData = function(req, res) {
     var schoolName = req.body.schoolName.toLowerCase();
     console.log(schoolName);
-    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("display fail");
@@ -152,6 +213,7 @@ module.exports.readDataFromFile = function() {
 
         if (e >= 0) {
             console.log(++count);
+            // console.log(u_data.name);
             db.get(university_data_collection).insert(u_data, function (err, docs) {
                 if (err) {
                     console.log("read data from file ERROR: " + err)

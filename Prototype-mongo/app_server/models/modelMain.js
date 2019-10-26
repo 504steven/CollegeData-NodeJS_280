@@ -138,6 +138,7 @@ module.exports.readDataFromFile = function() {
 
         if (e >= 0) {
             console.log(++count);
+            // console.log(u_data.name);
             db.get(university_data_collection).insert(u_data, function (err, docs) {
                 if (err) {
                     console.log("read data from file ERROR: " + err)

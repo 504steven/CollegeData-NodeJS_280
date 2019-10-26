@@ -93,6 +93,20 @@ module.exports.displayUniversityData = function(req, res) {
     });
 };
 
+module.exports.showAllUniv = function(req, res) {
+    db.get(university_data_collection).find({}, {}, function(err, docs) {
+        if (err) {
+            res.send("display fail");
+        } else {
+            if (docs.length > 0) {
+                res.render('showAllUnivName', {"schoollist":docs});
+            } else {
+                res.send("No data found!");
+            }
+        }
+    });
+};
+
 module.exports.findUniversityData = function(req, res) {
     var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);

@@ -164,7 +164,7 @@ module.exports.updateUniversityData = function(req, res) {
 module.exports.displayUniversityData = function(req, res) {
     var schoolName = req.body.schoolName.toLowerCase();
     console.log(schoolName);
-    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("display fail");
@@ -229,6 +229,7 @@ module.exports.readDataFromFile = function() {
 
         if (e >= 0) {
             console.log(++count);
+            // console.log(u_data.name);
             db.get(university_data_collection).insert(u_data, function (err, docs) {
                 if (err) {
                     console.log("read data from file ERROR: " + err)

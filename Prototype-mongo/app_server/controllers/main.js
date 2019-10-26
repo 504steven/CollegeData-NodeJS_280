@@ -95,6 +95,10 @@ module.exports.post_display = function(req, res) {
     modelMain.displayUniversityData(req, res);
 };
 
+module.exports.post_populate = function(req, res) {
+    modelMain.populateUniversityData(req, res);
+};
+
 module.exports.sendPage = sendPage;
 
 function sendPage(filename, res) {

@@ -14,5 +14,6 @@ router.post('/add', ctrlMain.post_add);
 router.post('/delete', ctrlMain.post_delete);
 router.post('/update', ctrlMain.post_update);
 router.post('/display', ctrlMain.post_display);
+router.post('/populate', ctrlMain.post_populate);
 
 module.exports = router;

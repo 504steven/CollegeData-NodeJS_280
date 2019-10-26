@@ -154,6 +154,11 @@ module.exports.displayUniversityData = function(req, res) {
     });
 };
 
+module.exports.populateUniversityData = function(req, res) {
+    readDataFromFile(req.param('fileName'));
+    res.send("populate complete");
+};
+
 module.exports.findUniversityData = function(req, res) {
     var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
@@ -178,10 +183,12 @@ module.exports.findUniversityData = function(req, res) {
     });
 };
 
-module.exports.readDataFromFile = function() {
+module.exports.readDataFromFile = readDataFromFile;
+
+function readDataFromFile(fName) {
     console.log("load university dataset to db");
     db.get(university_data_collection).drop();
-    var filename = projectFolerName + "public/dataset/university.data";
+    var filename = projectFolerName + "public/dataset/" + fName;
     var readInterface = readline.createInterface({
         input: fs.createReadStream(filename),
         output: process.stdout,
@@ -255,7 +262,7 @@ module.exports.readDataFromFile = function() {
             }
         }
     });
-};
+}
 
 function UniversityData() {
     var name;   //def-instance

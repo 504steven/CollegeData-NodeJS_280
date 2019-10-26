@@ -129,36 +129,6 @@ module.exports.updateUniversityData = function(req, res) {
             }
         }
     });
-
-
-
-
-
-
-    // var u_data = new UniversityData();
-    // u_data.name = req.param('name').toLowerCase();
-    // if (req.param('state') !== 'No change') {
-    //     u_data.state = req.param('state').toLowerCase();
-    // }
-    // u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
-    // u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
-    // u_data.no_applicants = req.param('no_applicants').toLowerCase();
-    // u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
-    // u_data.sat_math = req.param('sat_math').toLowerCase();
-    // u_data.expenses = req.param('expenses').toLowerCase();
-    // u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
-    // u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
-    // u_data.academics_scale = req.param('academics_scale').toLowerCase();
-    // u_data.social_scale = req.param('social_scale').toLowerCase();
-    // u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
-    // db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function(err) {
-    //     if (err) {
-    //         console.log("update data for " + u_data.name + ", ERROR: " + err);
-    //         res.send("update fail");
-    //     } else {
-    //         res.send("update success");
-    //     }
-    // });
 };
 
 module.exports.displayUniversityData = function(req, res) {

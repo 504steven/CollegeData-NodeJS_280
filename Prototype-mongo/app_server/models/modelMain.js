@@ -71,7 +71,7 @@ module.exports.updateUniversityData = function(req, res) {
 };
 
 module.exports.displayUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName');
+    var schoolName = req.body.schoolName.toLowerCase();
     console.log(schoolName);
     db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
         if (err) {
@@ -85,20 +85,18 @@ module.exports.displayUniversityData = function(req, res) {
                     params: docs[0]
                 };
                 res.render('displayUniversityInfo', data);
-                console.log("here");
             } else {
                 console.log(schoolName + " is not found");
                 res.send("No data found!");
             }
-
         }
     });
 };
 
 module.exports.findUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName');
+    var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
-    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             main.sendPage(projectFolerName + 'public/html/error.html', res);

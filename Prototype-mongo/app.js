@@ -26,5 +26,9 @@ module.exports = app;
 
 /* loading university.data to the remote mongoDB */
 // modelMain.readDataFromFile();
+// test();
+// function test() {
+//     console.log(new RegExp("aab").toString());
+// }
 
 app.listen(3000);

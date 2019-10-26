@@ -24,7 +24,4 @@ app.use('/', index);
 
 module.exports = app;
 
-/* loading university.data to the remote mongoDB */
-// modelMain.readDataFromFile();
-
 app.listen(3000);

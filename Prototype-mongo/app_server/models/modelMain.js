@@ -10,19 +10,19 @@ var university_data_collection = "university_data";
 
 module.exports.addUniversityData = function(req, res) {
     var u_data = new UniversityData();
-    u_data.name = req.param('name');
-    u_data.state = req.param('state');
-    u_data.percent_admittance = req.param('percent_admittance');
-    u_data.percent_enrolled = req.param('percent_enrolled');
-    u_data.no_applicants = req.param('no_applicants');
-    u_data.sat_verbal = req.param('sat_verbal');
-    u_data.sat_math = req.param('sat_math');
-    u_data.expenses = req.param('expenses');
-    u_data.percent_financial_aid = req.param('percent_financial_aid');
-    u_data.male_female_ratio = req.param('male_female_ratio');
-    u_data.academics_scale = req.param('academics_scale');
-    u_data.social_scale = req.param('social_scale');
-    u_data.quality_of_life_scale = req.param('quality_of_life_scale');
+    u_data.name = req.param('name').toLowerCase();
+    u_data.state = req.param('state').toLowerCase();
+    u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
+    u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
+    u_data.no_applicants = req.param('no_applicants').toLowerCase();
+    u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
+    u_data.sat_math = req.param('sat_math').toLowerCase();
+    u_data.expenses = req.param('expenses').toLowerCase();
+    u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
+    u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
+    u_data.academics_scale = req.param('academics_scale').toLowerCase();
+    u_data.social_scale = req.param('social_scale').toLowerCase();
+    u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
     db.get(university_data_collection).insert(u_data, function(err) {
         if (err) {
             console.log("insert data for " + u_data.name + ", ERROR: " + err);
@@ -34,7 +34,7 @@ module.exports.addUniversityData = function(req, res) {
 };
 
 module.exports.deleteUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName');
+    var schoolName = req.param('schoolName').toLowerCase();
     db.get(university_data_collection).remove({"name": schoolName}, function(err) {
         if (err) {
             console.log("remove data for " + schoolName + ", ERROR: " + err);
@@ -47,20 +47,20 @@ module.exports.deleteUniversityData = function(req, res) {
 
 module.exports.updateUniversityData = function(req, res) {
     var u_data = new UniversityData();
-    u_data.name = req.param('name');
-    u_data.state = req.param('state');
-    u_data.percent_admittance = req.param('percent_admittance');
-    u_data.percent_enrolled = req.param('percent_enrolled');
-    u_data.no_applicants = req.param('no_applicants');
-    u_data.sat_verbal = req.param('sat_verbal');
-    u_data.sat_math = req.param('sat_math');
-    u_data.expenses = req.param('expenses');
-    u_data.percent_financial_aid = req.param('percent_financial_aid');
-    u_data.male_female_ratio = req.param('male_female_ratio');
-    u_data.academics_scale = req.param('academics_scale');
-    u_data.social_scale = req.param('social_scale');
-    u_data.quality_of_life_scale = req.param('quality_of_life_scale');
-    db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function (err) {
+    u_data.name = req.param('name').toLowerCase();
+    u_data.state = req.param('state').toLowerCase();
+    u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
+    u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
+    u_data.no_applicants = req.param('no_applicants').toLowerCase();
+    u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
+    u_data.sat_math = req.param('sat_math').toLowerCase();
+    u_data.expenses = req.param('expenses').toLowerCase();
+    u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
+    u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
+    u_data.academics_scale = req.param('academics_scale').toLowerCase();
+    u_data.social_scale = req.param('social_scale').toLowerCase();
+    u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
+    db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function(err) {
         if (err) {
             console.log("update data for " + u_data.name + ", ERROR: " + err);
             res.send("update fail");
@@ -71,7 +71,7 @@ module.exports.updateUniversityData = function(req, res) {
 };
 
 module.exports.displayUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName');
+    var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
     db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
         if (err) {
@@ -96,7 +96,7 @@ module.exports.displayUniversityData = function(req, res) {
 };
 
 module.exports.findUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName');
+    var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
     db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
         if (err) {

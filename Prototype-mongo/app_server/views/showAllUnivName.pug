@@ -1,0 +1,10 @@
+extends adminLayout
+
+block content
+    // content division
+    #contentDiv
+        table.infoPage
+            ul
+                each u_data in schoollist
+                    li
+                        a=u_data.name

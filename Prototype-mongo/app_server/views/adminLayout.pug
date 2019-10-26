@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Results
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/jquery-ui.css')
+        script(src = '/js/jquery.js')
+        script(src = '/js/jquery-ui.js')
+        script(src = '/js/onload.js')
+    body(background='/img/background.jpeg')
+        // title division
+        #titleDiv
+            h1 The Statistics of University and College
+        // navigator division
+        #navigatorDiv
+            ul
+                li
+                    a(href='#') Admin Page
+                li(style='float:right')
+                    a.navigatorBar(href='/admin') Back
+        block content
+
+
+// footer division
+        #footerDiv

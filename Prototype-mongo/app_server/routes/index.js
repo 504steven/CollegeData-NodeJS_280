@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var ctrlMain = require("../controllers/main");
+var modelMain = require("../models/modelMain");
+
 
 router.get('/', ctrlMain.get_register);
 router.get('/admin', ctrlMain.get_admin);
@@ -14,6 +16,6 @@ router.post('/add', ctrlMain.post_add);
 router.post('/delete', ctrlMain.post_delete);
 router.post('/update', ctrlMain.post_update);
 router.post('/display', ctrlMain.post_display);
-router.post('/populate', ctrlMain.post_populate);
+router.get('/showAll', modelMain.showAllUniv);
 
 module.exports = router;

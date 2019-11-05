@@ -17,6 +17,10 @@ module.exports.get_homePage = function(req, res) {
     sendPage(projectFolerName + 'public/html/home.html', res);
 };
 
+module.exports.get_dashboard = function(req, res) {
+    sendPage(projectFolerName + 'public/html/dashboard.html', res);
+};
+
 module.exports.post_register = function(req, res) {
     console.log('register called');
     if (!req.body.username || !req.body.password) {

@@ -157,7 +157,7 @@
 (def_instance CCNY_City_College
    (state newyork)
    (location urban)
-   (control city)
+   (control state)
    (no_of_students thous:10_15)
    (male:female ratio:60:40)
    (student:faculty ratio:15:1)

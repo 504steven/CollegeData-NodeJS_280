@@ -5,8 +5,9 @@ var monk = require("monk");
 var main = require('../controllers/main');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
-var db = monk("18.224.102.19:27017/goofyDB");
+var db = monk("18.224.102.19:27017/goofyDB");   //
 var university_data_collection = "university_data";
+var university_data_summary_collection = "university_data_summary";
 
 module.exports.addUniversityData = function(req, res) {
     var u_data = new UniversityData();
@@ -192,14 +193,15 @@ module.exports.findUniversityData = function(req, res) {
                 console.log(schoolName + " is not found");
                 main.sendPage(projectFolerName + 'public/html/error.html', res);
             }
-
         }
     });
 };
 
+
 module.exports.readDataFromFile = readDataFromFile;
 
-function readDataFromFile(fName) {
+function readDataFromFile() {
+    var fName = "university.data";
     console.log("load university dataset to db");
     db.get(university_data_collection).drop();
     var filename = projectFolerName + "public/dataset/" + fName;
@@ -234,7 +236,13 @@ function readDataFromFile(fName) {
                 case "(state":
                     u_data.state = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
                     break;
-                case "(male:female":
+                case "(location":
+                    u_data.location = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
+                    break;
+                case "(control":
+                    u_data.control = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
+                    break;
+                 case "(male:female":
                     // console.log(strArr.toString());
                     // var ratioDataArr = strArr[1].split(":", 2);
                     // console.log(ratioDataArr.toString());
@@ -278,9 +286,123 @@ function readDataFromFile(fName) {
     });
 }
 
+module.exports.getSummarizeData = getSummarizeData;
+
+function getSummarizeData(req, res) {
+    db.get(university_data_summary_collection).find( {}, function(err, docs) {
+        if(err)  { console.log("summarized data reading error :" + err);}
+        else {
+            res.json(docs[0]);
+        }
+    });
+}
+
+module.exports.summarizeData = summarizeData;
+
+function summarizeData() {
+    var public_urban = [0,0];  // ct, total
+    var public_suburban = [0,0];
+    var public_smallCity = [0,0];
+    var public_smallTown = [0,0];
+    var private_urban = [0,0];
+    var private_suburban = [0,0];
+    var private_smallCity = [0,0];
+    var private_smallTown = [0,0];
+
+    db.get(university_data_collection).find({}, function(err, docs) {
+        if (err) {
+            console.log("summarize data, ERROR: " + err);
+        } else {
+            docs.forEach( function(doc) {
+                if(doc.control == "state") {
+                    switch(doc.location) {
+                        case "urban" :
+                            public_urban[0]++;
+                            public_urban[1] += getNum(doc.expenses);
+                            // console.log(public_urban[1]);
+                            break;
+                        case "suburban" :
+                            public_suburban[0]++;
+                            public_suburban[1] += getNum(doc.expenses);
+                            break;
+                        case "small_city" :
+                            public_smallCity[0]++;
+                            public_smallCity[1] += getNum(doc.expenses);
+                            break;
+                        case "small_town" :
+                            public_smallTown[0]++;
+                            public_smallTown[1] += getNum(doc.expenses);
+                            break;
+                        default:
+                    }
+                }else {
+                    switch(doc.location) {
+                        case "urban" :
+                            private_urban[0]++;
+                            private_urban[1] += getNum(doc.expenses);
+                            break;
+                        case "suburban" :
+                            private_suburban[0]++;
+                            private_suburban[1] += getNum(doc.expenses);
+                            break;
+                        case "small_city" :
+                            private_smallCity[0]++;
+                            private_smallCity[1] += getNum(doc.expenses);
+                            break;
+                        case "small_town" :
+                            private_smallTown[0]++;
+                            private_smallTown[1] += getNum(doc.expenses);
+                            break;
+                        default:
+                    }
+                }
+            });
+        }
+        insertSummariedData();
+    });
+
+    function insertSummariedData() {
+        var public_urban_ave = public_urban[1] / public_urban[0];
+        var public_suburban_ave = public_suburban[1] / public_suburban[0];
+        var public_smallTown_ave = public_smallTown[1] / public_smallTown[0];
+        var public_smallCity_ave = public_smallCity[1] / public_smallCity[0];
+
+        var private_urban_ave = private_urban[1] / private_urban[0];
+        var private_suburban_ave = private_suburban[1] / private_suburban[0];
+        var private_smallTown_ave = private_smallTown[1] / private_smallTown[0];
+        var private_smallCity_ave = private_smallCity[1] / private_smallCity[0];
+
+        // console.log(public_urban_ave, public_urban[0], public_urban[1]);
+
+        db.get(university_data_summary_collection).insert(
+                {
+                    public_urban_count: public_urban[0], public_urban_ave: public_urban_ave,
+                    public_suburban_count: public_suburban[0], public_suburban_ave: public_suburban_ave,
+                    public_smallCity_count: public_smallCity[0], public_smallCity_ave: public_smallCity_ave,
+                    public_smallTown_count: public_smallTown[0], public_smallTown_ave: public_smallTown_ave,
+
+                    private_urban_count: private_urban[0], private_urban_ave: private_urban_ave,
+                    private_suburban_count: private_suburban[0], private_suburban_ave: private_suburban_ave,
+                    private_smallCity_count: private_smallCity[0], private_smallCity_ave: private_smallCity_ave,
+                    private_smallTown_count: private_smallTown[0], private_smallTown_ave: private_smallTown_ave
+                },
+                function (err) {
+                    if (err) console.log("summarized data insert error :" + err);
+                });
+    }
+}
+
+// module.exports.getNum = getNum;
+
+function getNum(exp) {
+    return exp.match(/\d+/)[0]*1000;
+}
+
 function UniversityData() {
     var name;   //def-instance
     var state;
+    var control;
+    var location;
     var percent_admittance;
     var percent_enrolled;
     var no_applicants;

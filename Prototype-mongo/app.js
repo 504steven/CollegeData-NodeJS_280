@@ -24,4 +24,7 @@ app.use('/', index);
 
 module.exports = app;
 
+// modelMain.readDataFromFile();
+// modelMain.summarizeData();
+
 app.listen(3000);

@@ -896,7 +896,7 @@
    (academic_emphasis liberal_arts))
 (def_instance ABILENE_CHRISTIAN_UNIVERSITY
   (state TEXAS)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -912,7 +912,7 @@
   (ACADEMIC_EMPHASIS LIBERAL_ARTS))
 (def_instance BRANDEIS
   (state MASSACHUSETTS)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -935,7 +935,7 @@
   (ACADEMIC_EMPHASIS SOCIAL_SCIENCE))
 (def_instance EMORY
   (state GEORGIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:50:50)
@@ -958,7 +958,7 @@
 
 (def_instance HUNTINGTON_COLLEGE
   (state INDIANA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:55:45)
@@ -981,7 +981,7 @@
 
 (def_instance TRINITY_COLLEGE
   (state CONNECTICUT)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:51:49)
@@ -1003,7 +1003,7 @@
 
 (def_instance UNIVERSITY_OF_PORTLAND
   (state OREGON)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:1:1)
@@ -1023,7 +1023,7 @@
 
 (def_instance FLORIDA_ACADEMIC_UNIVERSITY
   (state FLORIDA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:2:1)
@@ -1042,7 +1042,7 @@
 
 (def_instance BENNINGTON
   (state VERMONT)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:189:439)
@@ -1060,7 +1060,7 @@
 
 (def_instance MESA
   (state COLORADO)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:7:6)
@@ -1077,7 +1077,7 @@
   (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION))
 (def_instance GOLDEN_GATE_COLLEGE
   (state CALIFORNIA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:3:10)
@@ -1098,7 +1098,7 @@
   (COLORS YELLOW_WHITE))
 (def_instance AUGSBURG
   (state MINNESOTA)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:13:10)
@@ -1118,7 +1118,7 @@
   (ACADEMIC_EMPHASIS PERFORMING_ARTS))
 (def_instance VANDERBILT
   (state TENNESSEE)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:1:1)
@@ -1138,7 +1138,7 @@
   (ACADEMIC_EMPHASIS EDUCATION))
 (def_instance UNIVERSITY_OF_ALABAMA
   (state ALABAMA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:51:49)
@@ -1161,7 +1161,7 @@
   (ACADEMIC_EMPHASIS SOCIAL_SCIENCE))
 (def_instance AUBURN
   (state ALABAMA)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:11:9)
@@ -1185,7 +1185,7 @@
 
 (def_instance WASHINGTON_AND_LEE
   (state VIRGINIA)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:80:20)
@@ -1207,7 +1207,7 @@
 
 (def_instance QUEENS
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:40:60)
@@ -1227,7 +1227,7 @@
 
 (def_instance BARUCH
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -1247,7 +1247,7 @@
 
 (def_instance NICHOLLS_state
   (state LOUISIANA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -1267,7 +1267,7 @@
 
 (def_instance TOURO
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:40:60)
@@ -1287,7 +1287,7 @@
 
 (def_instance EASTERN_MICHIGAN
   (state MICHIGAN)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:40:60)
@@ -1305,7 +1305,7 @@
 
 (def_instance GEORGETOWN
   (state MARYLAND)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:45:55)
@@ -1326,7 +1326,7 @@
 
 (def_instance UNIVERSITY_OF_MICHIGAN
   (state MICHIGAN)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (no_of_students THOUS:20+)
   (male:female ratio:60:40)
   (STUDENT:FACULTY RATIO:13:1)
@@ -1345,7 +1345,7 @@
 
 (def_instance OREGON_state
   (state OREGON)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:60:40)
@@ -1365,7 +1365,7 @@
 
 (def_instance UNIVERSITY_OF_PITTSBURGH
   (state PENNSYLVANIA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)
@@ -1384,7 +1384,7 @@
 
 (def_instance UNIVERSITY_OF_MISSOURI
   (state MISSOURI)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -1404,7 +1404,7 @@
 
 (def_instance UNIVERSITY_OF_KANSAS
   (state KANSAS)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:55:45)
@@ -1425,7 +1425,7 @@
 
 (def_instance UNIVERSITY_OF_EVANSVILLE
   (state INDIANA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:40:60)
@@ -1446,7 +1446,7 @@
 
 (def_instance UNIVERSITY_OF_LOWELL
   (state MASSACHUSETTS)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:60:40)
@@ -1467,7 +1467,7 @@
 
 (def_instance OKLAHOMA_state_UNIVERSITY
   (state OKLAHOMA)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:60:40)
@@ -1488,7 +1488,7 @@
 
 (def_instance TUFTS
   (state MASSACHUSETTS)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:50:50)
@@ -1509,7 +1509,7 @@
 
 (def_instance SETON_HALL
   (state NEWJERSEY)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -1530,7 +1530,7 @@
 
 (def_instance BARNARD
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:0:100)
@@ -1552,7 +1552,7 @@
 
 (def_instance FORDHAM
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:55:45)
@@ -1571,7 +1571,7 @@
   (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION))
 (def_instance MARIST_COLLEGE
   (state NEWYORK)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -1590,7 +1590,7 @@
   (ACADEMIC_EMPHASIS BIOLOGY))
 (def_instance HAMPSHIRE_COLLEGE
   (state MASSACHUSETTS)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:60:65)
@@ -1608,7 +1608,7 @@
   (ACADEMIC_EMPHASIS LIBERAL_ARTS))
 (def_instance ST_JOHNS_U
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:10:6)
@@ -1628,7 +1628,7 @@
   (ACADEMIC_EMPHASIS LAW))
 (def_instance NEWYORKIT
   (state NEWYORK)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:55:45)
@@ -1649,7 +1649,7 @@
   (ACADEMIC_EMPHASIS EDUCATION))
 (def_instance UNIVERSITY_OF_ROCHESTER
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:60:40)
@@ -1669,7 +1669,7 @@
   (percent_enrolled 75))
 (def_instance UNIVERSITY_OF_MISSISSIPPI
   (state MISSISSIPPI)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:55:45)
@@ -1680,7 +1680,7 @@
   (percent_enrolled 75))
 (def_instance REED
   (state OREGON)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:60:40)
@@ -1701,7 +1701,7 @@
   (ACADEMIC_EMPHASIS BIOLOGY))
 (def_instance LESLEY
   (state MASSACHUSETTS)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:20:80)
@@ -1718,7 +1718,7 @@
   (ACADEMIC_EMPHASIS EDUCATION))
 (def_instance UNIVERSITY_OF_PUGET_SOUND
   (state WASHINGTON)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -1736,7 +1736,7 @@
 
 (def_instance UNIVERSITY_OF_BRIDGEPORT
   (state CONNECTICUT)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:53:47)
@@ -1758,7 +1758,7 @@
 
 (def_instance BARD
   (state NEWYORK)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:45:55)
@@ -1777,7 +1777,7 @@
 
 (def_instance DREW
   (state NEWJERSEY)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:52:48)
@@ -1796,7 +1796,7 @@
 
 (def_instance SWARTHMORE
   (state PENNSYLVANIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:56:44)
@@ -1834,7 +1834,7 @@
 
 (def_instance MOUNT_HOLYOKE
   (state MASSACHUSETTS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:0:100)
@@ -1855,7 +1855,7 @@
 
 (def_instance TULANE
   (state LOUISIANA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:60:40)
@@ -1875,7 +1875,7 @@
 
 (def_instance TEXAS_CHRISTIAN_UNIVERSITY
   (state TEXAS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:50:50)
@@ -1895,7 +1895,7 @@
 
 (def_instance OREGON_INSTITUTE_OF_TECHNOLOGY
   (state OREGON)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:3:1)
@@ -1916,7 +1916,7 @@
 
 (def_instance SANJOSEstate
   (state CALIFORNIA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:50:50)
@@ -1937,7 +1937,7 @@
 
 (def_instance UNIVERSITY_OF_CHICAGO
   (state ILLINOIS)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:60:40)
@@ -1956,7 +1956,7 @@
 
 (def_instance BRYN_MAWR
   (state PENNSYLVANIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:0:100)
@@ -1976,7 +1976,7 @@
 
 (def_instance OBERLIN
   (state OHIO)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -1996,7 +1996,7 @@
 
 (def_instance UNIVERSITY_OF_TEXAS
   (state TEXAS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)
@@ -2016,7 +2016,7 @@
 
 (def_instance CORPUS_CHRISTI_state_U
   (state TEXAS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:70:30)
@@ -2035,7 +2035,7 @@
 
 (def_instance UNIVERSITY_OF_PENNSYLVANIA
   (state PENNSYLVANIA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:15_20)
   (male:female ratio:5:4)
@@ -2053,7 +2053,7 @@
 
 (def_instance VILLANOVA
   (state PENNSYLVANIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:4:3)
@@ -2071,7 +2071,7 @@
 
 (def_instance GLASSBORO_state_COLLEGE
   (state NEWJERSEY)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:3:3)
@@ -2088,7 +2088,7 @@
 
 (def_instance SAINT_ELIZABETHS
   (state NEWJERSEY)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:0:100)
@@ -2105,7 +2105,7 @@
 
 (def_instance JUILLIARD
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:40:60)
@@ -2126,7 +2126,7 @@
 
 (def_instance EASTMAN_SCHOOL_OF_MUSIC
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (control private)
   (no_of_students THOUS:5_)
@@ -2150,7 +2150,7 @@
 
 (def_instance BUTLER
   (state INDIANA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:40:60)
@@ -2170,7 +2170,7 @@
 
 (def_instance SYRACUSE
   (state NEWYORK)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -2187,7 +2187,7 @@
 
 (def_instance RUTGERS
   (state NEWJERSEY)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:47:53)
@@ -2210,7 +2210,7 @@
 
 (def_instance UNIVERSITY_OF_MINNESOTA
   (state MINNESOTA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:55:45)
@@ -2230,7 +2230,7 @@
 
 (def_instance UNIVERSITY_OF_MARYLAND
   (state MARYLAND)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:55:45)
@@ -2249,7 +2249,7 @@
 
 (def_instance NORTHWESTERN
   (state ILLINOIS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -2271,7 +2271,7 @@
 
 (def_instance MICHIGAN_state
   (state MICHIGAN)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)
@@ -2295,7 +2295,7 @@
 
 (def_instance MONMOUTH_COLLEGE
   (state NEWJERSEY)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:48:52)
@@ -2318,7 +2318,7 @@
 
 (def_instance CLARKSON_UNIVERSITY
   (state NEWYORK)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:80:20)
@@ -2337,7 +2337,7 @@
   (ACADEMIC_EMPHASIS MANAGEMENT))
 (def_instance CLARK_UNIVERSITY
   (state MASSACHUSETTS)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:45:55)
@@ -2358,7 +2358,7 @@
 
 (def_instance COLORADO_COLLEGE
   (state COLORADO)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:1:9)
@@ -2378,7 +2378,7 @@
 
 (def_instance SUNY_PLATTSBURGH
   (state NEWYORK)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:2:3)
@@ -2399,7 +2399,7 @@
 
 (def_instance CHALMERS_UNIVERSITY_OF_TECHNOLOGY
   (state FOREIGN)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:20:80)
@@ -2420,7 +2420,7 @@
 
 (def_instance GOTHENBURG_UNIVERSITY
   (state FOREIGN)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -2443,7 +2443,7 @@
 
 (def_instance UNIVERSITY_OF_TULSA
   (state OKLAHOMA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:60:40)
@@ -2462,7 +2462,7 @@
 
 (def_instance UNIVERSITY_OF_DENVER
   (state COLORADO)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:70:30)
@@ -2481,7 +2481,7 @@
 
 (def_instance HOLY_CROSS
   (state MASSACHUSETTS)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -2505,7 +2505,7 @@
 
 (def_instance BUCKNELL
   (state PENNSYLVANIA)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:60:40)
@@ -2531,7 +2531,7 @@
 
 (def_instance UNIVERSITY_OF_THE_PACIFIC
   (state CALIFORNIA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:48:52)
@@ -2553,7 +2553,7 @@
 
 (def_instance UNIVERSITY_OF_THE_SOUTH
   (state TENNESSEE)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:40:60)
@@ -2574,7 +2574,7 @@
 
 (def_instance UNIVERSITY_OF_TOLEDO
   (state OHIO)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:50:50)
@@ -2596,7 +2596,7 @@
 
 (def_instance UNIVERSITY_OF_THE_DISTRICT_OF_COLUMBIA
   (state DISTRICT_OF_COLUMBIA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_10)
   (male:female ratio:44:56)
@@ -2618,7 +2618,7 @@
 
 (def_instance UNIVERSITY_OF_SOUTHDAKOTA
   (state SOUTHDAKOTA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -2639,7 +2639,7 @@
 
 (def_instance YANKTOWN_COLLEGE
   (state SOUTHDAKOTA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:70:30)
@@ -2659,7 +2659,7 @@
 
 (def_instance BAYLOR_UNIVERSITY
   (state TEXAS)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:45:559)
@@ -2680,7 +2680,7 @@
 
 (def_instance DALLAS_BAPTIST_COLLEGE
   (state TEXAS)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:55:45)
@@ -2700,7 +2700,7 @@
 
 (def_instance SUNY_BINGHAMTON
   (state NEWYORK)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:45:55)
@@ -2718,7 +2718,7 @@
 
 (def_instance SUNY_BUFFALO
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:60:40)
@@ -2743,7 +2743,7 @@
 
 (def_instance SUNY_ALBANY
   (state NEWYORK)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:15_20)
   (male:female ratio:50:50)
@@ -2763,7 +2763,7 @@
 
 (def_instance OHIO_state
   (state OHIO)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:55:45)
@@ -2793,7 +2793,7 @@
 
 (def_instance UNIVERSITY_OF_WASHINGTON
   (state WASHINGTON)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)
@@ -2812,7 +2812,7 @@
 
 (def_instance SUNY_STONY_BROOK
   (state NEWYORK)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:55:45)
@@ -2831,7 +2831,7 @@
 
 (def_instance UNIVERSITY_OF_NORTHCAROLINA
   (state NORTHCAROLINA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:3:4)
@@ -2855,7 +2855,7 @@
 
 (def_instance NORTHCAROLINA_state_UNIVERSITY
   (state NORTHCAROLINA)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:9:4)
@@ -2879,7 +2879,7 @@
 
 (def_instance WALLA_WALLA_COLLEGE
   (state WASHINGTON)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:54:46)
@@ -2900,7 +2900,7 @@
 
 (def_instance VASSAR
   (state NEWYORK)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:40:60)
@@ -2922,7 +2922,7 @@
 
 (def_instance COLLEGE_OF_NEWROCHELLE
   (state NEWYORK)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:0:100)
@@ -2943,7 +2943,7 @@
 
 (def_instance UNIVERSITY_OF_MASSACHUSETTS_AMHERST
   (state MASSACHUSETTS)
-  (LOCATION SMALL_TOWN)
+  (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)
@@ -2964,7 +2964,7 @@
 
 (def_instance UNIVERSITY_OF_VIRGINIA
   (state VIRGINIA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:50:50)
@@ -2986,7 +2986,7 @@
 
 (def_instance UNIVERSITY_OF_NOTRE_DAME
   (state INDIANA)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:70:30)
@@ -3008,7 +3008,7 @@
 
 (def_instance UNIVERSITY_OF_COLORADO
   (state COLORADO)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:60:40)
@@ -3030,7 +3030,7 @@
 
 (def_instance COLORADO_SCHOOL_OF_MINES
   (state COLORADO)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:80:20)
@@ -3049,7 +3049,7 @@
 
 (def_instance WILLIAM_PATERSON_COLLEGE
   (state NEWJERSEY)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:1:1)
@@ -3073,7 +3073,7 @@
 
 (def_instance ECOLE_NATIONALE_SUPERIEURE_DE_TELECOMMUNICATION_DE_PARIS
   (state FOREIGN)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:80:20)
@@ -3091,7 +3091,7 @@
   (ACADEMIC_EMPHASIS ENGINEERING))
 (def_instance ECOLE_POLYTECHNIQUE
   (state FOREIGN)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:5_)
   (male:female ratio:90:10)
@@ -3112,7 +3112,7 @@
 
 (def_instance UNIVERSITE_SAINT_JOSEPH
   (state FOREIGN)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:60:40)
@@ -3134,7 +3134,7 @@
 
 (def_instance AMERICAN_UNIVERSITY_OF_BEIRUT
   (state FOREIGN)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_10)
   (male:female ratio:60:40)
@@ -3155,7 +3155,7 @@
 
 (def_instance POLYTECHNIC_INSTITUTE_OF_NEWYORK
   (state NEWYORK)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:90:10)
@@ -3174,7 +3174,7 @@
 
 (def_instance PENN_state
   (state PENNSYLVANIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:60:40)
@@ -3193,7 +3193,7 @@
 
 (def_instance UNIVERSITY_OF_OREGON
   (state OREGON)
-  (LOCATION URBAN)
+  (location urban)
   (control state)
   (no_of_students THOUS:10_15)
   (male:female ratio:51:49)
@@ -3213,7 +3213,7 @@
 
 (def_instance PURDUE
   (state INDIANA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:58:42)
@@ -3232,7 +3232,7 @@
 
 (def_instance UNIVERSITY_WEST_VIRGINIA
   (state WESTVIRGINIA)
-  (LOCATION SMALL_CITY)
+  (location SMALL_CITY)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:55:45)
@@ -3252,7 +3252,7 @@
 
 (def_instance DEPAUL_UNIVERSITY
   (state ILLINOIS)
-  (LOCATION URBAN)
+  (location urban)
   (control private)
   (no_of_students THOUS:5_)
   (male:female ratio:50:50)
@@ -3275,7 +3275,7 @@
 
 (def_instance UNIVERSITY_OF_GEORGIA
   (state GEORGIA)
-  (LOCATION SUBURBAN)
+  (location suburban)
   (control state)
   (no_of_students THOUS:20+)
   (male:female ratio:50:50)

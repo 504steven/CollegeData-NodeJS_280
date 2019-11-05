@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/jquery-ui.css"/>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/onload.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var url = "http://localhost:3000/aveExpense";
+        var doc=[];
+        $.get(url, function(data, status) {
+            if(status != 'success') {
+                console.log("get summarized data failed :" + status);
+            }else {
+                console.log("get summarized data :" + status);
+                doc = data;
+                google.charts.setOnLoadCallback(drawChart);
+            }
+        });
+        google.charts.load('current', {'packages':['bar']});
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Location', 'Public', 'Private'],
+                ['urban', doc.public_urban_ave, doc.private_urban_ave],
+                ['suburban', doc.public_suburban_ave, doc.private_suburban_ave],
+                ['small town', doc.public_smallTown_ave, doc.private_smallTown_ave],
+                ['small city', doc.public_smallCity_ave, doc.private_smallCity_ave]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Average Expense($) for 164 College/University',
+                    subtitle: 'Location, Ownership',
+                },
+                bars: 'vertical',
+                vAxis: {format: 'decimal'},
+                height: 400,
+                colors: ['#d95f02', '#7570b3']
+            };
+            var chart = new google.charts.Bar(document.getElementById('expense_chart_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+</head>
+
+<body background="/img/background.jpeg">
+<!-- title division -->
+<div id="titleDiv">
+    <h1>
+        The Statistics of University and College
+        <canvas id="canvasWelcome" width="400" height="45" style="float: right">
+            <p>Your browser does not support the canvas tag</p>
+        </canvas>
+    </h1>
+</div>
+
+<!-- navigator division -->
+<div id="navigatorDiv">
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li>
+            <a href="/overview_menu.html" class="menuLink">Overview<b></b></a>
+            <div class="menu" id="overview_menu">
+                <a href="/overview">Undergrad</a>
+                <a href="/overview">Graduate</a>
+            </div>
+        </li>
+        <li>
+            <a href="major.html" class="menuLink">Popular Majors<b></b></a>
+            <div class ="menu" id = "major">
+                <a href="#">Computer</a>
+                <a href="#">Communications</a>
+                <a href="#">Political Science</a>
+                <a href="#">Business</a>
+                <a href="#">Biology</a>
+                <a href="#">More...</a>
+            </div>
+        </li>
+        <li><a>News</a></li>
+        <li><a>Contact</a></li>
+        <li><a href="html/dashboard.html">DashBoard</a></li>
+        <li style="float:right"><a class="navigatorBar" href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+<div id="contentDiv">
+    <table class="searchPage">
+        <tr>
+            <td rowspan="2">
+                <div id="expense_chart_div"></div>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- footer division -->
+<div id="footerDiv"></div>
+</body>
+</html>

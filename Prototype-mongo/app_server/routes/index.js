@@ -19,6 +19,6 @@ router.post('/display', ctrlMain.post_display);
 router.post('/populate', ctrlMain.post_populate);
 router.get('/showAll', modelMain.showAllUniv);
 
-router.get('/dataSummary', modelMain.getSummarizeData);
+router.get('/aveExpense', modelMain.getSummarizeData);
 
 module.exports = router;

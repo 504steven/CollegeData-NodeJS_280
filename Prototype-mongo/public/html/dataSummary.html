@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="text/javascript" src="/js/jquery.js"></script>
+</head>
+<body>
+    <div id="chart_div"></div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         var url = "http://localhost:3000/dataSummary";
@@ -32,7 +36,7 @@
 
             var options = {
                 chart: {
-                    title: 'College/University Average Expense($) Factors',
+                    title: 'Average Expense($) for 164 College/University',
                     subtitle: 'Location, Ownership',
                 },
                 bars: 'vertical',
@@ -44,10 +48,6 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
     </script>
-</head>
-<body>
-    <div id="chart_div"></div>
-
 
 </body>
 </html>

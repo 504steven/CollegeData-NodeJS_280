@@ -214,6 +214,7 @@ function readDataFromFile() {
     var u_data;
     var count = 0;
     db.get(university_data_collection).createIndex({name: 1}, {unique: true});
+    db.get(university_data_collection).createIndex({state:1});
     readInterface.on('line', function (line) {
         line = line.trim();
         var s = line.indexOf("(def_");

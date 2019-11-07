@@ -244,27 +244,24 @@ function readDataFromFile() {
                     u_data.control = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
                     break;
                  case "(male:female":
-                    // console.log(strArr.toString());
-                    // var ratioDataArr = strArr[1].split(":", 2);
-                    // console.log(ratioDataArr.toString());
                     u_data.male_female_ratio = strArr[1].substring(6, strArr[1].length - 1);
                     break;
                 case "(sat":
                     if (strArr[1] === "verbal") {
-                        u_data.sat_verbal = strArr[2].slice(0, strArr[2].length - 1);
+                        u_data.sat_verbal = getNum( strArr[2]);
                     }
                     if (strArr[1] === "math") {
-                        u_data.sat_math = strArr[2].slice(0, strArr[2].length - 1);
+                        u_data.sat_math = getNum( strArr[2]);
                     }
                     break;
                 case "(expenses":
-                    u_data.expenses = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
+                    u_data.expenses = (getNum( strArr[1])*1000).toString();
                     break;
                 case "(percent_financial_aid":
                     u_data.percent_financial_aid = strArr[1].slice(0, strArr[1].length - 1);
                     break;
                 case "(no_applicants":
-                    u_data.no_applicants = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
+                    u_data.no_applicants = (getNum( strArr[1])*1000).toString();
                     break;
                 case "(percent_admittance":
                     u_data.percent_admittance = strArr[1].slice(0, strArr[1].length - 1);
@@ -319,20 +316,20 @@ function summarizeData() {
                     switch(doc.location) {
                         case "urban" :
                             public_urban[0]++;
-                            public_urban[1] += getNum(doc.expenses);
+                            public_urban[1] += doc.expenses;
                             // console.log(public_urban[1]);
                             break;
                         case "suburban" :
                             public_suburban[0]++;
-                            public_suburban[1] += getNum(doc.expenses);
+                            public_suburban[1] += doc.expenses;
                             break;
                         case "small_city" :
                             public_smallCity[0]++;
-                            public_smallCity[1] += getNum(doc.expenses);
+                            public_smallCity[1] += doc.expenses;
                             break;
                         case "small_town" :
                             public_smallTown[0]++;
-                            public_smallTown[1] += getNum(doc.expenses);
+                            public_smallTown[1] += doc.expenses;
                             break;
                         default:
                     }
@@ -340,19 +337,19 @@ function summarizeData() {
                     switch(doc.location) {
                         case "urban" :
                             private_urban[0]++;
-                            private_urban[1] += getNum(doc.expenses);
+                            private_urban[1] += doc.expenses;
                             break;
                         case "suburban" :
                             private_suburban[0]++;
-                            private_suburban[1] += getNum(doc.expenses);
+                            private_suburban[1] += doc.expenses;
                             break;
                         case "small_city" :
                             private_smallCity[0]++;
-                            private_smallCity[1] += getNum(doc.expenses);
+                            private_smallCity[1] += doc.expenses;
                             break;
                         case "small_town" :
                             private_smallTown[0]++;
-                            private_smallTown[1] += getNum(doc.expenses);
+                            private_smallTown[1] += doc.expenses;
                             break;
                         default:
                     }
@@ -396,7 +393,7 @@ function summarizeData() {
 // module.exports.getNum = getNum;
 
 function getNum(exp) {
-    return exp.match(/\d+/)[0]*1000;
+    return  exp.match(/\d+/)[0];
 }
 
 function UniversityData() {

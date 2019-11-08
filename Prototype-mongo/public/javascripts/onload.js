@@ -46,7 +46,7 @@ function initAll() {
 
     //google chart for dashboard
     google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart2);
 
 }
 
@@ -191,7 +191,7 @@ function resetTarget(event, ui) {
     $("#droppbleObject").removeClass("ui-state-highlight").html("Select Gender");
 }
 
-function drawChart() {
+function drawChart2() {
     // Define the chart to be drawn.
     var data = google.visualization.arrayToDataTable([
         ['City', 'Give up Rate', 'Enrollment Rate'],
@@ -212,7 +212,9 @@ function drawChart() {
         },
         vAxis: {
             title: 'University'
-        }
+        },
+        height: 220,
+        width: 650
     };
 
     // Instantiate and draw the chart.

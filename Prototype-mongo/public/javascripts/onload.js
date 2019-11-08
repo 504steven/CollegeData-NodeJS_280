@@ -43,6 +43,11 @@ function initAll() {
     // build dialog widget
     $("#dialog").dialog();
     $("#dialog").dialog("close");
+
+    //google chart for dashboard
+    google.charts.load('current', {packages: ['corechart','bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
 }
 
 function dropDownMenu() {
@@ -184,4 +189,33 @@ function highlightTarget(event, ui) {
 
 function resetTarget(event, ui) {
     $("#droppbleObject").removeClass("ui-state-highlight").html("Select Gender");
+}
+
+function drawChart() {
+    // Define the chart to be drawn.
+    var data = google.visualization.arrayToDataTable([
+        ['City', 'Give up Rate', 'Enrollment Rate'],
+        ['San Jose, SJSU', (100-19.05)*0.626, 19.05*0.626],
+        ['San Francisco, SFSU', (100-16.78)*0.9649, 16.78*0.9649],
+        ['East Bay, EBSU', (100-12.63)*0.9232, 12.63*0.9232],
+        ['Los Angeles, LASU', (100-23.34)*0.4398, 23.34*0.4398],
+        ['San Diego, SDSU', (100-23.96)*0.3518, 23.96*0.3518],
+    ]);
+
+    var options = {
+        title: 'Enrollment Rate of Popular Calstate Universities',
+        chartArea: {width: '50%'},
+        isStacked: true,
+        hAxis: {
+            title: 'Total Admission Rate',
+            minValue: 0,
+        },
+        vAxis: {
+            title: 'University'
+        }
+    };
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));
+    chart.draw(data, options);
 }

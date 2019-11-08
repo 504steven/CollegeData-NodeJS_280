@@ -8,6 +8,7 @@
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/onload.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
 
     <body background="/img/background.jpeg">
@@ -45,24 +46,7 @@
         </div>
 
         <!-- content division -->
-        <div id="contentDiv">
-            <table>
-                <tr align="center">
-                    <td class="overviewPage">
-                        <form action="/overview_result" method="post">
-                            <label>Filter</label>
-                            <Select name="filter">
-                                <option value="Acceptance_rate">Acceptance Rate</option>
-                                <option value="Graduation_rate">Graduation Rate</option>
-                                <option value="Average_cost">Average Annual Cost</option>
-                                <option value="Average_salary">Average Salary After Graduation</option>
-                            </Select>
-                            <input type="submit" value="See Results"/>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <div id="admitRateChart"/>
 
         <!-- footer division -->
         <div id="footerDiv"></div>

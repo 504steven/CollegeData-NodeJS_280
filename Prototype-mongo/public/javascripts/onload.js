@@ -19,7 +19,7 @@ function initAll() {
 
     // canvas init and canvas animation init
     // drawSmilingFace();
-    window.setInterval(drawWelcome, 50);
+     window.setInterval(drawWelcome, 50);
 
     // build resizable and draggable searching form
     $("#searchForm").resizable();
@@ -205,6 +205,7 @@ function drawChart2() {
     var options = {
         title: 'Enrollment Rate of Popular Calstate Universities',
         chartArea: {width: '50%'},
+        colors: ['#88B972', '#2B4520'],
         isStacked: true,
         hAxis: {
             title: 'Total Admission Rate',
@@ -214,8 +215,14 @@ function drawChart2() {
             title: 'University'
         },
         height: 220,
-        width: 650
+        width: 650,
+        backgroundColor: {
+            fill: '#EEEEEE',
+            fillOpacity: 0.7
+        }
     };
+
+
 
     // Instantiate and draw the chart.
     var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));

@@ -47,6 +47,10 @@ function initAll() {
     //google chart for dashboard
     google.charts.load('current', {packages: ['corechart','bar']});
     google.charts.setOnLoadCallback(drawChart2);
+    google.charts.load('current', {packages: ['corechart','bar']});
+    google.charts.setOnLoadCallback(drawChart3);
+    google.charts.load('current', {packages: ['corechart','bar']});
+    google.charts.setOnLoadCallback(drawChart4);
 
 }
 
@@ -222,7 +226,77 @@ function drawChart2() {
         }
     };
 
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));
+    chart.draw(data, options);
+}
 
+function drawChart3() {
+    // Define the chart to be drawn.
+    var data = google.visualization.arrayToDataTable([
+        ['City', 'Give up Rate', 'Enrollment Rate'],
+        ['San Jose, SJSU', (100-19.05)*0.626, 19.05*0.626],
+        ['San Francisco, SFSU', (100-16.78)*0.9649, 16.78*0.9649],
+        ['East Bay, EBSU', (100-12.63)*0.9232, 12.63*0.9232],
+        ['Los Angeles, LASU', (100-23.34)*0.4398, 23.34*0.4398],
+        ['San Diego, SDSU', (100-23.96)*0.3518, 23.96*0.3518],
+    ]);
+
+    var options = {
+        title: 'Enrollment Rate of Popular Calstate Universities',
+        chartArea: {width: '50%'},
+        colors: ['#88B972', '#2B4520'],
+        isStacked: true,
+        hAxis: {
+            title: 'Total Admission Rate',
+            minValue: 0,
+        },
+        vAxis: {
+            title: 'University'
+        },
+        height: 220,
+        width: 650,
+        backgroundColor: {
+            fill: '#EEEEEE',
+            fillOpacity: 0.7
+        }
+    };
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));
+    chart.draw(data, options);
+}
+
+function drawChart2() {
+    // Define the chart to be drawn.
+    var data = google.visualization.arrayToDataTable([
+        ['City', 'Give up Rate', 'Enrollment Rate'],
+        ['San Jose, SJSU', (100-19.05)*0.626, 19.05*0.626],
+        ['San Francisco, SFSU', (100-16.78)*0.9649, 16.78*0.9649],
+        ['East Bay, EBSU', (100-12.63)*0.9232, 12.63*0.9232],
+        ['Los Angeles, LASU', (100-23.34)*0.4398, 23.34*0.4398],
+        ['San Diego, SDSU', (100-23.96)*0.3518, 23.96*0.3518],
+    ]);
+
+    var options = {
+        title: 'Enrollment Rate of Popular Calstate Universities',
+        chartArea: {width: '50%'},
+        colors: ['#88B972', '#2B4520'],
+        isStacked: true,
+        hAxis: {
+            title: 'Total Admission Rate',
+            minValue: 0,
+        },
+        vAxis: {
+            title: 'University'
+        },
+        height: 220,
+        width: 650,
+        backgroundColor: {
+            fill: '#EEEEEE',
+            fillOpacity: 0.7
+        }
+    };
 
     // Instantiate and draw the chart.
     var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));

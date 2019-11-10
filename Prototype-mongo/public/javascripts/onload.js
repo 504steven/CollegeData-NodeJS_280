@@ -192,39 +192,65 @@ function resetTarget(event, ui) {
 }
 
 function drawChart2() {
-    // Define the chart to be drawn.
+   // Define the chart to be drawn.
     var data = google.visualization.arrayToDataTable([
-        ['City', 'Give up Rate', 'Enrollment Rate'],
-        ['San Jose, SJSU', (100-19.05)*0.626, 19.05*0.626],
-        ['San Francisco, SFSU', (100-16.78)*0.9649, 16.78*0.9649],
-        ['East Bay, EBSU', (100-12.63)*0.9232, 12.63*0.9232],
-        ['Los Angeles, LASU', (100-23.34)*0.4398, 23.34*0.4398],
-        ['San Diego, SDSU', (100-23.96)*0.3518, 23.96*0.3518],
-    ]);
+    ['university', 'Acceptance Rate %', { role: 'style' }],
+        ['Stanford', 4.8,'#2B4520'],
+        ['Harvard', 5.4,'#2B4520'],
+        ['Yale', 6.3,'#2B4520'],
+        ['Princeton', 6.5, '#2B4520'],
+        ['Columbia', 6.8,'#2B4520'],
+        // ['MIT', 7.9],
+        //  ['public university'],
+        ['UC Berkeley', 16.9,'#88B972'],
+        ['UCLA', 18,'#88B972'],
+        ['Georgia Tech', 25.8, '#88B972'],
+        ['UNC', 26.9, '#88B972'],
+        ['Michigan', 28.6, '#88B972'],
+    //   ['UVA', 29.9],
+    //  ['UCSD', 35.7]
+]);
+
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+        { calc: "stringify",
+            sourceColumn: 1,
+            format: 'percent',
+            type: "string",
+            role: "annotation" },
+        2]);
 
     var options = {
-        title: 'Enrollment Rate of Popular Calstate Universities',
-        chartArea: {width: '50%'},
-        colors: ['#88B972', '#2B4520'],
-        isStacked: true,
+        title: 'Universities with Lowest Acceptance Rate %',
+        chartArea: {width: '50%',height:'70%'},
+       // colors: ['#88B972', '#2B4520'],
+      //  displayAnnotations: true,
+        annotations: {
+            textStyle: { fontSize: 11 },
+        },
         hAxis: {
-            title: 'Total Admission Rate',
+           // title: 'Acceptance Rate',
             minValue: 0,
+           // format: 'percent'
+            gridlines: {
+                count: 0
+            },
+            textPosition: 'none'
         },
         vAxis: {
-            title: 'University'
+            title: 'Public v.s. Private',
         },
-        height: 220,
-        width: 650,
+        height: 300,
+        width: 600,
         backgroundColor: {
             fill: '#EEEEEE',
             fillOpacity: 0.7
-        }
+        },
+        bar: {groupWidth: "65%"},
+        legend: { position:'none'},
     };
-
-
 
     // Instantiate and draw the chart.
     var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));
-    chart.draw(data, options);
+    chart.draw(view, options);
 }

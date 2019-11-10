@@ -18,9 +18,8 @@ router.post('/update', ctrlMain.post_update);
 router.post('/display', ctrlMain.post_display);
 router.post('/populate', ctrlMain.post_populate);
 router.get('/showAll', modelMain.showAllUniv);
-
 router.get('/dashboard', ctrlMain.get_dashboard);
-
 router.get('/aveExpense', modelMain.getSummarizeData);
+router.get('/universityInfo', modelMain.get_universityInfo);
 
 module.exports = router;

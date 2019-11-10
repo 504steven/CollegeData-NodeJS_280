@@ -287,9 +287,24 @@ function readDataFromFile() {
 module.exports.getSummarizeData = getSummarizeData;
 
 function getSummarizeData(req, res) {
-    db.get(university_data_summary_collection).find( {}, function(err, docs) {
-        if(err)  { console.log("summarized data reading error :" + err);}
-        else {
+    db.get(university_data_summary_collection).find({}, function (err, docs) {
+        if (err) {
+            console.log("summarized data reading error :" + err);
+        } else {
+            res.json(docs[0]);
+        }
+    });
+}
+
+module.exports.get_universityInfo = getUniversityInfo;
+
+function getUniversityInfo(req, res) {
+    var schoolName = req.param('schoolName').toLowerCase();
+    console.log(schoolName);
+    db.get('university_data').find({"name": new RegExp(schoolName)}, function (err, docs) {
+        if (err) {
+            console.log("university data searching error:" + err);
+        } else {
             res.json(docs[0]);
         }
     });

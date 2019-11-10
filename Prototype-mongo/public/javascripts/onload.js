@@ -45,13 +45,11 @@ function initAll() {
     $("#dialog").dialog("close");
 
     //google chart for dashboard
+    drawChart1();
+    drawChart3();
+    drawChart4();
     google.charts.load('current', {packages: ['corechart','bar']});
     google.charts.setOnLoadCallback(drawChart2);
-    google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(drawChart3);
-    google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(drawChart4);
-
 }
 
 function dropDownMenu() {
@@ -195,47 +193,91 @@ function resetTarget(event, ui) {
     $("#droppbleObject").removeClass("ui-state-highlight").html("Select Gender");
 }
 
+function drawChart1() {
+    var url = "http://localhost:3000/aveExpense";
+    var doc = [];
+    $.get(url, function (data, status) {
+        if (status != 'success') {
+            console.log("get summarized data failed :" + status);
+        } else {
+            console.log("get summarized data :" + status);
+            doc = data;
+            google.charts.load('current', {'packages': ['bar']});
+            // $.get() is async, must setOnLoadCallback here, or the doc[] can be empty.
+            google.charts.setOnLoadCallback(function () {
+                var data = google.visualization.arrayToDataTable([
+                    ['Location', 'Public', 'Private'],
+                    ['urban', doc.public_urban_ave, doc.private_urban_ave],
+                    ['suburban', doc.public_suburban_ave, doc.private_suburban_ave],
+                    ['small town', doc.public_smallTown_ave, doc.private_smallTown_ave],
+                    ['small city', doc.public_smallCity_ave, doc.private_smallCity_ave]
+                ]);
+                var options = {
+                    chart: {
+                        title: 'Average Expense($) for 164 College/University',
+                        subtitle: 'Location, Ownership',
+                    },
+                    bars: 'vertical',
+                    vAxis: {format: 'decimal'},
+                    height: 300,
+                    width: 550,
+                    // colors: ['#d95f02', '#7570b3'],
+                    colors: ['#88B972', '#2B4520'],
+                    backgroundColor: {
+                        fill: '#EEEEEE',
+                        fillOpacity: 0.7
+                    }
+                };
+                var chart = new google.charts.Bar(document.getElementById('chart1'));
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            });
+        }
+    });
+}
+
 function drawChart2() {
-   // Define the chart to be drawn.
+    // Define the chart to be drawn.
     var data = google.visualization.arrayToDataTable([
-    ['university', 'Acceptance Rate %', { role: 'style' }],
-        ['Stanford', 4.8,'#2B4520'],
-        ['Harvard', 5.4,'#2B4520'],
-        ['Yale', 6.3,'#2B4520'],
+        ['university', 'Acceptance Rate %', {role: 'style'}],
+        ['Stanford', 4.8, '#2B4520'],
+        ['Harvard', 5.4, '#2B4520'],
+        ['Yale', 6.3, '#2B4520'],
         ['Princeton', 6.5, '#2B4520'],
-        ['Columbia', 6.8,'#2B4520'],
+        ['Columbia', 6.8, '#2B4520'],
         // ['MIT', 7.9],
         //  ['public university'],
-        ['UC Berkeley', 16.9,'#88B972'],
-        ['UCLA', 18,'#88B972'],
+        ['UC Berkeley', 16.9, '#88B972'],
+        ['UCLA', 18, '#88B972'],
         ['Georgia Tech', 25.8, '#88B972'],
         ['UNC', 26.9, '#88B972'],
         ['Michigan', 28.6, '#88B972'],
-    //   ['UVA', 29.9],
-    //  ['UCSD', 35.7]
-]);
+        //   ['UVA', 29.9],
+        //  ['UCSD', 35.7]
+    ]);
 
     var view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
-        { calc: "stringify",
+        {
+            calc: "stringify",
             sourceColumn: 1,
             format: 'percent',
             type: "string",
-            role: "annotation" },
+            role: "annotation"
+        },
         2]);
 
     var options = {
         title: 'Universities with Lowest Acceptance Rate %',
-        chartArea: {width: '50%',height:'70%'},
-       // colors: ['#88B972', '#2B4520'],
-      //  displayAnnotations: true,
+        chartArea: {width: '50%', height: '70%'},
+        // colors: ['#88B972', '#2B4520'],
+        //  displayAnnotations: true,
         annotations: {
-            textStyle: { fontSize: 11 },
+            textStyle: {fontSize: 11},
         },
         hAxis: {
-           // title: 'Acceptance Rate',
+            // title: 'Acceptance Rate',
             minValue: 0,
-           // format: 'percent'
+            // format: 'percent'
             gridlines: {
                 count: 0
             },
@@ -251,10 +293,130 @@ function drawChart2() {
             fillOpacity: 0.7
         },
         bar: {groupWidth: "65%"},
-        legend: { position:'none'},
+        legend: {position: 'none'},
     };
 
     // Instantiate and draw the chart.
-    var chart = new google.visualization.BarChart(document.getElementById('admitRateChart'));
+    var chart = new google.visualization.BarChart(document.getElementById('chart2'));
     chart.draw(view, options);
+}
+
+function drawChart3() {
+    var doc = [];
+    var schoolNames = ['stanford', 'harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'USC', 'MICHIGAN_state'];
+    for (var i = 0; i < schoolNames.length; i++) {
+        $.ajax({
+            async: false,
+            type: 'GET',
+            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            success: function (data, status) {
+                if (status != 'success') {
+                    console.log("get university data failed :" + status);
+                } else {
+                    console.log("get university data :" + status);
+                    doc[i] = {name: data.name, ratio: data.male_female_ratio};
+                }
+            }
+        });
+    }
+    var input = [['Name', 'Male', 'Female', { role: 'annotation' }]];
+    for (var i = 0; i < doc.length; i++) {
+        var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
+        var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
+        input.push([doc[i].name, m, f, '']);
+    }
+    google.charts.load('current', {'packages': ['bar']});
+    google.charts.setOnLoadCallback(function () {
+        var data = google.visualization.arrayToDataTable(input);
+        var options = {
+            chart: {
+                title: 'University Male/Female Ratio (%)'
+            },
+            annotations: {
+                textStyle: {fontSize: 11},
+            },
+            hAxis: {
+                title: 'Gender Ratio',
+                gridlines: {
+                    count: 3
+                },
+            },
+            vAxis: {
+                title: 'University',
+            },
+            height: 300,
+            width: 600,
+            legend: { position: 'top', maxLines: 3 },
+            bar: {groupWidth: "60%"},
+            bars: 'horizontal',
+            colors: ['#2B4520'],
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+            isStacked: true
+        };
+        var chart = new google.charts.Bar(document.getElementById('chart3'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    });
+}
+
+function drawChart4() {
+    var doc = [];
+    var schoolNames = ['stanford', 'harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'USC', 'MICHIGAN_state'];
+    for (var i = 0; i < schoolNames.length; i++) {
+        $.ajax({
+            async: false,
+            type: 'GET',
+            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            success: function (data, status) {
+                if (status != 'success') {
+                    console.log("get university data failed :" + status);
+                } else {
+                    console.log("get university data :" + status);
+                    doc[i] = {name: data.name, ratio: data.male_female_ratio};
+                }
+            }
+        });
+    }
+    var input = [['Name', 'Male', 'Female', { role: 'annotation' }]];
+    for (var i = 0; i < doc.length; i++) {
+        var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
+        var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
+        input.push([doc[i].name, m, f, '']);
+    }
+    google.charts.load('current', {'packages': ['bar']});
+    google.charts.setOnLoadCallback(function () {
+        var data = google.visualization.arrayToDataTable(input);
+        var options = {
+            chart: {
+                title: 'University Male/Female Ratio (%)'
+            },
+            annotations: {
+                textStyle: {fontSize: 11},
+            },
+            hAxis: {
+                title: 'Gender Ratio',
+                gridlines: {
+                    count: 3
+                },
+            },
+            vAxis: {
+                title: 'University',
+            },
+            height: 300,
+            width: 600,
+            legend: { position: 'top', maxLines: 3 },
+            bar: {groupWidth: "60%"},
+            bars: 'horizontal',
+            colors: ['#2B4520'],
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+            isStacked: true
+        };
+        var chart = new google.charts.Bar(document.getElementById('chart4'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    });
 }

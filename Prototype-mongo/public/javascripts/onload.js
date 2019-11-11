@@ -46,9 +46,9 @@ function initAll() {
 
     //google chart for dashboard
     drawChart1();
+    drawChart2();
     drawChart3();
     drawChart4();
-    drawChart2();
 }
 
 function dropDownMenu() {
@@ -254,7 +254,7 @@ function drawChart2() {
         });
     }
 
-    var input = [['university', 'Acceptance Rate %',{role: 'style'},{role: 'annotation'}]];
+    var input = [['university', 'Acceptance Rate %', {role: 'style'}, {role: 'annotation'}]];
     for (var i = 0; i < doc.length; i++) {
         var color = '#88B972';
         if (doc[i].control == 'private') {
@@ -263,66 +263,66 @@ function drawChart2() {
         // remove 'university_of_'
         var index = doc[i].name.indexOf('_of_');
         var name = doc[i].name;
-        if(index >= 0){
+        if (index >= 0) {
             name = doc[i].name.substring(index + 4);
         }
         var rate = parseFloat(doc[i].acceptance);
-        input.push([name, rate, color,rate]);
+        input.push([name, rate, color, rate]);
     }
 
-    google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(function(){
-    var data = google.visualization.arrayToDataTable(input);
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(function () {
+        var data = google.visualization.arrayToDataTable(input);
 
-    var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
-        {
-            calc: "stringify",
-            sourceColumn: 1,
-            format: 'percent',
-            type: "string",
-            role: "annotation"
-        },
-        2]);
-
-    var options = {
-        title: 'Universities with Lowest Acceptance Rate %',
-        chartArea: {width: '50%', height: '70%'},
-        // colors: ['#88B972', '#2B4520'],
-        //  displayAnnotations: true,
-        annotations: {
-            textStyle: {fontSize: 11},
-        },
-        hAxis: {
-            // title: 'Acceptance Rate',
-            minValue: 0,
-            // format: 'percent'
-            gridlines: {
-                count: 0
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                format: 'percent',
+                type: "string",
+                role: "annotation"
             },
-            textPosition: 'none'
-        },
-        vAxis: {
-            title: 'Public v.s. Private',
-        },
-        height: 280,
-        width: 580,
-        backgroundColor: {
-            fill: '#EEEEEE',
-            fillOpacity: 0.7
-        },
-        bar: {groupWidth: "65%"},
-        legend: {position: 'none'},
-    };
+            2]);
 
-    var chart = new google.visualization.BarChart(document.getElementById('chart2'));
-    chart.draw(view, options);
+        var options = {
+            title: 'Universities with Lowest Acceptance Rate %',
+            chartArea: {width: '50%', height: '70%'},
+            // colors: ['#88B972', '#2B4520'],
+            //  displayAnnotations: true,
+            annotations: {
+                textStyle: {fontSize: 11},
+            },
+            hAxis: {
+                // title: 'Acceptance Rate',
+                minValue: 0,
+                // format: 'percent'
+                gridlines: {
+                    count: 0
+                },
+                textPosition: 'none'
+            },
+            vAxis: {
+                title: 'Public v.s. Private',
+            },
+            height: 280,
+            width: 580,
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+            bar: {groupWidth: "65%"},
+            legend: {position: 'none'},
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart2'));
+        chart.draw(view, options);
     });
 }
 
 function drawChart3() {
     var doc = [];
-    var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'BENNINGTON', 'LESLEY'];
+    var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'SANJOSEstate', 'BENNINGTON', 'LESLEY'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -384,7 +384,8 @@ function drawChart3() {
 
 function drawChart4() {
     var doc = [];
-    var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'BENNINGTON', 'LESLEY'];
+    var schoolNames = ['harvard', 'Yale', 'MIT', 'Princeton', 'stanford', 'Columbia', 'Carnegie_Mellon', 'UC_berkeley',
+        'University_of_Michigan', 'GeorgiaTech', 'UC_LA', 'SANJOSEstate'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -395,37 +396,30 @@ function drawChart4() {
                     console.log("get university data failed :" + status);
                 } else {
                     console.log("get university data :" + status);
-                    doc[i] = {name: data.name, ratio: data.male_female_ratio};
+                    doc[i] = {
+                        name: data.name,
+                        sat_verbal: parseInt(data.sat_verbal),
+                        sat_math: parseInt(data.sat_math)
+                    };
                 }
             }
         });
     }
-    var input = [['Name', 'Male', 'Female', {role: 'annotation'}]];
-    for (var i = 0; i < doc.length; i++) {
-        var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
-        var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
-        input.push([doc[i].name, m, f, '']);
-    }
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages': ['table']});
     google.charts.setOnLoadCallback(function () {
-        var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
-        ]);
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'University');
+        data.addColumn('number', 'SAT Verbal');
+        data.addColumn('number', 'SAT Math');
+        for (var i = 0; i < doc.length; i++) {
+            data.addRow([doc[i].name, doc[i].sat_verbal, doc[i].sat_math]);
+        }
         var options = {
-            title: 'My Daily Activities',
-            height: 300,
-            width: 580,
-            backgroundColor: {
-                fill: '#EEEEEE',
-                fillOpacity: 0.7
-            }
+            height: '100%',
+            width: '100%',
+            showRowNumber: true
         };
-        var chart = new google.visualization.PieChart(document.getElementById('chart4'));
-        chart.draw(data, options);
+        var table = new google.visualization.Table(document.getElementById('chart4'));
+        table.draw(data, options);
     });
 }

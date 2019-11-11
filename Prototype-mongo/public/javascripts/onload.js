@@ -272,51 +272,44 @@ function drawChart2() {
 
     google.charts.load('current', {packages: ['corechart','bar']});
     google.charts.setOnLoadCallback(function(){
-    var data = google.visualization.arrayToDataTable(input);
 
-    var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
-        {
-            calc: "stringify",
-            sourceColumn: 1,
-            format: 'percent',
-            type: "string",
-            role: "annotation"
-        },
-        2]);
-
-    var options = {
-        title: 'Universities with Lowest Acceptance Rate %',
-        chartArea: {width: '50%', height: '70%'},
-        // colors: ['#88B972', '#2B4520'],
-        //  displayAnnotations: true,
-        annotations: {
-            textStyle: {fontSize: 11},
-        },
-        hAxis: {
-            // title: 'Acceptance Rate',
-            minValue: 0,
-            // format: 'percent'
-            gridlines: {
-                count: 0
+        var data = google.visualization.arrayToDataTable(input);
+        var options = {
+            title: 'Universities with Lowest Acceptance Rate %',
+            chartArea: {width: '60%', height: '75%', left:'27%',top:'17%'},
+            // colors: ['#88B972', '#2B4520'],
+            //  displayAnnotations: true,
+            annotations: {
+                textStyle: {fontSize: 11},
             },
-            textPosition: 'none'
-        },
-        vAxis: {
-            title: 'Public v.s. Private',
-        },
-        height: 280,
-        width: 580,
-        backgroundColor: {
-            fill: '#EEEEEE',
-            fillOpacity: 0.7
-        },
-        bar: {groupWidth: "65%"},
-        legend: {position: 'none'},
-    };
+            hAxis: {
+                // title: 'Acceptance Rate',
+                minValue: 0,
+                // format: 'percent'
+                gridlines: {
+                    count: 0
+                },
+                textPosition: 'none'
+            },
+            vAxis: {
+                title: 'Public v.s. Private',
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            height: 280,
+            width: 580,
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+            bar: {groupWidth: "65%"},
+            legend: {position: 'none'},
+            fontSize: 14,
+        };
 
-    var chart = new google.visualization.BarChart(document.getElementById('chart2'));
-    chart.draw(view, options);
+        var chart = new google.visualization.BarChart(document.getElementById('chart2'));
+        chart.draw(data, options);
     });
 }
 

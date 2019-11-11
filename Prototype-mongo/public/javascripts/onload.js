@@ -405,13 +405,8 @@ function drawChart4() {
                 title: 'University',
             },
             height: 300,
-<<<<<<< HEAD
             width: 580,
             legend: { position: 'top', maxLines: 3 },
-=======
-            width: 600,
-            legend: {position: 'top', maxLines: 3},
->>>>>>> 52c98a4e1a40a1f98fb7cc4316777b27a091cd6b
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],

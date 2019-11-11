@@ -214,12 +214,12 @@ function drawChart1() {
                 var options = {
                     chart: {
                         title: 'Average Expense($) for 164 College/University',
-                        subtitle: 'Location, Ownership',
+                        subtitle: 'Expense is majored affected by ownership, not locations.',
                     },
                     bars: 'vertical',
                     vAxis: {format: 'decimal'},
-                    height: 300,
-                    width: 550,
+                    height: 280,
+                    width: 580,
                     // colors: ['#d95f02', '#7570b3'],
                     colors: ['#88B972', '#2B4520'],
                     backgroundColor: {
@@ -305,8 +305,8 @@ function drawChart2() {
         vAxis: {
             title: 'Public v.s. Private',
         },
-        height: 300,
-        width: 600,
+        height: 280,
+        width: 580,
         backgroundColor: {
             fill: '#EEEEEE',
             fillOpacity: 0.7
@@ -364,8 +364,8 @@ function drawChart3() {
                 title: 'University',
             },
             height: 300,
-            width: 600,
-            legend: {position: 'top', maxLines: 3},
+            width: 580,
+            legend: { position: 'top', maxLines: 3 },
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],
@@ -424,8 +424,8 @@ function drawChart4() {
                 title: 'University',
             },
             height: 300,
-            width: 600,
-            legend: {position: 'top', maxLines: 3},
+            width: 580,
+            legend: { position: 'top', maxLines: 3 },
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],

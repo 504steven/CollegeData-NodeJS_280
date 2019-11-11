@@ -237,7 +237,7 @@ function drawChart1() {
 function drawChart2() {
     // Define the chart to be drawn.
     var doc = [];
-    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'GeorgiaTech', 'University_of_Michigan', 'UC_LA'];
+    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_Michigan'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -360,7 +360,6 @@ function drawChart3() {
             },
             height: 300,
             width: 580,
-            legend: { position: 'top', maxLines: 3 },
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],
@@ -377,8 +376,7 @@ function drawChart3() {
 
 function drawChart4() {
     var doc = [];
-    var schoolNames = ['harvard', 'Yale', 'MIT', 'Princeton', 'stanford', 'Columbia', 'Carnegie_Mellon', 'UC_berkeley',
-        'University_of_Michigan', 'GeorgiaTech', 'UC_LA', 'SANJOSEstate'];
+    var schoolNames = ['harvard', 'MIT', 'stanford', 'UC_berkeley', 'UC_LA', 'SANJOSEstate'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -398,21 +396,35 @@ function drawChart4() {
             }
         });
     }
-    google.charts.load('current', {'packages': ['table']});
+    google.charts.load('current', {'packages': ['line']});
     google.charts.setOnLoadCallback(function () {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'University');
-        data.addColumn('number', 'SAT Verbal');
-        data.addColumn('number', 'SAT Math');
+        data.addColumn('number', 'SAT verbal');
+        data.addColumn('number', 'SAT math');
         for (var i = 0; i < doc.length; i++) {
             data.addRow([doc[i].name, doc[i].sat_verbal, doc[i].sat_math]);
         }
         var options = {
-            height: '100%',
-            width: '100%',
-            showRowNumber: true
+            title: 'University SAT scores',
+            chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
+            hAxis: {
+                title: 'University',
+                gridlines: {
+                    count: 3
+                },
+            },
+            vAxis: {
+                title: 'SAT score',
+            },
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+            height: 300,
+            width: 580
         };
-        var table = new google.visualization.Table(document.getElementById('chart4'));
-        table.draw(data, options);
+        var chart = new google.charts.Line(document.getElementById('chart4'));
+        chart.draw(data, google.charts.Line.convertOptions(options));
     });
 }

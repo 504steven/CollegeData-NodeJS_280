@@ -270,24 +270,13 @@ function drawChart2() {
         input.push([name, rate, color, rate]);
     }
 
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(function () {
+    google.charts.load('current', {packages: ['corechart','bar']});
+    google.charts.setOnLoadCallback(function(){
+
         var data = google.visualization.arrayToDataTable(input);
-
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
-            {
-                calc: "stringify",
-                sourceColumn: 1,
-                format: 'percent',
-                type: "string",
-                role: "annotation"
-            },
-            2]);
-
         var options = {
             title: 'Universities with Lowest Acceptance Rate %',
-            chartArea: {width: '50%', height: '70%'},
+            chartArea: {width: '60%', height: '75%', left:'27%',top:'17%'},
             // colors: ['#88B972', '#2B4520'],
             //  displayAnnotations: true,
             annotations: {
@@ -304,6 +293,9 @@ function drawChart2() {
             },
             vAxis: {
                 title: 'Public v.s. Private',
+                textStyle: {
+                    fontSize: 12
+                }
             },
             height: 280,
             width: 580,
@@ -313,10 +305,11 @@ function drawChart2() {
             },
             bar: {groupWidth: "65%"},
             legend: {position: 'none'},
+            fontSize: 14,
         };
 
         var chart = new google.visualization.BarChart(document.getElementById('chart2'));
-        chart.draw(view, options);
+        chart.draw(data, options);
     });
 }
 

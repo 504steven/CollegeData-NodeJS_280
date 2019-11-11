@@ -48,8 +48,7 @@ function initAll() {
     drawChart1();
     drawChart3();
     drawChart4();
-    google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(drawChart2);
+    drawChart2();
 }
 
 function dropDownMenu() {
@@ -237,23 +236,43 @@ function drawChart1() {
 
 function drawChart2() {
     // Define the chart to be drawn.
-    var data = google.visualization.arrayToDataTable([
-        ['university', 'Acceptance Rate %', {role: 'style'}],
-        ['Stanford', 4.8, '#2B4520'],
-        ['Harvard', 5.4, '#2B4520'],
-        ['Yale', 6.3, '#2B4520'],
-        ['Princeton', 6.5, '#2B4520'],
-        ['Columbia', 6.8, '#2B4520'],
-        // ['MIT', 7.9],
-        //  ['public university'],
-        ['UC Berkeley', 16.9, '#88B972'],
-        ['UCLA', 18, '#88B972'],
-        ['Georgia Tech', 25.8, '#88B972'],
-        ['UNC', 26.9, '#88B972'],
-        ['Michigan', 28.6, '#88B972'],
-        //   ['UVA', 29.9],
-        //  ['UCSD', 35.7]
-    ]);
+    var doc = [];
+    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_NorthCarolina', 'University_of_Michigan'];
+    for (var i = 0; i < schoolNames.length; i++) {
+        $.ajax({
+            async: false,
+            type: 'GET',
+            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            success: function (data, status) {
+                if (status != 'success') {
+                    console.log("get university data failed :" + status);
+                } else {
+                    console.log("get university data :" + status);
+                    doc[i] = {name: schoolNames[i], acceptance: data.percent_admittance, control: data.control};
+                }
+            }
+        });
+    }
+
+    var input = [['university', 'Acceptance Rate %',{role: 'style'},{role: 'annotation'}]];
+    for (var i = 0; i < doc.length; i++) {
+        var color = '#88B972';
+        if (doc[i].control == 'private') {
+            color = '#2B4520';
+        }
+        // remove 'university_of_'
+        var index = doc[i].name.indexOf('_of_');
+        var name = doc[i].name;
+        if(index >= 0){
+            name = doc[i].name.substring(index + 4);
+        }
+        var rate = parseFloat(doc[i].acceptance);
+        input.push([name, rate, color,rate]);
+    }
+
+    google.charts.load('current', {packages: ['corechart','bar']});
+    google.charts.setOnLoadCallback(function(){
+    var data = google.visualization.arrayToDataTable(input);
 
     var view = new google.visualization.DataView(data);
     view.setColumns([0, 1,
@@ -296,9 +315,9 @@ function drawChart2() {
         legend: {position: 'none'},
     };
 
-    // Instantiate and draw the chart.
     var chart = new google.visualization.BarChart(document.getElementById('chart2'));
     chart.draw(view, options);
+    });
 }
 
 function drawChart3() {

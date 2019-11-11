@@ -319,7 +319,7 @@ function drawChart3() {
             }
         });
     }
-    var input = [['Name', 'Male', 'Female', { role: 'annotation' }]];
+    var input = [['Name', 'Male', 'Female', {role: 'annotation'}]];
     for (var i = 0; i < doc.length; i++) {
         var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
         var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
@@ -379,7 +379,7 @@ function drawChart4() {
             }
         });
     }
-    var input = [['Name', 'Male', 'Female', { role: 'annotation' }]];
+    var input = [['Name', 'Male', 'Female', {role: 'annotation'}]];
     for (var i = 0; i < doc.length; i++) {
         var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
         var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
@@ -405,8 +405,13 @@ function drawChart4() {
                 title: 'University',
             },
             height: 300,
+<<<<<<< HEAD
             width: 580,
             legend: { position: 'top', maxLines: 3 },
+=======
+            width: 600,
+            legend: {position: 'top', maxLines: 3},
+>>>>>>> 52c98a4e1a40a1f98fb7cc4316777b27a091cd6b
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],

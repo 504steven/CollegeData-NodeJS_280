@@ -303,7 +303,7 @@ function drawChart2() {
 
 function drawChart3() {
     var doc = [];
-    var schoolNames = ['stanford', 'harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'USC', 'MICHIGAN_state'];
+    var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'BENNINGTON', 'LESLEY'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -323,20 +323,22 @@ function drawChart3() {
     for (var i = 0; i < doc.length; i++) {
         var m = parseInt(doc[i].ratio.substring(0, doc[i].ratio.indexOf(':')));
         var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
-        input.push([doc[i].name, m, f, '']);
+        var mp = m / (m + f) * 100;
+        var fp = f / (m + f) * 100;
+        input.push([doc[i].name, mp, fp, '']);
     }
     google.charts.load('current', {'packages': ['bar']});
     google.charts.setOnLoadCallback(function () {
         var data = google.visualization.arrayToDataTable(input);
         var options = {
             chart: {
-                title: 'University Male/Female Ratio (%)'
+                title: 'University Male/Female Ratio'
             },
             annotations: {
                 textStyle: {fontSize: 11},
             },
             hAxis: {
-                title: 'Gender Ratio',
+                title: 'Gender Ratio (%)',
                 gridlines: {
                     count: 3
                 },
@@ -363,7 +365,7 @@ function drawChart3() {
 
 function drawChart4() {
     var doc = [];
-    var schoolNames = ['stanford', 'harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'USC', 'MICHIGAN_state'];
+    var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'BENNINGTON', 'LESLEY'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -385,38 +387,26 @@ function drawChart4() {
         var f = parseInt(doc[i].ratio.substring(doc[i].ratio.indexOf(':') + 1));
         input.push([doc[i].name, m, f, '']);
     }
-    google.charts.load('current', {'packages': ['bar']});
+    google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(function () {
-        var data = google.visualization.arrayToDataTable(input);
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work',     11],
+            ['Eat',      2],
+            ['Commute',  2],
+            ['Watch TV', 2],
+            ['Sleep',    7]
+        ]);
         var options = {
-            chart: {
-                title: 'University Male/Female Ratio (%)'
-            },
-            annotations: {
-                textStyle: {fontSize: 11},
-            },
-            hAxis: {
-                title: 'Gender Ratio',
-                gridlines: {
-                    count: 3
-                },
-            },
-            vAxis: {
-                title: 'University',
-            },
+            title: 'My Daily Activities',
             height: 300,
             width: 580,
-            legend: { position: 'top', maxLines: 3 },
-            bar: {groupWidth: "60%"},
-            bars: 'horizontal',
-            colors: ['#2B4520'],
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7
-            },
-            isStacked: true
+            }
         };
-        var chart = new google.charts.Bar(document.getElementById('chart4'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        var chart = new google.visualization.PieChart(document.getElementById('chart4'));
+        chart.draw(data, options);
     });
 }

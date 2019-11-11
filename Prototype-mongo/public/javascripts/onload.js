@@ -237,7 +237,7 @@ function drawChart1() {
 function drawChart2() {
     // Define the chart to be drawn.
     var doc = [];
-    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_NorthCarolina', 'University_of_Michigan'];
+    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'GeorgiaTech', 'University_of_Michigan', 'UC_LA'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
@@ -270,13 +270,13 @@ function drawChart2() {
         input.push([name, rate, color, rate]);
     }
 
-    google.charts.load('current', {packages: ['corechart','bar']});
-    google.charts.setOnLoadCallback(function(){
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+    google.charts.setOnLoadCallback(function () {
 
         var data = google.visualization.arrayToDataTable(input);
         var options = {
             title: 'Universities with Lowest Acceptance Rate %',
-            chartArea: {width: '60%', height: '75%', left:'27%',top:'17%'},
+            chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
             // colors: ['#88B972', '#2B4520'],
             //  displayAnnotations: true,
             annotations: {

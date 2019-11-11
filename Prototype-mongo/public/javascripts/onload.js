@@ -237,7 +237,7 @@ function drawChart1() {
 function drawChart2() {
     // Define the chart to be drawn.
     var doc = [];
-    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_Michigan'];
+    var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_NorthCarolina', 'University_of_Michigan'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,

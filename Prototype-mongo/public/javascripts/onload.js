@@ -417,6 +417,7 @@ function drawChart4() {
             vAxis: {
                 title: 'SAT score',
             },
+            colors: ['#2B4520','#88B972'],
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7

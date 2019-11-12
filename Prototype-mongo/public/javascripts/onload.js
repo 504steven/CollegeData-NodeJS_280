@@ -407,7 +407,6 @@ function drawChart4() {
         }
         var options = {
             title: 'University SAT scores',
-            subtitle: 'The lowest possible score on either section is 200',
             chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
             hAxis: {
                 title: 'University',

@@ -275,7 +275,7 @@ function drawChart2() {
 
         var data = google.visualization.arrayToDataTable(input);
         var options = {
-            title: 'Universities\' Acceptance Rates (%)',
+            title: 'Universities with the Lowest Acceptance Rates (%)',
             chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
             // colors: ['#88B972', '#2B4520'],
             //  displayAnnotations: true,

@@ -300,7 +300,6 @@ module.exports.get_universityInfo = getUniversityInfo;
 
 function getUniversityInfo(req, res) {
     var schoolName = req.param('schoolName').toLowerCase();
-    console.log(schoolName);
     db.get('university_data').find({"name": new RegExp(schoolName)}, function (err, docs) {
         if (err) {
             console.log("university data searching error:" + err);

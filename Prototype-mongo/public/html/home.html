@@ -53,29 +53,19 @@
         <div id="contentDiv">
             <table class="searchPage">
                 <tr>
-                    <td rowspan="2">
+                    <td>
                         <img id="rollingImage" src="/img/1.jpg"/>
                     </td>
                     <td>
-                        <p>Most frequently searched universities</p>
-                        <ol id="sortableUniversityList">
-                            <li>San Jose State University</li>
-                            <li>Sanford University</li>
-                            <li>University of California, Berkeley</li>
-                        </ol>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form action="/searchResult" method="get" onsubmit="return inputValidate()" id="searchForm">
+                        <form action="/searchResult" method="get" onsubmit="return inputValidate()" id="searchForm" style="position: relative; left: 100px; text-align: center">
                             <span class = "ui-icon ui-icon-star"></span>
                             <label for="schoolName">Please entry the university name</label>
                             <span class = "ui-icon ui-icon-star"></span>
                             <div id="dialogTab">
                                 <div id="dialog" title="Instruction">
                                     <p>
-                                        Enter the name of school you want to search (i.e. San Jose State University or SJSU).<br><br>
-                                        For now, we only have limited school data.
+                                        Enter the name of the university you want to search (i.e. stanford or uc_berkeley).<br><br>
+                                        For now, we only have limited university data.
                                     </p>
                                     <input type="button" onclick="closeDialog()" value="Ok" class="ui-state-default ui-corner-all"/>
                                 </div>

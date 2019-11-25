@@ -33,8 +33,8 @@ function initAll() {
     // $("#droppbleObject").bind("dropout", resetTarget);
 
     // build sortable tab
+    // $("#sortableUniversityList").sortable();
     $("#sortableLoginTab").sortable();
-    $("#sortableUniversityList").sortable();
 
     // build ajax tab
     $("#loginTab").tabs();

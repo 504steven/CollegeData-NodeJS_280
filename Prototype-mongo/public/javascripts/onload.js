@@ -33,7 +33,6 @@ function initAll() {
     // $("#droppbleObject").bind("dropout", resetTarget);
 
     // build sortable tab
-    // $("#sortableUniversityList").sortable();
     $("#sortableLoginTab").sortable();
 
     // build ajax tab
@@ -84,6 +83,9 @@ function toggleMenu() {
 }
 
 function changeImg() {
+    if (!document.getElementById('rollingImage')) {
+        return;
+    }
     imageNum++;
     if (imageNum > 3) {
         imageNum = 1;
@@ -159,6 +161,9 @@ function drawSmilingFace() {
 }
 
 function inputValidate() {
+    if (!document.getElementById('schoolName')) {
+        return;
+    }
     var schoolName = document.getElementById("schoolName").value;
     var error = "";
     if (schoolName == "") {
@@ -193,6 +198,9 @@ function resetTarget(event, ui) {
 }
 
 function drawChart1() {
+    if (!document.getElementById('chart1')) {
+        return;
+    }
     var url = "http://localhost:3000/aveExpense";
     var doc = [];
     $.get(url, function (data, status) {
@@ -235,6 +243,9 @@ function drawChart1() {
 }
 
 function drawChart2() {
+    if (!document.getElementById('chart2')) {
+        return;
+    }
     // Define the chart to be drawn.
     var doc = [];
     var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_NorthCarolina', 'University_of_Michigan'];
@@ -314,6 +325,9 @@ function drawChart2() {
 }
 
 function drawChart3() {
+    if (!document.getElementById('chart3')) {
+        return;
+    }
     var doc = [];
     var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'SANJOSEstate', 'BENNINGTON', 'LESLEY'];
     for (var i = 0; i < schoolNames.length; i++) {
@@ -375,6 +389,9 @@ function drawChart3() {
 }
 
 function drawChart4() {
+    if (!document.getElementById('chart4')) {
+        return;
+    }
     var doc = [];
     var schoolNames = ['harvard', 'MIT', 'stanford', 'UC_berkeley', 'UC_LA', 'SANJOSEstate'];
     for (var i = 0; i < schoolNames.length; i++) {

@@ -5,7 +5,7 @@ var monk = require("monk");
 var main = require('../controllers/main');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
-var db = monk("18.224.102.19:27017/goofyDB");   //
+var db = monk("18.224.102.19:27017/goofyDB");
 var university_data_collection = "university_data";
 var university_data_summary_collection = "university_data_summary";
 

@@ -66,7 +66,28 @@ html(lang='en')
         script(src = 'https://www.gstatic.com/charts/loader.js')
         script.
             var input = !{JSON.stringify(params).replace(/<\//g, '<\\/')};
+            drawMap();
             drawTable();
+
+            function drawMap() {
+                google.charts.load('current', {'packages': ['geochart']});
+                google.charts.setOnLoadCallback(function () {
+                    var data = google.visualization.arrayToDataTable([
+                        ['State'],
+                        [input['state']],
+                    ]);
+                    var options = {
+                        region: 'US',
+                        displayMode: 'regions',
+                        resolution: 'provinces',
+                        height: 350,
+                        width: 500
+                    };
+                    var chart = new google.visualization.GeoChart(document.getElementById('mapDiv'));
+                    chart.draw(data, options);
+                });
+            }
+
             function drawTable() {
                 google.charts.load('current', {'packages': ['table']});
                 google.charts.setOnLoadCallback(function () {
@@ -91,7 +112,7 @@ html(lang='en')
                         width: '100%',
                         cssClassNames: cssClassNames
                     };
-                    var table = new google.visualization.Table(document.getElementById('contentDiv'));
+                    var table = new google.visualization.Table(document.getElementById('tableDiv'));
                     table.draw(data, options);
                 });
             }
@@ -133,3 +154,5 @@ html(lang='en')
         h2 #{name}
         // content division
         #contentDiv
+            #mapDiv
+            #tableDiv

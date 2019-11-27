@@ -1,55 +1,55 @@
 # CMPE 280 Team Project - The Statistics of University and College
 
-##Data Source and Model
+## Data Source and Model
 UCI machine learning Repo (http://archive.ics.uci.edu/ml/datasets/university)
 
-##Clients
+## Clients
 People who want to apply for a university or interest in the university statistics.
 
-##Architecture and Technology
+## Architecture and Technology
 The overall architecture of the web application comply with the MVC architecture.
 
-###Front-End
+### Front-End
 - HTML, CSS, JavaScript
 - AJAX
 - jQuery
 - React
 - Google Charts
 
-###Back-End
+### Back-End
 - Node.js
 - Express.js
 - pug
 - monk
 
-###Database-Engine
+### Database-Engine
 - MongoDB
 
-##Patterns
-###Organization
+## Patterns
+### Organization
 - Feature, Search, and Browse
 - News Stream
 - Dashboard
 
-###Navigation
+### Navigation
 - Clear entry points
 - Fully connected
 
-###Page layout
+### Page layout
 - Visual Framework
 - Grid of Equals
 - Module Tabs
 - Responsive Enabling
 
-###List
+### List
 - Thumbnail Grid
 - Striped Rows
 
-###Action
+### Action
 - Hover Tools
 - Prominent “Done” Button
 
-###User input
+### User input
 - Forgiving Format
 - Tips and Hints
 - Good Defaults

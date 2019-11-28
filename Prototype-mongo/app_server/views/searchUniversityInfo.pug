@@ -6,50 +6,6 @@ html(lang='en')
         link(rel='stylesheet', href='/css/style.css')
         link(rel='stylesheet', href='/css/jquery-ui.css')
         style.
-            .cssHeaderRow {
-                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-                background-color: #2B4520;
-                color: white;
-            }
-
-            .cssTableRow {
-                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-                background-color: #88B972;
-                color: purple;
-            }
-
-            .cssOddTableRow {
-                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-                background-color: #88B972;
-                color: purple;
-            }
-
-            .cssSelectedTableRow {
-                font-size: 18px;
-                font-weight: bold;
-            }
-
-            .cssHoverTableRow {
-                background: #ccc;
-            }
-
-            .cssHeaderCell {
-                color: #FFFFFF;
-                font-size: 18px;
-                padding: 10px !important;
-                border: solid 1px #FFFFFF;
-            }
-
-            .cssTableCell {
-                font-size: 18px;
-                padding: 10px !important;
-                border: solid 1px #FFFFFF;
-            }
-
-            .cssRowNumberCell {
-                text-align: center;
-            }
-
             #contentDiv {
                 z-index: 10 !important;
             }
@@ -67,6 +23,7 @@ html(lang='en')
         script.
             var input = !{JSON.stringify(params).replace(/<\//g, '<\\/')};
             drawMap();
+            drawSATChart();
             drawTable();
 
             function drawMap() {
@@ -88,32 +45,29 @@ html(lang='en')
                 });
             }
 
-            function drawTable() {
-                google.charts.load('current', {'packages': ['table']});
+            function drawSATChart() {
+                google.charts.load('current', {'packages': ['bar']});
                 google.charts.setOnLoadCallback(function () {
-                    var data = new google.visualization.DataTable();
-                    data.addColumn('string', 'Item');
-                    data.addColumn('string', 'Value');
-                    for (var key in input) {
-                        data.addRow([key, input[key]]);
-                    }
-                    var cssClassNames = {
-                        'headerRow': 'cssHeaderRow',
-                        'tableRow': 'cssTableRow',
-                        'oddTableRow': 'cssOddTableRow',
-                        'selectedTableRow': 'cssSelectedTableRow',
-                        'hoverTableRow': 'cssHoverTableRow',
-                        'headerCell': 'cssHeaderCell',
-                        'tableCell': 'cssTableCell',
-                        'rowNumberCell': 'cssRowNumberCell'
-                    };
+                    var data = google.visualization.arrayToDataTable([
+                        ['University Name', 'Math', 'Verbal'],
+                        [input['name'], input['sat_math'], input['sat_verbal']],
+                    ]);
                     var options = {
-                        height: '100%',
-                        width: '100%',
-                        cssClassNames: cssClassNames
+                        chart: {
+                            title: 'Required SAT scores',
+                        },
+                        bars: 'vertical',
+                        height: 280,
+                        width: 580,
+                        vAxis: {format: 'decimal'},
+                        colors: ['#88B972', '#2B4520'],
+                        backgroundColor: {
+                            fill: '#EEEEEE',
+                            fillOpacity: 0.7
+                        }
                     };
-                    var table = new google.visualization.Table(document.getElementById('tableDiv'));
-                    table.draw(data, options);
+                    var chart = new google.charts.Bar(document.getElementById('satDiv'));
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
                 });
             }
 
@@ -152,7 +106,12 @@ html(lang='en')
                     a.navigatorBar(href='/logout') Logout
 
         h2 #{name}
+
         // content division
         #contentDiv
             #mapDiv
-            #tableDiv
+            #satDiv
+
+        form(action="/moreUniversityInfo" method="post")
+            input(type='hidden' value=name name="schoolName")
+            input(type="submit" value='More Details')

@@ -1,0 +1,138 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Detailed Results
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/jquery-ui.css')
+        style.
+            .cssHeaderRow {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                background-color: #2B4520;
+                color: white;
+            }
+
+            .cssTableRow {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                background-color: #88B972;
+                color: purple;
+            }
+
+            .cssOddTableRow {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                background-color: #88B972;
+                color: purple;
+            }
+
+            .cssSelectedTableRow {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .cssHoverTableRow {
+                background: #ccc;
+            }
+
+            .cssHeaderCell {
+                color: #FFFFFF;
+                font-size: 18px;
+                padding: 10px !important;
+                border: solid 1px #FFFFFF;
+            }
+
+            .cssTableCell {
+                font-size: 18px;
+                padding: 10px !important;
+                border: solid 1px #FFFFFF;
+            }
+
+            .cssRowNumberCell {
+                text-align: center;
+            }
+
+            #contentDiv {
+                z-index: 10 !important;
+            }
+
+            h2 {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                font-size: 30px;
+                text-align: center;
+                color: purple;
+            }
+        script(src = '/js/jquery.js')
+        script(src = '/js/jquery-ui.js')
+        script(src = '/js/onload.js')
+        script(src = 'https://www.gstatic.com/charts/loader.js')
+        script.
+            var input = !{JSON.stringify(params).replace(/<\//g, '<\\/')};
+            drawTable();
+
+            function drawTable() {
+                google.charts.load('current', {'packages': ['table']});
+                google.charts.setOnLoadCallback(function () {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'Item');
+                    data.addColumn('string', 'Value');
+                    for (var key in input) {
+                        data.addRow([key, input[key]]);
+                    }
+                    var cssClassNames = {
+                        'headerRow': 'cssHeaderRow',
+                        'tableRow': 'cssTableRow',
+                        'oddTableRow': 'cssOddTableRow',
+                        'selectedTableRow': 'cssSelectedTableRow',
+                        'hoverTableRow': 'cssHoverTableRow',
+                        'headerCell': 'cssHeaderCell',
+                        'tableCell': 'cssTableCell',
+                        'rowNumberCell': 'cssRowNumberCell'
+                    };
+                    var options = {
+                        height: '100%',
+                        width: '100%',
+                        cssClassNames: cssClassNames
+                    };
+                    var table = new google.visualization.Table(document.getElementById('tableDiv'));
+                    table.draw(data, options);
+                });
+            }
+
+    body(background='/img/background.jpeg')
+        // title division
+        #titleDiv
+            h1 The Statistics of University and College
+        // navigator division
+        #navigatorDiv
+            ul
+                li
+                    a(href='/home') Home
+                li
+                    a(href='/overview_menu.html' class='menuLink') Overview
+                        b
+                    div(class='menu' id = 'overview_menu')
+                        a(href='/overview') Undergrad
+                        a(href='/overview') Graduate
+                li
+                    a(href='/major.html' class='menuLink') Popular Majors
+                        b
+                    div(class='menu' id = 'major')
+                        a Computer
+                        a Communications
+                        a Political Science
+                        a Business
+                        a Biology
+                        a More...
+                li
+                    a News
+                li
+                    a Contact
+                li
+                    a(href='/dashboard') DashBoard
+                li(style='float:right')
+                    a.navigatorBar(href='/logout') Logout
+
+        h2 #{name}
+
+        // content division
+        #contentDiv
+            #tableDiv

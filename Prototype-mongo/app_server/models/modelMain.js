@@ -197,6 +197,28 @@ module.exports.findUniversityData = function(req, res) {
     });
 };
 
+module.exports.post_detailedUniversityData = function(req, res) {
+    var schoolName = req.param('schoolName').toLowerCase();
+    console.log(schoolName);
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+        if (err) {
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
+            main.sendPage(projectFolerName + 'public/html/error.html', res);
+        } else {
+            if (docs.length > 0) {
+                console.log(" found data: " + docs[0].name);
+                var data = {
+                    name: docs[0].name,
+                    params: docs[0]
+                };
+                res.render('moreUniversityInfo', data);
+            } else {
+                console.log(schoolName + " is not found");
+                main.sendPage(projectFolerName + 'public/html/error.html', res);
+            }
+        }
+    });
+};
 
 module.exports.readDataFromFile = readDataFromFile;
 

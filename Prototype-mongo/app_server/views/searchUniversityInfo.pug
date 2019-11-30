@@ -16,6 +16,17 @@ html(lang='en')
                 text-align: center;
                 color: purple;
             }
+
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                float: left;
+            }
+
         script(src = '/js/jquery.js')
         script(src = '/js/jquery-ui.js')
         script(src = '/js/onload.js')
@@ -24,7 +35,9 @@ html(lang='en')
             var input = !{JSON.stringify(params).replace(/<\//g, '<\\/')};
             drawMap();
             drawSATChart();
-            drawTable();
+            drawGenderChart();
+            drawAcceptanceChart();
+            drawExpenseChart();
 
             function drawMap() {
                 google.charts.load('current', {'packages': ['geochart']});
@@ -34,11 +47,17 @@ html(lang='en')
                         [input['state']],
                     ]);
                     var options = {
+                        title: "University Geographical Location",
+                        legend: 'state',
                         region: 'US',
                         displayMode: 'regions',
                         resolution: 'provinces',
                         height: 350,
-                        width: 500
+                        width: 500,
+                        backgroundColor: {
+                            fill: '#EEEEEE',
+                            fillOpacity: 0.7
+                        },
                     };
                     var chart = new google.visualization.GeoChart(document.getElementById('mapDiv'));
                     chart.draw(data, options);
@@ -49,25 +68,144 @@ html(lang='en')
                 google.charts.load('current', {'packages': ['bar']});
                 google.charts.setOnLoadCallback(function () {
                     var data = google.visualization.arrayToDataTable([
-                        ['University Name', 'Math', 'Verbal'],
-                        [input['name'], input['sat_math'], input['sat_verbal']],
+                        ['Category', 'Score', {role: 'style'}, {role: 'annotation'}],
+                        ['SAT Math', parseInt(input['sat_math']), '#88B972', input['sat_math']],
+                        ['SAT Verbal', parseInt(input['sat_verbal']), '#2B4520', input['sat_verbal']],
                     ]);
                     var options = {
-                        chart: {
-                            title: 'Required SAT scores',
-                        },
+                        title: "Required SAT scores",
                         bars: 'vertical',
-                        height: 280,
-                        width: 580,
-                        vAxis: {format: 'decimal'},
+                        width: 500,
+                        height: 350,
+                        bar: {groupWidth: "95%"},
+                        legend: {position: "none"},
+                        vAxis: {
+                            minValue: 0,
+                            maxValue: 800,
+                            gridlines: {
+                                count: 10
+                            },
+                        },
+                        backgroundColor: {
+                            fill: '#EEEEEE',
+                            fillOpacity: 0.7
+                        },
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById('satDiv'));
+                    chart.draw(data, options);
+                });
+            }
+
+            function drawAcceptanceChart() {
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(function () {
+                    var data = google.visualization.arrayToDataTable([
+                        ['University', 'Acceptance %', {role: 'style'}, {role: 'annotation'}],
+                        [input['name'], parseInt(input['percent_admittance']), '#2B4520', parseInt(input['percent_admittance'])],
+                        ['Average', 40, 'yellow', '40'],
+                    ]);
+                    var options = {
+                        title: 'University Acceptance Rate (%)',
+                        chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
+                        annotations: {
+                            textStyle: {fontSize: 11},
+                        },
+                        hAxis: {
+                            minValue: 0,
+                            maxValue: 100,
+                            gridlines: {
+                                count: 3
+                            },
+                        },
+                        vAxis: {
+                            textStyle: {
+                                fontSize: 12
+                            }
+                        },
+                        height: 350,
+                        width: 500,
+                        backgroundColor: {
+                            fill: '#EEEEEE',
+                            fillOpacity: 0.7
+                        },
+                        bar: {groupWidth: "95%"},
+                        legend: {position: 'none'},
+                        fontSize: 14,
+                        displayAnnotations: true,
+                    };
+                    var chart = new google.visualization.BarChart(document.getElementById('acceptanceDiv'));
+                    chart.draw(data, options);
+                });
+            }
+
+            function drawExpenseChart() {
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(function () {
+                    var data = google.visualization.arrayToDataTable([
+                        ['University', 'Expense $', {role: 'style'}, {role: 'annotation'}],
+                        [input['name'], parseInt(input['expenses']), '#2B4520', parseInt(input['expenses'])],
+                        ['Average', 5000, 'yellow', '5000'],
+                    ]);
+                    var options = {
+                        title: 'University Expense ($/Academic Year)',
+                        chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
+                        annotations: {
+                            textStyle: {fontSize: 11},
+                        },
+                        hAxis: {
+                            minValue: 0,
+                            maxValue: 15000,
+                            gridlines: {
+                                count: 3
+                            },
+                        },
+                        vAxis: {
+                            textStyle: {
+                                fontSize: 12
+                            }
+                        },
+                        height: 350,
+                        width: 500,
+                        backgroundColor: {
+                            fill: '#EEEEEE',
+                            fillOpacity: 0.7
+                        },
+                        bar: {groupWidth: "95%"},
+                        legend: {position: 'none'},
+                        fontSize: 14,
+                        displayAnnotations: true
+                    };
+                    var chart = new google.visualization.BarChart(document.getElementById('expenseDiv'));
+                    chart.draw(data, options);
+                });
+            }
+
+            function drawGenderChart() {
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(function () {
+                    var ratio = input['male_female_ratio'];
+                    var m = parseInt(ratio.substring(0, ratio.indexOf(':')));
+                    var f = parseInt(ratio.substring(ratio.indexOf(':') + 1));
+                    var mp = m / (m + f) * 100;
+                    var fp = f / (m + f) * 100;
+                    var data = google.visualization.arrayToDataTable([
+                        ['Gender', 'Ratio'],
+                        ['Male', mp],
+                        ['Female', fp]
+                    ]);
+                    var options = {
+                        title: 'University Gender Ratio',
+                        pieHole: 0.2,
+                        height: 350,
+                        width: 500,
                         colors: ['#88B972', '#2B4520'],
                         backgroundColor: {
                             fill: '#EEEEEE',
                             fillOpacity: 0.7
                         }
                     };
-                    var chart = new google.charts.Bar(document.getElementById('satDiv'));
-                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                    var chart = new google.visualization.PieChart(document.getElementById('genderDiv'));
+                    chart.draw(data, options);
                 });
             }
 
@@ -109,9 +247,15 @@ html(lang='en')
 
         // content division
         #contentDiv
-            #mapDiv
-            #satDiv
+            #mapDiv(style='float:left')
+            #satDiv(style='float:left')
+            br
+            #acceptanceDiv(style='float:left')
+            #expenseDiv(style='float:left')
+            br
+            #genderDiv(style='float:left')
 
-        form(action="/moreUniversityInfo" method="post")
-            input(type='hidden' value=name name="schoolName")
+        br
+        form(action='/moreUniversityInfo' method='post')
+            input(type='hidden' value=name name='schoolName')
             input(type="submit" value='More Details')

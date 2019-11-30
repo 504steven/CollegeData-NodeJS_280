@@ -6,10 +6,6 @@ html(lang='en')
         link(rel='stylesheet', href='/css/style.css')
         link(rel='stylesheet', href='/css/jquery-ui.css')
         style.
-            #contentDiv {
-                z-index: 10 !important;
-            }
-
             h2 {
                 font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
                 font-size: 30px;
@@ -24,7 +20,33 @@ html(lang='en')
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
-                float: left;
+                position: relative;
+                left: 47%;
+                text-align: center;
+            }
+
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #name {
+                background-color: #EEEEEE;
+                Opacity: 0.7;
+            }
+
+            #control {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                font-size: 40px;
+                text-align: center;
+                color: #2B4520;
+            }
+
+            #controlName {
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+                font-size: 30px;
+                text-align: center;
+                color: red;
             }
 
         script(src = '/js/jquery.js')
@@ -59,7 +81,7 @@ html(lang='en')
                             fillOpacity: 0.7
                         },
                     };
-                    var chart = new google.visualization.GeoChart(document.getElementById('mapDiv'));
+                    var chart = new google.visualization.GeoChart(document.getElementById('map'));
                     chart.draw(data, options);
                 });
             }
@@ -83,7 +105,7 @@ html(lang='en')
                             minValue: 0,
                             maxValue: 800,
                             gridlines: {
-                                count: 10
+                                count: 5
                             },
                         },
                         backgroundColor: {
@@ -91,7 +113,7 @@ html(lang='en')
                             fillOpacity: 0.7
                         },
                     };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('satDiv'));
+                    var chart = new google.visualization.ColumnChart(document.getElementById('sat'));
                     chart.draw(data, options);
                 });
             }
@@ -133,7 +155,7 @@ html(lang='en')
                         fontSize: 14,
                         displayAnnotations: true,
                     };
-                    var chart = new google.visualization.BarChart(document.getElementById('acceptanceDiv'));
+                    var chart = new google.visualization.BarChart(document.getElementById('acceptance'));
                     chart.draw(data, options);
                 });
             }
@@ -175,7 +197,7 @@ html(lang='en')
                         fontSize: 14,
                         displayAnnotations: true
                     };
-                    var chart = new google.visualization.BarChart(document.getElementById('expenseDiv'));
+                    var chart = new google.visualization.BarChart(document.getElementById('expense'));
                     chart.draw(data, options);
                 });
             }
@@ -204,7 +226,7 @@ html(lang='en')
                             fillOpacity: 0.7
                         }
                     };
-                    var chart = new google.visualization.PieChart(document.getElementById('genderDiv'));
+                    var chart = new google.visualization.PieChart(document.getElementById('gender'));
                     chart.draw(data, options);
                 });
             }
@@ -247,15 +269,25 @@ html(lang='en')
 
         // content division
         #contentDiv
-            #mapDiv(style='float:left')
-            #satDiv(style='float:left')
-            br
-            #acceptanceDiv(style='float:left')
-            #expenseDiv(style='float:left')
-            br
-            #genderDiv(style='float:left')
+            table
+                tr
+                    td#name
+                        #control Control
+                        br
+                        #controlName #{params.control}
+                    td#map
+                tr
+                    td#sat
+                    td#acceptance
+                tr
+                    td#expense
+                    td#gender
 
         br
+
         form(action='/moreUniversityInfo' method='post')
             input(type='hidden' value=name name='schoolName')
             input(type="submit" value='More Details')
+
+        br
+        br

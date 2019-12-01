@@ -6,15 +6,23 @@
     "start": "node app.ps"
   },
   "dependencies": {
-    "express": "^4.15.5",
-    "express-session": "^1.16.2",
     "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.4",
     "debug": "^2.6.9",
-    "line-reader": "^0.4.0",
-    "pug": "2.0.0-beta11",
+    "express": "^4.15.5",
+    "express-session": "^1.16.2",
     "http-errors": "~1.6.3",
+    "line-reader": "^0.4.0",
     "mongodb": "^2.2.25",
-    "monk": "^4.0.0"
+    "monk": "^4.0.0",
+    "pug": "2.0.0-beta11",
+    "react-dom": "latest",
+    "react": "latest",
+    "@material-ui/core": "latest"
+  },
+  "description": "https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/grid/NestedGrid.js",
+  "devDependencies": {
+    "@material-ui/core": "^4.7.0",
+    "react-scripts": "latest"
   }
 }

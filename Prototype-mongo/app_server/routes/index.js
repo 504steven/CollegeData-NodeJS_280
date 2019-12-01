@@ -22,5 +22,6 @@ router.get('/dashboard', ctrlMain.get_dashboard);
 router.get('/aveExpense', modelMain.getSummarizeData);
 router.get('/universityInfo', modelMain.get_universityInfo);
 router.post('/moreUniversityInfo', modelMain.post_detailedUniversityData);
+router.get('/contact', ctrlMain.get_contact);
 
 module.exports = router;

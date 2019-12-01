@@ -3154,7 +3154,7 @@
   (ACADEMIC_EMPHASIS ENGINEERING)
   (ACADEMIC_EMPHASIS HUMANITIES))
 
-(def_instance POLYTECHNIC_INSTITUTE_OF_ny
+(def_instance POLYTECHNIC_INSTITUTE_OF_NEWYORK
   (state ny)
   (location urban)
   (control private)

@@ -1,5 +1,5 @@
 (def_instance Adelphi
-   (state newyork)
+   (state ny)
    (location urban)
    (control private)
    (no_of_students thous:5_10)
@@ -155,7 +155,7 @@
    (academic_emphasis management)
    (academic_emphasis arts:sciences))
 (def_instance CCNY_City_College
-   (state newyork)
+   (state ny)
    (location urban)
    (control state)
    (no_of_students thous:10_15)
@@ -177,7 +177,7 @@
    (academic_emphasis nursing)
    (academic_emphasis performing_arts))
 (def_instance Colgate
-   (state newyork)
+   (state ny)
    (location small_town)
    (control private)
    (no_of_students thous:5_)
@@ -195,7 +195,7 @@
    (academic_emphasis biology)
    (academic_emphasis english))
 (def_instance Columbia
-   (state newyork)
+   (state ny)
    (location urban)
    (control private)
    (no_of_students thous:5_)
@@ -213,7 +213,7 @@
    (quality_of_life scale:1_5 3)
    (academic_emphasis liberal_arts))
 (def_instance Cooper_Union
-   (state newyork)
+   (state ny)
    (location urban)
    (control private)
    (no_of_students thous:5_)
@@ -231,7 +231,7 @@
    (academic_emphasis architecture)
    (academic_emphasis fine_arts))
 (def_instance Cornell
-   (state newyork)
+   (state ny)
    (location small_city)
    (control private)
    (no_of_students thous:10_15)
@@ -348,7 +348,7 @@
    (academic_emphasis biology)
    (academic_emphasis liberal_arts))
 (def_instance Hofstra
-   (state newyork)
+   (state ny)
    (location suburban)
    (no_of_students thous:5_10)
    (male:female ratio:50:50)
@@ -482,7 +482,7 @@
    (academic_emphasis engineering)
    (academic_emphasis architecture))
 (def_instance NYU
-   (state newyork)
+   (state ny)
    (location urban)
    (control private)
    (no_of_students thous:5_10)
@@ -501,7 +501,7 @@
    (academic_emphasis journalism)
    (academic_emphasis psychology))
 (def_instance Pratt
-   (state newyork)
+   (state ny)
    (location urban)
    (control private)
    (no_of_students thous:5_)
@@ -544,7 +544,7 @@
    (academic_emphasis liberal_arts)
    (academic_emphasis engineering))
 (def_instance Rensselaer
-   (state Newyork)
+   (state ny)
    (location small_city)
    (control private)
    (no_of_students thous:5_)
@@ -564,7 +564,7 @@
    (academic_emphasis architecture)
    (academic_emphasis management))
 (def_instance RochesterTech
-   (state newyork)
+   (state ny)
    (location suburban)
    (control private)
    (no_of_students thous:5_10)
@@ -1206,7 +1206,7 @@
   (ACADEMIC_EMPHASIS SOCIAL_STUDIES))
 
 (def_instance QUEENS
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control state)
   (no_of_students THOUS:15_20)
@@ -1226,7 +1226,7 @@
   (ACADEMIC_EMPHASIS ACCOUNTING))
 
 (def_instance BARUCH
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control state)
   (no_of_students THOUS:10_15)
@@ -1266,7 +1266,7 @@
   (ACADEMIC_EMPHASIS BUSINESS_EDUCATION))
 
 (def_instance TOURO
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_)
@@ -1529,7 +1529,7 @@
   (ACADEMIC_EMPHASIS MANAGEMENT))
 
 (def_instance BARNARD
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_)
@@ -1551,7 +1551,7 @@
   (ACADEMIC_EMPHASIS BIOLOGY))
 
 (def_instance FORDHAM
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_10)
@@ -1570,7 +1570,7 @@
   (ACADEMIC_EMPHASIS COMMUNICATIONS)
   (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION))
 (def_instance MARIST_COLLEGE
-  (state NEWYORK)
+  (state ny)
   (location suburban)
   (control private)
   (no_of_students THOUS:5_)
@@ -1607,7 +1607,7 @@
   (quality_of_life scale:1_5 5)
   (ACADEMIC_EMPHASIS LIBERAL_ARTS))
 (def_instance ST_JOHNS_U
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:10_15)
@@ -1626,8 +1626,8 @@
   (ACADEMIC_EMPHASIS LIBERAL_ARTS)
   (ACADEMIC_EMPHASIS BUSINESS_ADMINISTRATION)
   (ACADEMIC_EMPHASIS LAW))
-(def_instance NEWYORKIT
-  (state NEWYORK)
+(def_instance nyIT
+  (state ny)
   (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:10_15)
@@ -1648,7 +1648,7 @@
   (ACADEMIC_EMPHASIS CHEMISTRY)
   (ACADEMIC_EMPHASIS EDUCATION))
 (def_instance UNIVERSITY_OF_ROCHESTER
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_10)
@@ -1757,7 +1757,7 @@
   (ACADEMIC_EMPHASIS ARCHITECTURE))
 
 (def_instance BARD
-  (state NEWYORK)
+  (state ny)
   (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
@@ -2104,7 +2104,7 @@
   (ACADEMIC_EMPHASIS BIOLOGY))
 
 (def_instance JUILLIARD
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_)
@@ -2125,7 +2125,7 @@
   (ACADEMIC_EMPHASIS DRAMA))
 
 (def_instance EASTMAN_SCHOOL_OF_MUSIC
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control private)
   (control private)
@@ -2169,7 +2169,7 @@
   (ACADEMIC_EMPHASIS EDUCATION))
 
 (def_instance SYRACUSE
-  (state NEWYORK)
+  (state ny)
   (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:10_15)
@@ -2317,7 +2317,7 @@
   (ACADEMIC_EMPHASIS MARKETING))
 
 (def_instance CLARKSON_UNIVERSITY
-  (state NEWYORK)
+  (state ny)
   (location SMALL_CITY)
   (control private)
   (no_of_students THOUS:5_)
@@ -2377,7 +2377,7 @@
   (ACADEMIC_EMPHASIS MANAGEMENT))
 
 (def_instance SUNY_PLATTSBURGH
-  (state NEWYORK)
+  (state ny)
   (location SMALL_TOWN)
   (control state)
   (no_of_students THOUS:5_10)
@@ -2699,7 +2699,7 @@
   (ACADEMIC_EMPHASIS ENGLISH))
 
 (def_instance SUNY_BINGHAMTON
-  (state NEWYORK)
+  (state ny)
   (location suburban)
   (control state)
   (no_of_students THOUS:10_15)
@@ -2717,7 +2717,7 @@
   (quality_of_life scale:1_5 2))
 
 (def_instance SUNY_BUFFALO
-  (state NEWYORK)
+  (state ny)
   (location urban)
   (control state)
   (no_of_students THOUS:20+)
@@ -2742,7 +2742,7 @@
   (ACADEMIC_EMPHASIS SOCIAL_SCIENCE))
 
 (def_instance SUNY_ALBANY
-  (state NEWYORK)
+  (state ny)
   (location suburban)
   (control state)
   (no_of_students THOUS:15_20)
@@ -2811,7 +2811,7 @@
 
 
 (def_instance SUNY_STONY_BROOK
-  (state NEWYORK)
+  (state ny)
   (location suburban)
   (control state)
   (no_of_students THOUS:10_15)
@@ -2900,7 +2900,7 @@
   (ACADEMIC_EMPHASIS BIBLICAL_LANGUAGES))
 
 (def_instance VASSAR
-  (state NEWYORK)
+  (state ny)
   (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
@@ -2922,7 +2922,7 @@
   (ACADEMIC_EMPHASIS ENGLISH))
 
 (def_instance COLLEGE_OF_NEWROCHELLE
-  (state NEWYORK)
+  (state ny)
   (location SMALL_TOWN)
   (control private)
   (no_of_students THOUS:5_)
@@ -3154,8 +3154,8 @@
   (ACADEMIC_EMPHASIS ENGINEERING)
   (ACADEMIC_EMPHASIS HUMANITIES))
 
-(def_instance POLYTECHNIC_INSTITUTE_OF_NEWYORK
-  (state NEWYORK)
+(def_instance POLYTECHNIC_INSTITUTE_OF_ny
+  (state ny)
   (location urban)
   (control private)
   (no_of_students THOUS:5_)

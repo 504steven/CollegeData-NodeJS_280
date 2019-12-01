@@ -74,7 +74,7 @@ html(lang='en')
                     ]);
                     var options = {
                         title: "University Geographical Location",
-                        legend: 'state',
+                        // legend: 'none',
                         region: 'US',
                         displayMode: 'regions',
                         resolution: 'provinces',
@@ -94,16 +94,15 @@ html(lang='en')
                 google.charts.load('current', {'packages': ['bar']});
                 google.charts.setOnLoadCallback(function () {
                     var data = google.visualization.arrayToDataTable([
-                        ['Category', 'Score', {role: 'style'}, {role: 'annotation'}],
-                        ['SAT Math', parseInt(input['sat_math']), '#88B972', input['sat_math']],
-                        ['SAT Verbal', parseInt(input['sat_verbal']), '#2B4520', input['sat_verbal']],
+                        ['Category', 'Score', {role: 'style'}, {role: 'annotation'}, 'Average', {role: 'style'}],
+                        ['SAT Math', parseInt(input['sat_math']), '#2B4520', input['sat_math'], #{satMathAve}, 'red'],
+                        ['SAT Verbal', parseInt(input['sat_verbal']), '#88B972', input['sat_verbal'], #{satVerbalAve}, 'red'],
                     ]);
                     var options = {
                         title: 'Required SAT scores',
-                        bars: 'vertical',
                         width: 500,
                         height: 350,
-                        bar: {groupWidth: "95%"},
+                        bar: {groupWidth: "85%"},
                         legend: {position: "none"},
                         vAxis: {
                             minValue: 0,
@@ -116,26 +115,27 @@ html(lang='en')
                             fill: '#EEEEEE',
                             fillOpacity: 0.7
                         },
+                        seriesType: 'bars',
+                        series: {1: {type: 'scatter'}},
                     };
-                    var chart = new google.visualization.ColumnChart(document.getElementById('sat'));
+                    var chart = new google.visualization.ComboChart(document.getElementById('sat'));
                     chart.draw(data, options);
                 });
             }
 
             function drawAcceptanceChart() {
-                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.load('current', {packages: ['corechart']});
                 google.charts.setOnLoadCallback(function () {
                     var data = google.visualization.arrayToDataTable([
-                        ['University', 'Acceptance %', {role: 'style'}, {role: 'annotation'}],
-                        [input['name'], parseInt(input['percent_admittance']), '#2B4520', parseInt(input['percent_admittance'])],
-                        ['Average', 40, 'yellow', '40'],
+                        ['University', 'Acceptance %', {role: 'style'}, {role: 'annotation'}, 'Average', {role: 'style'}],
+                        [input['name'], parseInt(input['percent_admittance']), '#2B4520', parseInt(input['percent_admittance']), #{acceptanceAve}, 'red'],
                     ]);
                     var options = {
                         title: 'University Acceptance Rate (%)',
-                        chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
-                        annotations: {
-                            textStyle: {fontSize: 11},
-                        },
+                        height: 350,
+                        width: 500,
+                        bar: {groupWidth: "50%"},
+                        legend: {position: "none"},
                         hAxis: {
                             minValue: 0,
                             maxValue: 100,
@@ -143,41 +143,32 @@ html(lang='en')
                                 count: 3
                             },
                         },
-                        vAxis: {
-                            textStyle: {
-                                fontSize: 12
-                            }
-                        },
-                        height: 350,
-                        width: 500,
                         backgroundColor: {
                             fill: '#EEEEEE',
                             fillOpacity: 0.7
                         },
-                        bar: {groupWidth: "95%"},
-                        legend: {position: 'none'},
-                        fontSize: 14,
-                        displayAnnotations: true,
+                        orientation: 'vertical',
+                        seriesType: 'bars',
+                        series: {1: {type: 'scatter'}},
                     };
-                    var chart = new google.visualization.BarChart(document.getElementById('acceptance'));
+                    var chart = new google.visualization.ComboChart(document.getElementById('acceptance'));
                     chart.draw(data, options);
                 });
             }
 
             function drawExpenseChart() {
-                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.load('current', {packages: ['corechart']});
                 google.charts.setOnLoadCallback(function () {
                     var data = google.visualization.arrayToDataTable([
-                        ['University', 'Expense $', {role: 'style'}, {role: 'annotation'}],
-                        [input['name'], parseInt(input['expenses']), '#2B4520', parseInt(input['expenses'])],
-                        ['Average', 5000, 'yellow', '5000'],
+                        ['University', 'Expense $', {role: 'style'}, {role: 'annotation'}, 'Average', {role: 'style'}],
+                        [input['name'], parseInt(input['expenses']), '#2B4520', parseInt(input['expenses']), #{expenseAve}, 'red'],
                     ]);
                     var options = {
                         title: 'University Expense ($/Academic Year)',
-                        chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
-                        annotations: {
-                            textStyle: {fontSize: 11},
-                        },
+                        height: 350,
+                        width: 500,
+                        bar: {groupWidth: "50%"},
+                        legend: {position: 'none'},
                         hAxis: {
                             minValue: 0,
                             maxValue: 15000,
@@ -185,23 +176,15 @@ html(lang='en')
                                 count: 3
                             },
                         },
-                        vAxis: {
-                            textStyle: {
-                                fontSize: 12
-                            }
-                        },
-                        height: 350,
-                        width: 500,
                         backgroundColor: {
                             fill: '#EEEEEE',
                             fillOpacity: 0.7
                         },
-                        bar: {groupWidth: "95%"},
-                        legend: {position: 'none'},
-                        fontSize: 14,
-                        displayAnnotations: true
+                        orientation: 'vertical',
+                        seriesType: 'bars',
+                        series: {1: {type: 'scatter'}},
                     };
-                    var chart = new google.visualization.BarChart(document.getElementById('expense'));
+                    var chart = new google.visualization.ComboChart(document.getElementById('expense'));
                     chart.draw(data, options);
                 });
             }

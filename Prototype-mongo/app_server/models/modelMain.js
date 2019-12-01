@@ -175,24 +175,65 @@ module.exports.showAllUniv = function(req, res) {
 };
 
 module.exports.findUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName').toLowerCase();
-    console.log(schoolName);
-    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+    db.get(university_data_collection).find({}, function(err, docs) {
         if (err) {
-            console.log("finding data for " + schoolName + ", ERROR: " + err);
-            main.sendPage(projectFolerName + 'public/html/error.html', res);
+            res.send("read database error");
         } else {
-            if (docs.length > 0) {
-                console.log(" found data: " + docs[0].name);
-                var data = {
-                    name: docs[0].name,
-                    params: docs[0]
-                };
-                res.render('searchUniversityInfo', data);
-            } else {
-                console.log(schoolName + " is not found");
-                main.sendPage(projectFolerName + 'public/html/error.html', res);
+            var satMathSum = 0;
+            var satVerbalSum = 0;
+            var acceptanceSum = 0;
+            var expenseSum = 0;
+            var satMathSize = 0;
+            var satVerbalSize = 0;
+            var acceptanceSize = 0;
+            var expenseSize = 0;
+            for (var i = 0; i < docs.length; i++) {
+                if (parseInt(docs[i].sat_math)) {
+                    satMathSize++;
+                    satMathSum += parseInt(docs[i].sat_math);
+                }
+                if (parseInt(docs[i].sat_verbal)) {
+                    satVerbalSize++;
+                    satVerbalSum += parseInt(docs[i].sat_verbal);
+                }
+                if (parseInt(docs[i].percent_admittance)) {
+                    acceptanceSize++;
+                    acceptanceSum += parseInt(docs[i].percent_admittance);
+                }
+                if (parseInt(docs[i].expenses)) {
+                    expenseSize++;
+                    expenseSum += parseInt(docs[i].expenses);
+                }
             }
+            var satMathAve = satMathSum / satMathSize;
+            var satVerbalAve = satVerbalSum / satVerbalSize;
+            var acceptanceAve = acceptanceSum / acceptanceSize;
+            var expenseAve = expenseSum / expenseSize;
+
+            var schoolName = req.param('schoolName').toLowerCase();
+            console.log(schoolName);
+            db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+                if (err) {
+                    console.log("finding data for " + schoolName + ", ERROR: " + err);
+                    main.sendPage(projectFolerName + 'public/html/error.html', res);
+                } else {
+                    if (docs.length > 0) {
+                        console.log(" found data: " + docs[0].name);
+                        var data = {
+                            name: docs[0].name,
+                            params: docs[0],
+                            satMathAve: satMathAve,
+                            satVerbalAve: satVerbalAve,
+                            acceptanceAve: acceptanceAve,
+                            expenseAve: expenseAve,
+                        };
+                        res.render('searchUniversityInfo', data);
+                    } else {
+                        console.log(schoolName + " is not found");
+                        main.sendPage(projectFolerName + 'public/html/error.html', res);
+                    }
+                }
+            });
         }
     });
 };

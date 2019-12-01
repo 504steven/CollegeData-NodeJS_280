@@ -9,6 +9,10 @@ module.exports.get_register = function(req, res) {
     sendPage(projectFolerName + 'public/html/loginAndRegister.html', res);
 };
 
+module.exports.get_contact = function(req, res) {
+    sendPage(projectFolerName + 'public/html/contact.html', res);
+};
+
 module.exports.get_admin = function(req, res) {
     sendPage(projectFolerName + 'public/html/admin.html', res);
 };

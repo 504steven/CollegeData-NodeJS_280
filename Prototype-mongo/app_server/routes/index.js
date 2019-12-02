@@ -3,7 +3,6 @@ var router = express.Router();
 var ctrlMain = require("../controllers/main");
 var modelMain = require("../models/modelMain");
 
-
 router.get('/', ctrlMain.get_register);
 router.get('/admin', ctrlMain.get_admin);
 router.post('/register', ctrlMain.post_register);

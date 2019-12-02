@@ -202,8 +202,13 @@ html(lang='en')
                         ['Male', mp],
                         ['Female', fp]
                     ]);
+                    var maleAve = #{maleAve};
+                    var femaleAve = #{femaleAve};
+                    var maleAvePercentage = maleAve / (maleAve + femaleAve) * 100;
+                    var femaleAvePercentage = femaleAve / (maleAve + femaleAve) * 100;
+
                     var options = {
-                        title: 'University Gender Ratio',
+                        title: 'University Gender Ratio\n' + 'Average Male:Female (' + maleAvePercentage.toFixed(2) + ' : ' + femaleAvePercentage.toFixed(2) + ')',
                         pieHole: 0.2,
                         height: 350,
                         width: 500,

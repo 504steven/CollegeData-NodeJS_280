@@ -219,10 +219,15 @@ module.exports.findUniversityData = function (req, res) {
             var satVerbalSum = 0;
             var acceptanceSum = 0;
             var expenseSum = 0;
+            var maleSum = 0;
+            var femaleSum = 0;
             var satMathSize = 0;
             var satVerbalSize = 0;
             var acceptanceSize = 0;
             var expenseSize = 0;
+            var maleSize = 0;
+            var femaleSize = 0;
+
             for (var i = 0; i < docs.length; i++) {
                 if (parseInt(docs[i].sat_math)) {
                     satMathSize++;
@@ -240,11 +245,26 @@ module.exports.findUniversityData = function (req, res) {
                     expenseSize++;
                     expenseSum += parseInt(docs[i].expenses);
                 }
+
+                var ratio = docs[i].male_female_ratio;
+                if (parseInt(ratio.substring(0, ratio.indexOf(':')))) {
+                    var m = parseInt(ratio.substring(0, ratio.indexOf(':')));
+                    maleSum += m;
+                    maleSize++;
+                }
+                if (parseInt(ratio.substring(ratio.indexOf(':') + 1))) {
+                    var f = parseInt(ratio.substring(ratio.indexOf(':') + 1));
+                    femaleSum += f;
+                    femaleSize++;
+                }
             }
+
             var satMathAve = satMathSum / satMathSize;
             var satVerbalAve = satVerbalSum / satVerbalSize;
             var acceptanceAve = acceptanceSum / acceptanceSize;
             var expenseAve = expenseSum / expenseSize;
+            var maleAve = maleSum / maleSize;
+            var femaleAve = femaleSum / femaleSize;
 
             var schoolName = req.param('schoolName').toLowerCase();
             console.log(schoolName);
@@ -262,6 +282,8 @@ module.exports.findUniversityData = function (req, res) {
                             satVerbalAve: satVerbalAve,
                             acceptanceAve: acceptanceAve,
                             expenseAve: expenseAve,
+                            maleAve: maleAve,
+                            femaleAve: femaleAve,
                         };
                         res.render('searchUniversityInfo', data);
                     } else {

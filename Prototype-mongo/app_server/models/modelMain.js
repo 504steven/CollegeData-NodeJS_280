@@ -13,6 +13,8 @@ module.exports.addUniversityData = function(req, res) {
     var u_data = new UniversityData();
     u_data.name = req.param('name').toLowerCase();
     u_data.state = req.param('state').toLowerCase();
+    u_data.location = req.param('location').toLowerCase();
+    u_data.control = req.param('control').toLowerCase();
     u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
     u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
     u_data.no_applicants = req.param('no_applicants').toLowerCase();
@@ -60,6 +62,16 @@ module.exports.updateUniversityData = function(req, res) {
                     u_data.state = req.param('state').toLowerCase();
                 } else {
                     u_data.state = docs[0].state;
+                }
+                if (req.param('location') !== 'No change') {
+                    u_data.location = req.param('location').toLowerCase();
+                } else {
+                    u_data.location = docs[0].location;
+                }
+                if (req.param('control') !== 'No change') {
+                    u_data.control = req.param('control').toLowerCase();
+                } else {
+                    u_data.control = docs[0].control;
                 }
                 if (req.param('percent_admittance') !== 'No change') {
                     u_data.percent_admittance = req.param('percent_admittance').toLowerCase();

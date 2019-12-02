@@ -9,48 +9,73 @@ var db = monk("18.224.102.19:27017/goofyDB");
 var university_data_collection = "university_data";
 var university_data_summary_collection = "university_data_summary";
 
-module.exports.addUniversityData = function(req, res) {
-    var u_data = new UniversityData();
-    u_data.name = req.param('name').toLowerCase();
-    u_data.state = req.param('state').toLowerCase();
-    u_data.location = req.param('location').toLowerCase();
-    u_data.control = req.param('control').toLowerCase();
-    u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
-    u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
-    u_data.no_applicants = req.param('no_applicants').toLowerCase();
-    u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
-    u_data.sat_math = req.param('sat_math').toLowerCase();
-    u_data.expenses = req.param('expenses').toLowerCase();
-    u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
-    u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
-    u_data.academics_scale = req.param('academics_scale').toLowerCase();
-    u_data.social_scale = req.param('social_scale').toLowerCase();
-    u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
-    db.get(university_data_collection).insert(u_data, function(err) {
+module.exports.addUniversityData = function (req, res) {
+    var schoolName = req.param('name').toLowerCase();
+    db.get(university_data_collection).find({"name": schoolName}, function (err, docs) {
         if (err) {
-            console.log("insert data for " + u_data.name + ", ERROR: " + err);
-            res.send("add fail");
-        } else {
-            res.send("add success");
-        }
-    });
-};
-
-module.exports.deleteUniversityData = function(req, res) {
-    var schoolName = req.param('schoolName').toLowerCase();
-    db.get(university_data_collection).remove({"name": schoolName}, function(err) {
-        if (err) {
-            console.log("remove data for " + schoolName + ", ERROR: " + err);
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("delete fail");
         } else {
-            res.send("delete success");
+            if (docs.length > 0) {
+                console.log(schoolName + " is found");
+                res.send("data already exists!");
+            } else {
+                var u_data = new UniversityData();
+                u_data.name = req.param('name').toLowerCase();
+                u_data.state = req.param('state').toLowerCase();
+                u_data.location = req.param('location').toLowerCase();
+                u_data.control = req.param('control').toLowerCase();
+                u_data.percent_admittance = req.param('percent_admittance').toLowerCase();
+                u_data.percent_enrolled = req.param('percent_enrolled').toLowerCase();
+                u_data.no_applicants = req.param('no_applicants').toLowerCase();
+                u_data.sat_verbal = req.param('sat_verbal').toLowerCase();
+                u_data.sat_math = req.param('sat_math').toLowerCase();
+                u_data.expenses = req.param('expenses').toLowerCase();
+                u_data.percent_financial_aid = req.param('percent_financial_aid').toLowerCase();
+                u_data.male_female_ratio = req.param('male_female_ratio').toLowerCase();
+                u_data.academics_scale = req.param('academics_scale').toLowerCase();
+                u_data.social_scale = req.param('social_scale').toLowerCase();
+                u_data.quality_of_life_scale = req.param('quality_of_life_scale').toLowerCase();
+                db.get(university_data_collection).insert(u_data, function (err) {
+                    if (err) {
+                        console.log("insert data for " + u_data.name + ", ERROR: " + err);
+                        res.send("add fail");
+                    } else {
+                        res.send("add success");
+                    }
+                });
+            }
         }
     });
 };
 
-module.exports.updateUniversityData = function(req, res) {
+module.exports.deleteUniversityData = function (req, res) {
     var schoolName = req.param('name').toLowerCase();
-    db.get(university_data_collection).find({"name": schoolName}, function(err, docs) {
+    db.get(university_data_collection).find({"name": schoolName}, function (err, docs) {
+        if (err) {
+            console.log("finding data for " + schoolName + ", ERROR: " + err);
+            res.send("delete fail");
+        } else {
+            if (docs.length > 0) {
+                db.get(university_data_collection).remove({"name": schoolName}, function (err) {
+                    if (err) {
+                        console.log("remove data for " + schoolName + ", ERROR: " + err);
+                        res.send("delete fail");
+                    } else {
+                        res.send("delete success");
+                    }
+                });
+            } else {
+                console.log(schoolName + " is not found");
+                res.send("No data found!");
+            }
+        }
+    });
+};
+
+module.exports.updateUniversityData = function (req, res) {
+    var schoolName = req.param('name').toLowerCase();
+    db.get(university_data_collection).find({"name": schoolName}, function (err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("update fail");
@@ -128,7 +153,7 @@ module.exports.updateUniversityData = function(req, res) {
                 } else {
                     u_data.quality_of_life_scale = docs[0].quality_of_life_scale;
                 }
-                db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function(err) {
+                db.get(university_data_collection).update({"name": u_data.name}, {$set: u_data}, function (err) {
                     if (err) {
                         console.log("update data for " + u_data.name + ", ERROR: " + err);
                         res.send("update fail");
@@ -144,10 +169,9 @@ module.exports.updateUniversityData = function(req, res) {
     });
 };
 
-module.exports.displayUniversityData = function(req, res) {
-    var schoolName = req.body.schoolName.toLowerCase();
-    console.log(schoolName);
-    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+module.exports.displayUniversityData = function (req, res) {
+    var schoolName = req.param('name').toLowerCase();
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("display fail");
@@ -167,18 +191,18 @@ module.exports.displayUniversityData = function(req, res) {
     });
 };
 
-module.exports.populateUniversityData = function(req, res) {
+module.exports.populateUniversityData = function (req, res) {
     readDataFromFile(req.param("fileName"));
     res.send("population complete");
 };
 
-module.exports.showAllUniv = function(req, res) {
-    db.get(university_data_collection).find({}, {}, function(err, docs) {
+module.exports.showAllUniv = function (req, res) {
+    db.get(university_data_collection).find({}, {}, function (err, docs) {
         if (err) {
             res.send("display fail");
         } else {
             if (docs.length > 0) {
-                res.render('showAllUnivName', {"schoollist":docs});
+                res.render('showAllUnivName', {"schoollist": docs});
             } else {
                 res.send("No data found!");
             }
@@ -186,8 +210,8 @@ module.exports.showAllUniv = function(req, res) {
     });
 };
 
-module.exports.findUniversityData = function(req, res) {
-    db.get(university_data_collection).find({}, function(err, docs) {
+module.exports.findUniversityData = function (req, res) {
+    db.get(university_data_collection).find({}, function (err, docs) {
         if (err) {
             res.send("read database error");
         } else {
@@ -224,7 +248,7 @@ module.exports.findUniversityData = function(req, res) {
 
             var schoolName = req.param('schoolName').toLowerCase();
             console.log(schoolName);
-            db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+            db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
                 if (err) {
                     console.log("finding data for " + schoolName + ", ERROR: " + err);
                     main.sendPage(projectFolerName + 'public/html/error.html', res);
@@ -250,10 +274,10 @@ module.exports.findUniversityData = function(req, res) {
     });
 };
 
-module.exports.post_detailedUniversityData = function(req, res) {
+module.exports.post_detailedUniversityData = function (req, res) {
     var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
-    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function(err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             main.sendPage(projectFolerName + 'public/html/error.html', res);
@@ -289,7 +313,7 @@ function readDataFromFile() {
     var u_data;
     var count = 0;
     db.get(university_data_collection).createIndex({name: 1}, {unique: true});
-    db.get(university_data_collection).createIndex({state:1});
+    db.get(university_data_collection).createIndex({state: 1});
     readInterface.on('line', function (line) {
         line = line.trim();
         var s = line.indexOf("(def_");
@@ -318,25 +342,25 @@ function readDataFromFile() {
                 case "(control":
                     u_data.control = strArr[1].slice(0, strArr[1].length - 1).toLowerCase();
                     break;
-                 case "(male:female":
+                case "(male:female":
                     u_data.male_female_ratio = strArr[1].substring(6, strArr[1].length - 1);
                     break;
                 case "(sat":
                     if (strArr[1] === "verbal") {
-                        u_data.sat_verbal = getNum( strArr[2]);
+                        u_data.sat_verbal = getNum(strArr[2]);
                     }
                     if (strArr[1] === "math") {
-                        u_data.sat_math = getNum( strArr[2]);
+                        u_data.sat_math = getNum(strArr[2]);
                     }
                     break;
                 case "(expenses":
-                    u_data.expenses = (getNum( strArr[1])*1000).toString();
+                    u_data.expenses = (getNum(strArr[1]) * 1000).toString();
                     break;
                 case "(percent_financial_aid":
                     u_data.percent_financial_aid = strArr[1].slice(0, strArr[1].length - 1);
                     break;
                 case "(no_applicants":
-                    u_data.no_applicants = (getNum( strArr[1])*1000).toString();
+                    u_data.no_applicants = (getNum(strArr[1]) * 1000).toString();
                     break;
                 case "(percent_admittance":
                     u_data.percent_admittance = strArr[1].slice(0, strArr[1].length - 1);
@@ -387,22 +411,22 @@ function getUniversityInfo(req, res) {
 module.exports.summarizeData = summarizeData;
 
 function summarizeData() {
-    var public_urban = [0,0];  // ct, total
-    var public_suburban = [0,0];
-    var public_smallCity = [0,0];
-    var public_smallTown = [0,0];
-    var private_urban = [0,0];
-    var private_suburban = [0,0];
-    var private_smallCity = [0,0];
-    var private_smallTown = [0,0];
+    var public_urban = [0, 0];  // ct, total
+    var public_suburban = [0, 0];
+    var public_smallCity = [0, 0];
+    var public_smallTown = [0, 0];
+    var private_urban = [0, 0];
+    var private_suburban = [0, 0];
+    var private_smallCity = [0, 0];
+    var private_smallTown = [0, 0];
 
-    db.get(university_data_collection).find({}, function(err, docs) {
+    db.get(university_data_collection).find({}, function (err, docs) {
         if (err) {
             console.log("summarize data, ERROR: " + err);
         } else {
-            docs.forEach( function(doc) {
-                if(doc.control == "state") {
-                    switch(doc.location) {
+            docs.forEach(function (doc) {
+                if (doc.control == "state") {
+                    switch (doc.location) {
                         case "urban" :
                             public_urban[0]++;
                             public_urban[1] += doc.expenses;
@@ -422,8 +446,8 @@ function summarizeData() {
                             break;
                         default:
                     }
-                }else {
-                    switch(doc.location) {
+                } else {
+                    switch (doc.location) {
                         case "urban" :
                             private_urban[0]++;
                             private_urban[1] += doc.expenses;
@@ -462,27 +486,27 @@ function summarizeData() {
         // console.log(public_urban_ave, public_urban[0], public_urban[1]);
 
         db.get(university_data_summary_collection).insert(
-                {
-                    public_urban_count: public_urban[0], public_urban_ave: public_urban_ave,
-                    public_suburban_count: public_suburban[0], public_suburban_ave: public_suburban_ave,
-                    public_smallCity_count: public_smallCity[0], public_smallCity_ave: public_smallCity_ave,
-                    public_smallTown_count: public_smallTown[0], public_smallTown_ave: public_smallTown_ave,
+            {
+                public_urban_count: public_urban[0], public_urban_ave: public_urban_ave,
+                public_suburban_count: public_suburban[0], public_suburban_ave: public_suburban_ave,
+                public_smallCity_count: public_smallCity[0], public_smallCity_ave: public_smallCity_ave,
+                public_smallTown_count: public_smallTown[0], public_smallTown_ave: public_smallTown_ave,
 
-                    private_urban_count: private_urban[0], private_urban_ave: private_urban_ave,
-                    private_suburban_count: private_suburban[0], private_suburban_ave: private_suburban_ave,
-                    private_smallCity_count: private_smallCity[0], private_smallCity_ave: private_smallCity_ave,
-                    private_smallTown_count: private_smallTown[0], private_smallTown_ave: private_smallTown_ave
-                },
-                function (err) {
-                    if (err) console.log("summarized data insert error :" + err);
-                });
+                private_urban_count: private_urban[0], private_urban_ave: private_urban_ave,
+                private_suburban_count: private_suburban[0], private_suburban_ave: private_suburban_ave,
+                private_smallCity_count: private_smallCity[0], private_smallCity_ave: private_smallCity_ave,
+                private_smallTown_count: private_smallTown[0], private_smallTown_ave: private_smallTown_ave
+            },
+            function (err) {
+                if (err) console.log("summarized data insert error :" + err);
+            });
     }
 }
 
 // module.exports.getNum = getNum;
 
 function getNum(exp) {
-    return  exp.match(/\d+/)[0];
+    return exp.match(/\d+/)[0];
 }
 
 function UniversityData() {

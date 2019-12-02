@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ctrlMain = require("../controllers/main");
+var ctrlMain = require("../controllers/cntrlMain");
 var modelMain = require("../models/modelMain");
 
 router.get('/', ctrlMain.get_register);

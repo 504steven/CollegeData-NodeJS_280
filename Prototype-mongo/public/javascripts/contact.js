@@ -9,7 +9,7 @@ class Message extends React.Component {
                         "fontFamily": "sans-serif", "color": "black", "border-radius": "20px"
                     }}>
                         <br/><br/><br/>
-                        <h3>Phone:
+                        <h3>Phone (1):
                             <br/>6940314851</h3>
                     </div>
                     <div style={{
@@ -18,7 +18,7 @@ class Message extends React.Component {
                         "fontFamily": "sans-serif", "color": "white", "border-radius": "20px"
                     }}>
                         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                        <h4>Email:
+                        <h4>Email (1):
                             <br/>goofy@goofy.com</h4>
                     </div>
                     <div style={{
@@ -27,7 +27,7 @@ class Message extends React.Component {
                         "fontFamily": "sans-serif", "color": "black", "border-radius": "20px"
                     }}>
                         <br/><br/><br/>
-                        <h3>Phone:
+                        <h3>Phone (2):
                             <br/>6450314821</h3>
                     </div>
                     <div style={{
@@ -36,7 +36,7 @@ class Message extends React.Component {
                         "fontFamily": "sans-serif", "color": "white", "border-radius": "20px"
                     }}>
                         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                        <h4>Email:
+                        <h4>Email (2):
                             <br/>goofy.2019@goofy.com</h4>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ var readline = require('readline');
 var fs = require('fs');
 var mongo = require("mongodb");
 var monk = require("monk");
-var main = require('../controllers/main');
+var main = require('../controllers/cntrlMain');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
 var db = monk("18.224.102.19:27017/goofyDB");

@@ -107,6 +107,10 @@ module.exports.post_populate = function(req, res) {
     modelMain.populateUniversityData(req, res);
 };
 
+module.exports.get_news = function(req, res) {
+    sendPage(projectFolerName + 'public/html/news.html', res);
+};
+
 module.exports.sendPage = sendPage;
 
 function sendPage(filename, res) {

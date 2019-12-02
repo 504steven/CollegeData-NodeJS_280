@@ -22,5 +22,6 @@ router.get('/aveExpense', ctrlMain.check_logged_In, modelMain.getSummarizeData);
 router.get('/universityInfo', ctrlMain.check_logged_In, modelMain.get_universityInfo);
 router.post('/moreUniversityInfo', ctrlMain.check_logged_In, modelMain.post_detailedUniversityData);
 router.get('/contact', ctrlMain.check_logged_In, ctrlMain.get_contact);
+router.get('/news', ctrlMain.check_logged_In, ctrlMain.get_news);
 
 module.exports = router;

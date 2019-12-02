@@ -227,6 +227,8 @@ html(lang='en')
         // title division
         #titleDiv
             h1 The Statistics of University and College
+                canvas(id="canvasWelcome" width="400" height="45" style="float: right")
+                    p Your browser does not support the canvas tag
         // navigator division
         #navigatorDiv
             ul
@@ -246,7 +248,7 @@ html(lang='en')
                         a University Distribution
                         a More...
                 li
-                    a News
+                    a(href='/news') News
                 li
                     a(href='/contact') Contact
                 li

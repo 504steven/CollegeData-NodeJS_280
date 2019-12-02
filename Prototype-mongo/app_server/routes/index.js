@@ -11,7 +11,7 @@ router.post('/login', ctrlMain.post_login);
 router.get('/logout', ctrlMain.get_logout);
 router.get('/home', ctrlMain.check_logged_In, ctrlMain.get_homePage);
 router.get('/overview', ctrlMain.check_logged_In, ctrlMain.get_overview);
-router.get('/searchResult', ctrlMain.check_logged_In, ctrlMain.get_collegeInfo);
+router.post('/searchResult', ctrlMain.check_logged_In, ctrlMain.post_collegeInfo);
 router.post('/add', ctrlMain.post_add);
 router.post('/delete', ctrlMain.post_delete);
 router.post('/update', ctrlMain.post_update);

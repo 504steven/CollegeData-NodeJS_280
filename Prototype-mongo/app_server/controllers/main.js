@@ -78,7 +78,7 @@ module.exports.check_logged_In = function(req, res, next) {
     }
 };
 
-module.exports.get_collegeInfo = function(req, res) {
+module.exports.post_collegeInfo = function(req, res) {
     console.log("finding college");
     modelMain.findUniversityData(req, res);
 };

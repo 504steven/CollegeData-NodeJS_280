@@ -221,7 +221,7 @@ function drawChart1() {
                 ]);
                 var options = {
                     chart: {
-                        title: 'Average Expense($) for 164 College/University',
+                        title: 'Average Expense(Half Year, $) of total 164 College/University',
                         subtitle: 'Expense is majored affected by ownership, not locations.',
                     },
                     bars: 'vertical',

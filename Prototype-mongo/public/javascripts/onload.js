@@ -227,7 +227,7 @@ function drawChart1() {
                     bars: 'vertical',
                     vAxis: {format: 'decimal'},
                     height: 280,
-                    width: 580,
+                    width: 620,
                     // colors: ['#d95f02', '#7570b3'],
                     colors: ['#88B972', '#2B4520'],
                     backgroundColor: {
@@ -309,7 +309,7 @@ function drawChart2() {
                 }
             },
             height: 280,
-            width: 580,
+            width: 620,
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7
@@ -373,7 +373,7 @@ function drawChart3() {
                 title: 'University',
             },
             height: 300,
-            width: 580,
+            width: 620,
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
             colors: ['#2B4520'],
@@ -444,7 +444,7 @@ function drawChart4() {
                 fillOpacity: 0.7
             },
             height: 300,
-            width: 580
+            width: 620
         };
         var chart = new google.charts.Line(document.getElementById('chart4'));
         chart.draw(data, google.charts.Line.convertOptions(options));

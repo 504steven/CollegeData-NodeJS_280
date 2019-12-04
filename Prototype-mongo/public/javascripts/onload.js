@@ -48,6 +48,8 @@ function initAll() {
     drawChart2();
     drawChart3();
     drawChart4();
+    drawChart5();
+    drawChart6();
 }
 
 function dropDownMenu() {
@@ -226,8 +228,8 @@ function drawChart1() {
                     },
                     bars: 'vertical',
                     vAxis: {format: 'decimal'},
-                    height: 280,
-                    width: 620,
+                    height: 300,
+                    width: 500,
                     // colors: ['#d95f02', '#7570b3'],
                     colors: ['#88B972', '#2B4520'],
                     backgroundColor: {
@@ -283,7 +285,6 @@ function drawChart2() {
 
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(function () {
-
         var data = google.visualization.arrayToDataTable(input);
         var options = {
             title: 'Universities with the Lowest Acceptance Rates (%)',
@@ -308,17 +309,16 @@ function drawChart2() {
                     fontSize: 12
                 }
             },
-            height: 280,
-            width: 620,
+            height: 300,
+            width: 400,
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7
             },
             bar: {groupWidth: "65%"},
             legend: {position: 'none'},
-            fontSize: 14,
+            // fontSize: 14,
         };
-
         var chart = new google.visualization.BarChart(document.getElementById('chart2'));
         chart.draw(data, options);
     });
@@ -357,34 +357,30 @@ function drawChart3() {
     google.charts.setOnLoadCallback(function () {
         var data = google.visualization.arrayToDataTable(input);
         var options = {
-            chart: {
-                title: 'University Male/Female Ratio'
-            },
+            title: 'University Male/Female Ratio (%)',
             annotations: {
                 textStyle: {fontSize: 11},
             },
             hAxis: {
-                title: 'Gender Ratio (%)',
                 gridlines: {
                     count: 3
                 },
             },
-            vAxis: {
-                title: 'University',
-            },
             height: 300,
-            width: 620,
+            width: 500,
             bar: {groupWidth: "60%"},
             bars: 'horizontal',
-            colors: ['#2B4520'],
+            colors: ['#2B4520', '#88B972'],
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7
             },
             isStacked: true
         };
-        var chart = new google.charts.Bar(document.getElementById('chart3'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        // var chart = new google.charts.Bar(document.getElementById('chart3'));
+        // chart.draw(data, google.charts.Bar.convertOptions(options));
+        var chart = new google.visualization.BarChart(document.getElementById('chart3'));
+        chart.draw(data, options);
     });
 }
 
@@ -424,15 +420,12 @@ function drawChart4() {
         }
         var options = {
             title: 'University SAT scores',
-            chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
             hAxis: {
-                title: 'University',
                 gridlines: {
                     count: 3
                 },
             },
             vAxis: {
-                title: 'SAT score',
                 viewWindow: {
                     max:800,
                     min:200
@@ -444,9 +437,84 @@ function drawChart4() {
                 fillOpacity: 0.7
             },
             height: 300,
-            width: 620
+            width: 500,
+            // legend: {position: 'top'},
         };
-        var chart = new google.charts.Line(document.getElementById('chart4'));
-        chart.draw(data, google.charts.Line.convertOptions(options));
+        // var chart = new google.charts.Line(document.getElementById('chart4'));
+        // chart.draw(data, google.charts.Line.convertOptions(options));
+        var chart = new google.visualization.LineChart(document.getElementById('chart4'));
+        chart.draw(data, options);
     });
+}
+
+function drawChart5() {
+    if (!document.getElementById('chart5')) {
+        return;
+    }
+    var doc = [];
+    var total = 0;
+    $.ajax({
+        async: false,
+        type: 'GET',
+        url: "http://localhost:3000/allUniversityInfo",
+        success: function (data, status) {
+            if (status != 'success') {
+                console.log("get university data failed :" + status);
+            } else {
+                console.log("get university data :" + status);
+                for (var i = 0; i < data.length; i++) {
+                    if (!doc[data[i].state]) {
+                        doc[data[i].state] = 1;
+                    } else {
+                        doc[data[i].state] = doc[data[i].state] + 1;
+                    }
+                    total++;
+                }
+            }
+        }
+    });
+    var input = [['State', 'University Number']];
+    for (var key in doc) {
+        input.push([key, doc[key]]);
+    }
+    google.charts.load('current', {'packages': ['geochart']});
+    google.charts.setOnLoadCallback(function () {
+        var data = google.visualization.arrayToDataTable(input);
+        var options = {
+            region: 'US',
+            displayMode: 'regions',
+            resolution: 'provinces',
+            height: 300,
+            width: 500,
+            backgroundColor: {
+                fill: '#EEEEEE',
+                fillOpacity: 0.7
+            },
+        };
+        var chart = new google.visualization.GeoChart(document.getElementById('chart5'));
+        chart.draw(data, options);
+    });
+}
+
+function drawChart6() {
+    if (!document.getElementById('chart6')) {
+        return;
+    }
+    var total = 0;
+    $.ajax({
+        async: false,
+        type: 'GET',
+        url: "http://localhost:3000/allUniversityInfo",
+        success: function (data, status) {
+            if (status != 'success') {
+                console.log("get university data failed :" + status);
+            } else {
+                console.log("get university data :" + status);
+                for (var i = 0; i < data.length; i++) {
+                    total++;
+                }
+            }
+        }
+    });
+    $('#chart6').html('<br><br><br><br><br><br><div id="chart6Title">Total Universities</div>' + '<br>' + '<div id="chart6Content">' + total + '</div>');
 }

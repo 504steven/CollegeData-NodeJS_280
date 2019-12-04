@@ -20,6 +20,7 @@ router.get('/showAll', modelMain.showAllUniv);
 router.get('/dashboard', ctrlMain.check_logged_In, ctrlMain.get_dashboard);
 router.get('/aveExpense', ctrlMain.check_logged_In, modelMain.getSummarizeData);
 router.get('/universityInfo', ctrlMain.check_logged_In, modelMain.get_universityInfo);
+router.get('/allUniversityInfo', modelMain.get_allUniversityInfo);
 router.post('/moreUniversityInfo', ctrlMain.check_logged_In, modelMain.post_detailedUniversityData);
 router.get('/contact', ctrlMain.check_logged_In, ctrlMain.get_contact);
 router.get('/news', ctrlMain.check_logged_In, ctrlMain.get_news);

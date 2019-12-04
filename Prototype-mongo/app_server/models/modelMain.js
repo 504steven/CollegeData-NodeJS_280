@@ -430,6 +430,18 @@ function getUniversityInfo(req, res) {
     });
 }
 
+module.exports.get_allUniversityInfo = getAllUniversityInfo;
+
+function getAllUniversityInfo(req, res) {
+    db.get('university_data').find({}, function (err, docs) {
+        if (err) {
+            console.log("university data searching error:" + err);
+        } else {
+            res.json(docs);
+        }
+    });
+}
+
 module.exports.summarizeData = summarizeData;
 
 function summarizeData() {

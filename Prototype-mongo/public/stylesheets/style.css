@@ -373,4 +373,25 @@ table.univInfo td{
   color: gray;
 }
 
+.ui-tabs .ui-tabs-nav {
+
+  display: flex;
+}
+.ui-tabs .ui-tabs-nav li {
+
+  flex: 1;
+  display: flex;
+  /* If placed in a small width sidebar or something like that disabling nowrap will fix the overflow issue */
+  white-space: normal;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+  flex: 1;
+  /* If you want to align tab titles center */
+  text-align: center;
+}
+
+div#tabs{
+  width: 1000px;
+}
 

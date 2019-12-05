@@ -39,8 +39,8 @@ function initAll() {
     $("#sortableLoginTab").sortable();
 
     // build ajax tab
-    $("#loginTab").tabs();
-    $("#adminTab").tabs();
+    $("#loginTab").tabs().css('width','500px').css('margin-left','auto').css('margin-right','auto');
+    $("#adminTab").tabs().css('width','1000px').css('margin-left','auto').css('margin-right','auto');
 
     // build dialog widget
     $("#dialog").dialog();

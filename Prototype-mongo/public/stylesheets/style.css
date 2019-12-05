@@ -269,7 +269,12 @@
 }
 /**/
 
-
+/* news page */
+.newsItem {
+  margin: 20px;
+  /*height: 300px;*/
+  width: 300px;
+}
 
 /* footer division */
 #footerDiv footer {

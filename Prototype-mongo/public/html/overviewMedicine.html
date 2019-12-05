@@ -2,14 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>HOME</title>
+        <title>Overview</title>
         <link rel="stylesheet" href="/css/style.css"/>
         <link rel="stylesheet" href="/css/jquery-ui.css"/>
         <script type="text/javascript" src="/js/jquery.js"></script>
         <script type="text/javascript" src="/js/jquery-ui.js"></script>
         <script type="text/javascript" src="/js/onload.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
+<!--    <body style="background: whitesmoke" >-->
     <body background="/img/background.jpeg">
         <!-- title division -->
         <div id="titleDiv">
@@ -43,40 +46,16 @@
                 <li><a href="/news">News</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/dashboard">DashBoard</a></li>
-                <li style="float:right"><a class="navigatorBar" href="/logout">Logout</a></li>
+                <li style="float:right"><a class="navigatorBar" href='/logout'>Logout</a></li>
             </ul>
         </div>
 
+        <!-- content division -->
         <div id="contentDiv">
-            <table class="searchPage">
-                <tr>
-                    <td>
-                        <img id="rollingImage" src="/img/1.jpg"/>
-                    </td>
-                    <td>
-                        <form action="/searchResult" method="post" onsubmit="return inputValidate()" id="searchForm" style="position: relative; left: 20%; text-align: center">
-                            <span class = "ui-icon ui-icon-star"></span>
-                            <label for="schoolName">Please entry the university name</label>
-                            <span class = "ui-icon ui-icon-star"></span>
-                            <div id="dialogTab">
-                                <div id="dialog" title="Instruction">
-                                    <p>
-                                        Enter the name of the university you want to search (i.e. stanford or uc_berkeley).<br><br>
-                                        For now, we only have limited university data.
-                                    </p>
-                                    <input type="button" onclick="closeDialog()" value="Ok" class="ui-state-default ui-corner-all"/>
-                                </div>
-                                <input type="button" onclick="openDialog()" class="ui-icon ui-icon-help ui-corner-all"/>
-                            </div>
-                            <input type="text" name="schoolName" id="schoolName"/>
-                            <input type="submit" value="submit"/>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <h2>Top 10 Medicine Science Universities</h2>
+            <div id="top10medicine"></div>
         </div>
-
         <!-- footer division -->
-        <div id="footerDiv"></div>
+<!--        <div id="footerDiv"></div>-->
     </body>
 </html>

@@ -83,8 +83,16 @@ module.exports.post_collegeInfo = function(req, res) {
     modelMain.findUniversityData(req, res);
 };
 
-module.exports.get_overview = function(req, res) {
-    sendPage(projectFolerName + 'public/html/overview.html', res);
+module.exports.get_overview_cs = function(req, res) {
+    sendPage(projectFolerName + 'public/html/overviewCS.html', res);
+};
+
+module.exports.get_overview_business = function(req, res) {
+    sendPage(projectFolerName + 'public/html/overviewBusiness.html', res);
+};
+
+module.exports.get_overview_medicine = function(req, res) {
+    sendPage(projectFolerName + 'public/html/overviewMedicine.html', res);
 };
 
 module.exports.post_add = function(req, res) {

@@ -10,6 +10,9 @@ function initAll() {
 
     // ajax html template
     $("#footerDiv").load("/html/footer.html");
+    $("#top10cs").load("/html/top10/top10cs.html");
+    $("#top10medicine").load("/html/top10/top10cs.html");
+    $("#top10business").load("/html/top10/top10cs.html");
 
     // dropdown menu init
     dropDownMenu();

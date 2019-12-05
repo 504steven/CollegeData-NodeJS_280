@@ -34,8 +34,8 @@ The overall architecture of the web application comply with the MVC architecture
 - Dashboard
 
 ### Navigation
-- Clear entry points
 - Fully connected
+- Hub and Spoke
 
 ### Page layout
 - Visual Framework
@@ -44,14 +44,12 @@ The overall architecture of the web application comply with the MVC architecture
 
 ### List
 - Thumbnail Grid
-- Striped Rows
 
 ### Action
 - Hover Tools
-- Prominent “Done” Button
+- Smart Menu Items
 
 ### User input
 - Forgiving Format
-- Tips and Hints
 - Good Defaults
 - Same-Page Error Messages

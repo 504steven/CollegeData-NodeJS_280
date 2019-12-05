@@ -39,7 +39,6 @@ The overall architecture of the web application comply with the MVC architecture
 - Visual Framework
 - Grid of Equals
 - Module Tabs
-- Responsive Enabling
 
 ### List
 - Thumbnail Grid

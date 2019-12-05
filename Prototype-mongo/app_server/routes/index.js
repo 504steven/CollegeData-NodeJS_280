@@ -4,7 +4,7 @@ var ctrlMain = require("../controllers/cntrlMain");
 var modelMain = require("../models/modelMain");
 
 router.get('/', ctrlMain.get_register);
-router.get('/admin', ctrlMain.get_admin);
+router.get('/admin', ctrlMain.check_admin,ctrlMain.get_admin);
 router.post('/register', ctrlMain.post_register);
 router.post('/login', ctrlMain.post_login);
 router.get('/logout', ctrlMain.check_logged_In, ctrlMain.get_logout);

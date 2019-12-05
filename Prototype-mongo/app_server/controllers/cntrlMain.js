@@ -17,6 +17,18 @@ module.exports.get_admin = function(req, res) {
     sendPage(projectFolerName + 'public/html/admin.html', res);
 };
 
+module.exports.check_admin = function(req, res, next) {
+    if (req.session.user) {
+        if (req.session.user.username == "admin") {
+            next();
+        } else {
+            res.send("Only admin can access this page");
+        }
+    } else {
+        res.send("must log in first");
+    }
+};
+
 module.exports.get_homePage = function(req, res) {
     sendPage(projectFolerName + 'public/html/home.html', res);
 };

@@ -206,7 +206,7 @@
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   height: 650px;
-  width: 27%;
+  width: 30%;
 }
 
 /* Style the buttons inside the tab */
@@ -238,7 +238,7 @@
   float: left;
   padding: 5px 22px;
   border: 1px solid darkgray;
-  width: 70%;
+  width: 68%;
   /*border-left: none;*/
   height: 650px;
   display: none;

@@ -19,7 +19,7 @@ function initAll() {
 
     // canvas init and canvas animation init
     // drawSmilingFace();
-     window.setInterval(drawWelcome, 50);
+    //  window.setInterval(drawWelcome, 50);
 
     // build resizable and draggable searching form
     $("#searchForm").resizable();
@@ -518,3 +518,19 @@ function drawChart6() {
     });
     $('#chart6').html('<br><br><br><br><br><br><div id="chart6Title">Total Universities</div>' + '<br>' + '<div id="chart6Content">' + total + '</div>');
 }
+
+
+function openUniv(evt, univName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(univName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+

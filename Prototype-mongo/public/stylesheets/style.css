@@ -1,3 +1,8 @@
+body{
+  background-color: #f4f7f6;
+}
+
+
 /* title division */
 #titleDiv {
   width: 100%;
@@ -6,8 +11,9 @@
 }
 
 #titleDiv h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: 'Noto Serif', 'Titillium Web', 'apercu', "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 35px;
+  /*color: #e38b5a;*/
 }
 
 /* navigator division */
@@ -16,7 +22,8 @@
   margin: 8px 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  /*background-color: #333;*/
+  background-color: #66A4AD;
 }
 
 #navigatorDiv h1 {
@@ -43,33 +50,40 @@
 
 #navigatorDiv li a:hover:not(.active) {
   background-color: #111;
+  /*background-color:#49c3b6*/
 }
 
 #navigatorDiv .navigatorBar {
-  background-color: #4CAF50;
+  /*background-color: #4CAF50;*/
+  /*background-color: #49c4b6;*/
+  border-left: 1px solid white;
+  /*background-color: #66A4AD;*/
+  /*background-color: #e38b5a;*/
 }
 
 #navigatorDiv div.menu {
   display: none;
   position: absolute;
-  background-color: #333;
+  /*background-color: #333;*/
+  background-color: #66A4AD;
   width: 12%;
 }
 
 #navigatorDiv div.menu a {
-  border: 1px solid rgb(65,64,64);
+  border: 1px solid #bce3cb;
   font-size: 17px;
 }
 
 #navigatorDiv div.menu a:hover:not(.active) {
   font-size: 17px;
   background-color: #111;
-  border: 0.5px solid white;
+  /*background-color:#49c3b6;*/
+  border: 0.5px solid #bce3cb;
 }
 
 #navigatorDiv a.menuLink b{
-  border: 4px solid;
-  border-color:  darkgray transparent transparent transparent;
+  /*border: 4px solid;*/
+  /*border-color:  lightgray transparent transparent transparent;*/
   float: right;
   margin-left: 5px;
   margin-top: 11px;
@@ -89,7 +103,9 @@
 
 #contentDiv form {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  border: 0.5px solid #e38b5a;
+  /*background-color: #f2f2f2;*/
+  background-color:#fffff8;
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -101,13 +117,15 @@
   padding: 10px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
+  border: 1px solid #bce3cb;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 #sortable li {
-  border: .8px solid black;
+  /*border: .8px solid black;*/
+  border: .8px solid #bce3cb;
 }
 
 #contentDiv table.loginPage input[type=text] {
@@ -119,14 +137,16 @@
   padding: 10px 10px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
+  border: 1px solid #bce3cb;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 #contentDiv input[type=submit] {
   width: 100%;
-  background-color: #4CAF50;
+  /*background-color: #4CAF50;*/
+  background-color:#49c4b6;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -137,7 +157,8 @@
 
 
 #contentDiv input[type=submit]:hover {
-  background-color: #45a049;
+  /*background-color: #45a049;*/
+  background-color: #329e92
 }
 
 #contentDiv .infoPage {
@@ -147,32 +168,36 @@
 }
 
 #contentDiv .infoPage td, #contentDiv .infoPage th {
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
+  border: 1px solid #bce3cb;
   padding: 8px;
-  color: white;
+  /*color: white;*/
 }
 
 #contentDiv .infoPage tr {
-  background-color: #000080;
+  /*background-color: #000080;*/
+  background-color:#fffff8;
 }
 
 #contentDiv .infoPage tr:hover {
-  background-color: #FF00FF;
+  /*background-color: #FF00FF;*/
+  background-color: #bce3cb;
 }
 
 #contentDiv .infoPage th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
-  color: white;
+  /*background-color: #4CAF50;*/
+  background-color:#bce3cb;
+  /*color: white;*/
 }
 
 #contentDiv .infoPage caption {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 30px;
   text-align: center;
-  color: purple;
+  color: #e37b5a;
 }
 
 #contentDiv .infoPage col {
@@ -183,7 +208,15 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-size: 30px;
   text-align: center;
-  color: red;
+  color: #e37b5a;
+}
+
+#contentDiv h2 {
+  /*font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;*/
+  font-size: 27px;
+  padding-left:5px;
+  /*text-align: center;*/
+  color: #e37b5a;
 }
 
 #contentDiv #rollingImage {
@@ -203,7 +236,8 @@
 /* Style the tab */
 #contentDiv .tab {
   float: left;
-  border: 1px solid #ccc;
+  border: 1px solid #bce3cb;
+  /*#ccc;*/
   background-color: #f1f1f1;
   height: 650px;
   width: 30%;
@@ -212,7 +246,8 @@
 /* Style the buttons inside the tab */
 #contentDiv .tab button {
   display: block;
-  background-color: inherit;
+  /*background-color: inherit;*/
+  background-color:#fffff8;
   color: black;
   padding: 22px 16px;
   width: 100%;
@@ -225,30 +260,34 @@
 
 /* Change background color of buttons on hover */
 #contentDiv .tab button:hover {
-  background-color: #ddd;
+  /*background-color: #ddd;*/
+  background-color:#f0f0e9
 }
 
 /* Create an active/current "tab button" class */
 #contentDiv .tab button.active {
-  background-color: #ccc;
+  /*background-color: #ccc;*/
+  background-color:#bce3cb;
 }
 
 /* Style the tab content */
 #contentDiv .tabcontent {
   float: left;
   padding: 5px 22px;
-  border: 1px solid darkgray;
+  border: 1px solid #bce3cb;
   width: 68%;
   /*border-left: none;*/
   height: 650px;
   display: none;
-  background-color: whitesmoke;
+  /*background-color: whitesmoke;*/
+  background-color:#fffff8;
   margin-left: 10px;
   font-size: 20px;
 }
 
 table.univInfo td{
   border-top: 1px solid darkgray;
+
 }
 
 /* Clear floats after the tab */
@@ -282,8 +321,8 @@ table.univInfo td{
 
 /* footer division */
 #footerDiv footer {
-  background-color: #333;
-  border: 1px groove #aaaaaa;
+  /*background-color: #333;*/
+  border: 1px groove white;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -298,7 +337,7 @@ table.univInfo td{
 
 #footerDiv p {
   font-size: 15px;
-  color: white;
+  /*color: white;*/
   text-align: center;
 }
 
@@ -323,9 +362,15 @@ table.univInfo td{
 #droppbleObject {
   width: 100px;
   height: 100px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  border: 1px solid #bce3cb;
   z-index: 0;
   background-color: aqua;
+}
+
+#footerDiv a {
+  font-size: 13px;
+  color: gray;
 }
 
 

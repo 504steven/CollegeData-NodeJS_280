@@ -5,16 +5,17 @@ html(lang='en')
         title Results
         link(rel='stylesheet', href='/css/style.css')
         link(rel='stylesheet', href='/css/jquery-ui.css')
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap")
         style.
             h2 {
                 font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
                 font-size: 30px;
                 text-align: center;
-                color: purple;
+                color: #e37b5a
             }
 
             input[type=submit] {
-                background-color: #4CAF50;
+                background-color: #49c4b6;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -35,7 +36,7 @@ html(lang='en')
             }
 
             #name {
-                background-color: #EEEEEE;
+                background-color: #fffff8;
                 Opacity: 0.7;
             }
 
@@ -81,7 +82,7 @@ html(lang='en')
                         height: 350,
                         width: 500,
                         backgroundColor: {
-                            fill: '#EEEEEE',
+                            fill: '#fffff8',
                             fillOpacity: 0.7
                         },
                     };
@@ -112,7 +113,7 @@ html(lang='en')
                             },
                         },
                         backgroundColor: {
-                            fill: '#EEEEEE',
+                            fill: '#fffff8',
                             fillOpacity: 0.7
                         },
                         seriesType: 'bars',
@@ -144,7 +145,7 @@ html(lang='en')
                             },
                         },
                         backgroundColor: {
-                            fill: '#EEEEEE',
+                            fill: '#fffff8',
                             fillOpacity: 0.7
                         },
                         orientation: 'vertical',
@@ -177,7 +178,7 @@ html(lang='en')
                             },
                         },
                         backgroundColor: {
-                            fill: '#EEEEEE',
+                            fill: '#fffff8',
                             fillOpacity: 0.7
                         },
                         orientation: 'vertical',
@@ -214,7 +215,7 @@ html(lang='en')
                         width: 500,
                         colors: ['#2B4520', '#88B972'],
                         backgroundColor: {
-                            fill: '#EEEEEE',
+                            fill: '#fffff8',
                             fillOpacity: 0.7
                         }
                     };
@@ -238,9 +239,9 @@ html(lang='en')
                     a(href='/overview_menu.html' class='menuLink') Overview
                         b
                     div(class='menu' id = 'overview_menu')
-                         a(href='/overviewCS') Top 10 Computer Science Universities
-                         a(href='/overviewMedicine') Top 10 Medicine Science Universities
-                         a(href='/overviewBusiness') Top 10 Business Universities
+                         //a(href='/overviewCS') Top 10 Computer Science Universities
+                         //a(href='/overviewMedicine') Top 10 Medicine Science Universities
+                         //a(href='/overviewBusiness') Top 10 Business Universities
                 li
                     a(href='/news') News
                 li

@@ -270,6 +270,7 @@ function drawChart2() {
         });
     }
 
+    // var input = [['university', 'Acceptance Rate %', {role: 'style'}, {role: 'annotation'},'Average', {role: 'style'}]];
     var input = [['university', 'Acceptance Rate %', {role: 'style'}, {role: 'annotation'}]];
     for (var i = 0; i < doc.length; i++) {
         var color = '#88B972';
@@ -284,6 +285,7 @@ function drawChart2() {
         }
         var rate = parseFloat(doc[i].acceptance);
         input.push([name, rate, color, rate]);
+        // input.push([name, rate, color, rate,'70','red']);
     }
 
     google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -291,7 +293,7 @@ function drawChart2() {
         var data = google.visualization.arrayToDataTable(input);
         var options = {
             title: 'Universities with the Lowest Acceptance Rates (%)',
-            chartArea: {width: '60%', height: '75%', left: '27%', top: '17%'},
+            chartArea: {width: '70%', height: '75%', left: '27%', top: '17%'},
             // colors: ['#88B972', '#2B4520'],
             //  displayAnnotations: true,
             annotations: {
@@ -320,6 +322,8 @@ function drawChart2() {
             },
             bar: {groupWidth: "65%"},
             legend: {position: 'none'},
+            seriesType: 'bars',
+            series: {1: {type: 'scatter'}},
             // fontSize: 14,
         };
         var chart = new google.visualization.BarChart(document.getElementById('chart2'));

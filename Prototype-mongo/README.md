@@ -13,17 +13,19 @@ The overall architecture of the web application comply with the MVC architecture
 - HTML, CSS, JavaScript
 - AJAX
 - jQuery
-- React
 - Google Charts
 
 ### Back-End
 - Node.js
 - Express.js
-- pug
-- monk
+- Pug
+- Monk
 
-### Database-Engine
+### Database Engine
 - MongoDB
+
+### Deployment
+- AWS EC2
 
 ## Patterns
 ### Organization

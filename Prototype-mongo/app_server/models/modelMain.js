@@ -171,13 +171,13 @@ module.exports.updateUniversityData = function (req, res) {
 
 module.exports.displayUniversityData = function (req, res) {
     var schoolName = req.param('name').toLowerCase();
-    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)},{projection:{_id:0}}, function (err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             res.send("display fail");
         } else {
             if (docs.length > 0) {
-                console.log(" found data: " + docs[0].name);
+                console.log(" found data in display: " + docs[0].name);
                 var data = {
                     name: docs[0].name,
                     params: docs[0]
@@ -268,13 +268,13 @@ module.exports.findUniversityData = function (req, res) {
 
             var schoolName = req.param('schoolName').toLowerCase();
             console.log(schoolName);
-            db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
+            db.get(university_data_collection).find({"name": new RegExp(schoolName)},{projection:{_id:0}},function (err, docs) {
                 if (err) {
                     console.log("finding data for " + schoolName + ", ERROR: " + err);
                     main.sendPage(projectFolerName + 'public/html/error.html', res);
                 } else {
                     if (docs.length > 0) {
-                        console.log(" found data: " + docs[0].name);
+                        console.log(" found data in find: " + docs[0].name);
                         var data = {
                             name: docs[0].name,
                             params: docs[0],
@@ -299,13 +299,13 @@ module.exports.findUniversityData = function (req, res) {
 module.exports.post_detailedUniversityData = function (req, res) {
     var schoolName = req.param('schoolName').toLowerCase();
     console.log(schoolName);
-    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, function (err, docs) {
+    db.get(university_data_collection).find({"name": new RegExp(schoolName)}, {projection:{_id:0}},function (err, docs) {
         if (err) {
             console.log("finding data for " + schoolName + ", ERROR: " + err);
             main.sendPage(projectFolerName + 'public/html/error.html', res);
         } else {
             if (docs.length > 0) {
-                console.log(" found data: " + docs[0].name);
+                console.log(" found data in post_detailed: " + docs[0].name);
                 var data = {
                     name: docs[0].name,
                     params: docs[0]

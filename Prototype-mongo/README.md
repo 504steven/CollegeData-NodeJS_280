@@ -1,5 +1,9 @@
 # CMPE 280 Team Project - The Statistics of University and College
 
+## Admin Login
+ID: admin
+Password: 123
+
 ## Data Source and Model
 UCI machine learning Repo (http://archive.ics.uci.edu/ml/datasets/university)
 
@@ -39,14 +43,15 @@ The overall architecture of the web application comply with the MVC architecture
 
 ### Page layout
 - Visual Framework
-- Grid of Equals
 - Module Tabs
+- Grid of Equals
 
 ### List
 - Thumbnail Grid
+- Striped Rows
 
 ### Action
-- Hover Tools
+- Prominent “Done” Button
 - Smart Menu Items
 
 ### User input

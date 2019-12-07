@@ -2,7 +2,7 @@ var readline = require('readline');
 var fs = require('fs');
 var isWin = process.platform === 'win32';
 var projectFolerName = isWin ? 'Prototype-mongo/' : '';
-var registeredUsers = [];
+var registeredUsers = [{username: "admin", password: "123"}];
 var modelMain = require("../models/modelMain");
 
 module.exports.get_register = function(req, res) {

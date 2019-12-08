@@ -41,7 +41,7 @@ The overall architecture of the web application comply with the MVC architecture
 - Fully connected
 - Hub and Spoke
 
-### Page layout
+### Page Layout
 - Visual Framework
 - Module Tabs
 - Grid of Equals

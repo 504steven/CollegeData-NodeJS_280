@@ -5,7 +5,7 @@ class Message extends React.Component {
                 <div style={{"height": "400px"}}>
                     <div style={{
                         "margin-top": "15px", "margin-left": "65px", "height": "350px", "width": "220px",
-                        "textAlign": "center", "float": "left", "backgroundColor": "#88B972",
+                        "textAlign": "center", "float": "left", "backgroundColor": "#66A4AD",
                         "fontFamily": "sans-serif", "color": "black", "border-radius": "20px"
                     }}>
                         <br/><br/><br/>
@@ -14,7 +14,7 @@ class Message extends React.Component {
                     </div>
                     <div style={{
                         "margin-top": "15px", "margin-left": "65px", "height": "350px", "width": "220px",
-                        "textAlign": "center", "float": "left", "backgroundColor": "#2B4520",
+                        "textAlign": "center", "float": "left", "backgroundColor": "#66A4AD",
                         "fontFamily": "sans-serif", "color": "white", "border-radius": "20px"
                     }}>
                         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -23,7 +23,7 @@ class Message extends React.Component {
                     </div>
                     <div style={{
                         "margin-top": "15px", "margin-left": "65px", "height": "350px", "width": "220px",
-                        "textAlign": "center", "float": "left", "backgroundColor": "#88B972",
+                        "textAlign": "center", "float": "left", "backgroundColor": "#66A4AD",
                         "fontFamily": "sans-serif", "color": "black", "border-radius": "20px"
                     }}>
                         <br/><br/><br/>
@@ -32,7 +32,7 @@ class Message extends React.Component {
                     </div>
                     <div style={{
                         "margin-top": "15px", "margin-left": "65px", "height": "350px", "width": "220px",
-                        "textAlign": "center", "float": "left", "backgroundColor": "#2B4520",
+                        "textAlign": "center", "float": "left", "backgroundColor": "#66A4AD",
                         "fontFamily": "sans-serif", "color": "white", "border-radius": "20px"
                     }}>
                         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

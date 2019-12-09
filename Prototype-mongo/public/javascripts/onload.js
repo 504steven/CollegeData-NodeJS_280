@@ -269,7 +269,6 @@ function drawChart2() {
             }
         });
     }
-
     // var input = [['university', 'Acceptance Rate %', {role: 'style'}, {role: 'annotation'},'Average', {role: 'style'}]];
     var input = [['university', 'Acceptance Rate %', {role: 'style'}, {role: 'annotation'}]];
     for (var i = 0; i < doc.length; i++) {
@@ -309,7 +308,7 @@ function drawChart2() {
                 textPosition: 'none'
             },
             vAxis: {
-                title: 'Public v.s. Private',
+                title: 'Public vs. Private',
                 textStyle: {
                     fontSize: 12
                 }
@@ -410,46 +409,40 @@ function drawChart4() {
                     doc[i] = {
                         name: data.name,
                         sat_verbal: parseInt(data.sat_verbal),
-                        sat_math: parseInt(data.sat_math)
+                        sat_math: parseInt(data.sat_math),
                     };
                 }
             }
         });
     }
-    google.charts.load('current', {'packages': ['line']});
+    var input = [['University', 'SAT Math', {role: 'style'}, 'SAT Verbal', {role: 'style'}]];
+    for (var i = 0; i < doc.length; i++) {
+        input.push([doc[i].name, doc[i].sat_math, '#2B4520', doc[i].sat_verbal, '#88B972']);
+    }
+    google.charts.load('current', {'packages': ['bar']});
     google.charts.setOnLoadCallback(function () {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'University');
-        data.addColumn('number', 'SAT verbal');
-        data.addColumn('number', 'SAT math');
-        for (var i = 0; i < doc.length; i++) {
-            data.addRow([doc[i].name, doc[i].sat_verbal, doc[i].sat_math]);
-        }
+        var data = google.visualization.arrayToDataTable(input);
         var options = {
             title: 'University SAT scores',
-            hAxis: {
-                gridlines: {
-                    count: 3
-                },
-            },
+            orientation: 'horizontal',
             vAxis: {
                 viewWindow: {
-                    max:800,
-                    min:200
-                }
+                    max: 800,
+                    min: 0,
+                },
+                gridlines: {
+                    count: 4
+                },
             },
-            colors: ['#2B4520','#88B972'],
+            colors: ['#2B4520', '#88B972'],
             backgroundColor: {
                 fill: '#EEEEEE',
                 fillOpacity: 0.7
             },
             height: 300,
             width: 500,
-            // legend: {position: 'top'},
         };
-        // var chart = new google.charts.Line(document.getElementById('chart4'));
-        // chart.draw(data, google.charts.Line.convertOptions(options));
-        var chart = new google.visualization.LineChart(document.getElementById('chart4'));
+        var chart = new google.visualization.BarChart(document.getElementById('chart4'));
         chart.draw(data, options);
     });
 }
@@ -526,7 +519,6 @@ function drawChart6() {
     $('#chart6').html('<br><br><br><br><br><br><div id="chart6Title">Total Universities</div>' + '<br>' + '<div id="chart6Content">' + total + '</div>');
 }
 
-
 function openUniv(evt, univName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -540,4 +532,3 @@ function openUniv(evt, univName) {
     document.getElementById(univName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-

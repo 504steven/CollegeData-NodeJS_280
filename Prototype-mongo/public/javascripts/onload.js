@@ -206,7 +206,9 @@ function drawChart1() {
     if (!document.getElementById('chart1')) {
         return;
     }
-    var url = "http://localhost:3000/aveExpense";
+    var origin = window.location.origin;
+    var url = origin + "/aveExpense";
+    // var url = "http://localhost:3000/aveExpense";
     var doc = [];
     $.get(url, function (data, status) {
         if (status != 'success') {
@@ -251,6 +253,7 @@ function drawChart2() {
     if (!document.getElementById('chart2')) {
         return;
     }
+    var origin = window.location.origin;
     // Define the chart to be drawn.
     var doc = [];
     var schoolNames = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'Columbia', 'UC_berkeley', 'UC_LA', 'GeorgiaTech', 'University_of_NorthCarolina', 'University_of_Michigan'];
@@ -258,7 +261,8 @@ function drawChart2() {
         $.ajax({
             async: false,
             type: 'GET',
-            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            // url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            url: origin + "/universityInfo?schoolName=" + schoolNames[i],
             success: function (data, status) {
                 if (status != 'success') {
                     console.log("get university data failed :" + status);
@@ -334,13 +338,15 @@ function drawChart3() {
     if (!document.getElementById('chart3')) {
         return;
     }
+    var origin = window.location.origin;
     var doc = [];
     var schoolNames = ['IllinoisTech', 'GeorgiaTech', 'MIT', 'harvard', 'Carnegie_Mellon', 'stanford', 'UC_berkeley', 'Yale', 'SANJOSEstate', 'BENNINGTON', 'LESLEY'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
             type: 'GET',
-            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            // url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            url: origin + "/universityInfo?schoolName=" + schoolNames[i],
             success: function (data, status) {
                 if (status != 'success') {
                     console.log("get university data failed :" + status);
@@ -394,13 +400,15 @@ function drawChart4() {
     if (!document.getElementById('chart4')) {
         return;
     }
+    var origin = window.location.origin;
     var doc = [];
     var schoolNames = ['harvard', 'MIT', 'stanford', 'UC_berkeley', 'UC_LA', 'SANJOSEstate'];
     for (var i = 0; i < schoolNames.length; i++) {
         $.ajax({
             async: false,
             type: 'GET',
-            url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            // url: "http://localhost:3000/universityInfo?schoolName=" + schoolNames[i],
+            url: origin + "/universityInfo?schoolName=" + schoolNames[i],
             success: function (data, status) {
                 if (status != 'success') {
                     console.log("get university data failed :" + status);
@@ -451,12 +459,14 @@ function drawChart5() {
     if (!document.getElementById('chart5')) {
         return;
     }
+    var origin = window.location.origin;
     var doc = [];
     var total = 0;
     $.ajax({
         async: false,
         type: 'GET',
-        url: "http://localhost:3000/allUniversityInfo",
+        // url: "http://localhost:3000/allUniversityInfo",
+        url: origin + "/allUniversityInfo",
         success: function (data, status) {
             if (status != 'success') {
                 console.log("get university data failed :" + status);
@@ -500,11 +510,13 @@ function drawChart6() {
     if (!document.getElementById('chart6')) {
         return;
     }
+    var origin = window.location.origin;
     var total = 0;
     $.ajax({
         async: false,
         type: 'GET',
-        url: "http://localhost:3000/allUniversityInfo",
+        // url: "http://localhost:3000/allUniversityInfo",
+        url: origin + "/allUniversityInfo",
         success: function (data, status) {
             if (status != 'success') {
                 console.log("get university data failed :" + status);

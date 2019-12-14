@@ -1,8 +1,8 @@
 # CMPE 280 Team Project - The Statistics of University and College
 
 ## Admin Login
-ID: admin
-Password: 123
+- ID: admin
+- Password: 123
 
 ## Data Source and Model
 UCI machine learning Repo (http://archive.ics.uci.edu/ml/datasets/university)
